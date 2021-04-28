@@ -10,7 +10,6 @@ class User extends Database
 	protected $lastname;
 	protected $email;
 	protected $pwd;
-	protected $country;
 	protected $status = 0;
 	protected $role = 0;
 	protected $isDeleted = 0;
@@ -40,9 +39,6 @@ class User extends Database
 	}
 	public function setPwd($pwd){
 		$this->pwd = $pwd;
-	}
-	public function setCountry($country){
-		$this->country = $country;
 	}
 	public function setStatus($status){
 		$this->status = $status;
