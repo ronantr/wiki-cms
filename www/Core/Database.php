@@ -59,18 +59,26 @@ class Database
 		if(is_null($this->getId())){
 			//INSERT 
 			$columns = array_keys($data);
-			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
-											".implode(",", $columns)."
+			$query = $this->pdo->prepare("INSERT INTO ".$this->table."(".implode(",", array_keys($columns))."
 											) VALUES (
-											:".implode(",:", $columns)."
-											)");
+											:".implode(",:", array_keys($columns))."
+											)";);
 
 		}else{
-			//UPDATE 
+			$sql = "" ;
 			
+			foreach ($columns as $col => $value){
+			$sql .= $col . " = '" . $value . "',";
+			}
+			
+			$query = $this->bdd->pdo->prepare("UPDATE " . $this->bdd->table . " SET ".rtrim($sql,",")."
+			WHERE id = ".$this->getId().";");
 		}
-
-		$query->execute($data);
+		
+		$query->execute($columns);
+		if(is_null($this->getId()))
+			$this->setId($this->bdd->pdo->lastInsertId()) ;
+		echo $this-getId();
 
 	}
 
