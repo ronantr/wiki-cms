@@ -83,7 +83,7 @@ ALTER TABLE `wk_static`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `ody_User`
+-- AUTO_INCREMENT pour la table `wk_user`
 --
 ALTER TABLE `wk_editor`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
