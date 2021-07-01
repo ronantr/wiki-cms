@@ -47,28 +47,25 @@ class Database
 					get_object_vars($this),
 					get_class_vars(get_class())
 				);
-        //$columns = array_keys($data);
+        $columns = array_keys($data);
         var_dump($data);
+        switch($columns[0]){
+            case 'username':
+                $this->table = DBPREFIX."editor";
+                break;
+            case 'title':
+                $this->table = DBPREFIX."article";
+                break;
+        }
 		if(is_null($this->getId())){
 			//INSERT
-            $columns = array_keys($data);
-            $columns = array_keys($data);
-            switch($columns[0]){
-                case 'username':
-                    $this->table = DBPREFIX."editor";
-                    break;
-                case 'title':
-                    $this->table = DBPREFIX."article";
-                    break;
 
-            }
             var_dump(array_keys($data));
 
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
             echo '<br><br><br>';
-            var_dump($query);
 		}else{
 
 			$sql = "";
