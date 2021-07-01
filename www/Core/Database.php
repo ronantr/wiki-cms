@@ -11,7 +11,7 @@ class Database
 
 	public function __construct(){
 		try{
-			$this->pdo = new \PDO(DBDRIVER.":dbname=".DBNAME.";host=".DBHOST.";port=".DBPORT, DBUSER, DBPWD);
+            $this->pdo = new \PDO(DBDRIVER.":dbname=".DBNAME.";host=".DBHOST.";port=".DBPORT, DBUSER, DBPWD);
 
 			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     		$this->pdo->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
@@ -23,7 +23,7 @@ class Database
 		//echo get_called_class(); //  App\Models\User ici on peut récupérer le nom de la table
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
-		
+		$this->table = DBPREFIX."editor";
 	}
 
 	public function save(){
@@ -45,40 +45,37 @@ class Database
 
 
 		$data = array_diff_key (
-					
-					get_object_vars($this), 
-
+					get_object_vars($this),
 					get_class_vars(get_class())
-
 				);
-
-
-
-
-
+        //$columns = array_keys($data);
+        var_dump($data);
 		if(is_null($this->getId())){
-			//INSERT 
-			$columns = array_keys($data);
-			$query = $this->pdo->prepare("INSERT INTO ".$this->table."(".implode(",", array_keys($columns))."
-											) VALUES (
-											:".implode(",:", array_keys($columns))."
-											)";);
+			//INSERT
+            $columns = array_keys($data);
+            $this->table = DBPREFIX."editor";
+            var_dump(array_keys($data));
 
+            $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
+                                            ".implode(",", $columns)."
+                                            ) VALUES (:".implode(",:", $columns).");");
+            echo '<br><br><br>';
+            var_dump($query);
 		}else{
-			$sql = "" ;
-			
+
+			$sql = "";
 			foreach ($columns as $col => $value){
 			$sql .= $col . " = '" . $value . "',";
 			}
-			
-			$query = $this->bdd->pdo->prepare("UPDATE " . $this->bdd->table . " SET ".rtrim($sql,",")."
+			$query = $this->pdo->prepare("UPDATE " . $this->table . " SET ".rtrim($sql,",")."
 			WHERE id = ".$this->getId().";");
 		}
-		
+		var_dump($query);
 		$query->execute($columns);
+
 		if(is_null($this->getId()))
-			$this->setId($this->bdd->pdo->lastInsertId()) ;
-		echo $this-getId();
+			$this->setId($this->pdo->lastInsertId()) ;
+		echo $this->getId();
 
 	}
 

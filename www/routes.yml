@@ -28,3 +28,6 @@
 /liste-des-utilisateurs:
   controller: Security
   action: listofusers
+/post:
+  controller: Security
+  action: post
