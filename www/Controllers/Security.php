@@ -53,7 +53,7 @@ class Security{
 				$user->setEmail($_POST["email"]);
 				$user->setPwd($_POST["password"]);
 				$user->save();
-                var_dump($user);
+                //var_dump($user);
 			}else{
 				$view->assign("formErrors", $errors);
 			}
