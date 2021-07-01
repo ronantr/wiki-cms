@@ -22,7 +22,7 @@ class Database
 
 		//echo get_called_class(); //  App\Models\User ici on peut récupérer le nom de la table
 		$classExploded = explode("\\", get_called_class());
-		$this->table = DBPREFIX.end($classExploded);$this->table = DBPREFIX."editor";
+		$this->table = DBPREFIX.end($classExploded);
 	}
 
 	public function save(){
@@ -52,7 +52,16 @@ class Database
 		if(is_null($this->getId())){
 			//INSERT
             $columns = array_keys($data);
-            $this->table = DBPREFIX."editor";
+            $columns = array_keys($data);
+            switch($columns[0]){
+                case 'username':
+                    $this->table = DBPREFIX."editor";
+                    break;
+                case 'title':
+                    $this->table = DBPREFIX."article";
+                    break;
+
+            }
             var_dump(array_keys($data));
 
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
