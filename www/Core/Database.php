@@ -23,7 +23,7 @@ class Database
 		//echo get_called_class(); //  App\Models\User ici on peut récupérer le nom de la table
 		$classExploded = explode("\\", get_called_class());
 		$this->table = DBPREFIX.end($classExploded);
-		$this->table = DBPREFIX."editor";
+
 	}
 
 	public function save(){
@@ -48,21 +48,34 @@ class Database
 					get_object_vars($this),
 					get_class_vars(get_class())
 				);
-        //$columns = array_keys($data);
-        var_dump($data);
+        $columns = array_keys($data);
+        $column = array_values($data);
+        var_dump($column);
+        print "<Br>";
 		if(is_null($this->getId())){
 			//INSERT
+            //$columns = array_keys($data);
             $columns = array_keys($data);
-            $this->table = DBPREFIX."editor";
-            var_dump(array_keys($data));
+            switch($columns[0]){
+                case 'username':
+                    $this->table = DBPREFIX."editor";
+                    break;
+                case 'title':
+                    $this->table = DBPREFIX."article";
+                    break;
 
+            }
+            $test=(implode(", :",$column));
+            var_dump(implode(", :",$column));
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
-                                            ) VALUES (:".implode(",:", $columns).");");
+                                            ) VALUES (:".
+                                            implode(", :", $columns).");");
             echo '<br><br><br>';
-            var_dump($query);
-		}else{
+            //var_dump($query);
 
+		}else{
+            //$columns = array_keys($data);
 			$sql = "";
 			foreach ($columns as $col => $value){
 			$sql .= $col . " = '" . $value . "',";
@@ -71,6 +84,7 @@ class Database
 			WHERE id = ".$this->getId().";");
 		}
 		var_dump($query);
+
 		$query->execute($columns);
 
 		if(is_null($this->getId()))
