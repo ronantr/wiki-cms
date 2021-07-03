@@ -63,10 +63,24 @@ class Security{
 
 	public function loginAction(){
 		$user = new User();
-		$view = new View();
+		$view = new View("login");
 		$form = $user->buildFormLogin();
 		$view->assign("form", $form);
 		session_start();
+		if(isset($_POST["email"]) && isset($_POST["pwd"]))
+        {
+            $email= htmlspecialchars($_POST["email"]);
+            $password = htmlspecialchars($_POST["pwd"]);
+
+            if($email !== "" && $password !== "" && $user->checkPwd($email,$password)){
+                $_SESSION['prenom']= $user->getPseudo($email);
+                $user->connectedOn($email);
+                $_SESSION['loggin']=true;
+                header('Location: \Dashbord');
+            }else{
+                header('Location: \login');
+            }
+        }
 	    echo "controller security action login";
 
 	}
@@ -97,7 +111,7 @@ class Security{
 			$errors = Form::validator($_POST, $form);
 		}
 		if(empty($errors)){
-                $view->assign("formErrors", $errors);
+                //$view->assign("formErrors", $errors);
 				$post->setPost_title("Test");
 				$post->setPost_content("Test du content");
 				$post->save();

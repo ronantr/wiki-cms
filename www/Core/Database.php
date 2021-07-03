@@ -76,7 +76,7 @@ class Database
 			WHERE id = ".$this->getId().";");
 		}
 		var_dump($query);
-		$query->execute($columns);
+		$query->execute($data);
 
 		if(is_null($this->getId()))
 			$this->setId($this->pdo->lastInsertId()) ;
