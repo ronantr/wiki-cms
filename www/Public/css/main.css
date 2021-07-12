@@ -50,3 +50,34 @@ header nav li a:not([href]){
 	max-width: 1170px;
 	margin: auto;
 }
+
+.nav_gauche{
+	height: 100%;
+}
+.row{
+	display: flex;
+	width: 20%;
+	background-color:#F3F3F3;
+	flex-direction: column;
+	text-align: center;
+	padding: 20px;
+	
+}
+
+.row a{
+	text-decoration: none;
+	padding: 15px;
+	color: rgb(46, 35, 41);
+	margin: 10px;
+	background-color: #a5c9cf;
+	border-radius: 20px;
+}
+
+.row a:hover{
+	background-color: #73959b;
+	font-size: 20px;
+}
+
+.main{
+	width: 80%;
+}

@@ -27,11 +27,19 @@
 		<main>
 			<div class="nav_gauche">
 				<div class="row">
-					
+					<a href="#">Dashboard Home</a>
+					<a href="#">Media</a>
+					<a href="#">Pages</a>
+					<a href="#">Articles</a>
+					<a href="#">Commentaires</a>
+					<a href="#">Thèmes</a>
+					<a href="#">Utilisateurs</a>
+					<a href="#">Paramètres</a>
 				</div>
 			</div>
-			<!-- intégrer le vue -->
-			<?php include $this->view ?>
+			<section class="main">
+				<?php include $this->view ?>
+			</section>
 		</main>
 	</body>
 </html>
