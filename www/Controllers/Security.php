@@ -64,18 +64,18 @@ class Security{
 	public function loginAction(){
 		$user = new User();
 		$view = new View("login");
-		$form = $user->buildFormLogin();
-		$view->assign("form", $form);
-		session_start();
+		$form = $user->formBuilderLogin();
+
 		if(isset($_POST["email"]) && isset($_POST["pwd"]))
         {
             $email= htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["pwd"]);
 
-            if($email !== "" && $password !== "" && $user->checkPwd($email,$password)){
-                $_SESSION['prenom']= $user->getPseudo($email);
-                $user->connectedOn($email);
+            if($email !== "" && $password !== "" && $user->getPwd($email,$password)){
+                $_SESSION['username']= $user->getUsername($email);
                 $_SESSION['loggin']=true;
+                $view->assign("form", $form);
+                session_start();
                 header('Location: \Dashbord');
             }else{
                 header('Location: \login');

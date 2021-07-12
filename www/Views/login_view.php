@@ -1,5 +1,4 @@
-
-h2>Veuillez vous Connecter</h2>
+<h2>Veuillez vous Connecter</h2>
 
 <?php if(!empty($formErrors)):?>
 	<?php foreach($formErrors as $error):?>

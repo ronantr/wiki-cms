@@ -27,7 +27,7 @@ class Database
 
 	public function save(){
 
-		//INSERT ou un UPDATE
+		/*//INSERT ou un UPDATE
 
 		
 		// Array ([firstname] => Yves [lastname] => Skrzypczyk [email] => y.skrzypczyk@gmail.com [pwd] => Test1234 [country] => fr [status] => 0 [role] => 0 [isDeleted] => 0 [pdo] => PDO Object ( ) [table] => )
@@ -40,7 +40,7 @@ class Database
 		//Pour faire un insert ou un update.
 		//Si l'objet a un ID il s'agit d'un update
 
-		//Array ( [firstname] => Yves [lastname] => Skrzypczyk [email] => y.skrzypczyk@gmail.com [pwd] => Test1234 [country] => fr [status] => 0 [role] => 0 [isDeleted] => 0 )
+		//Array ( [firstname] => Yves [lastname] => Skrzypczyk [email] => y.skrzypczyk@gmail.com [pwd] => Test1234 [country] => fr [status] => 0 [role] => 0 [isDeleted] => 0 )*/
 
 
 		$data = array_diff_key (
@@ -75,6 +75,7 @@ class Database
 			$query = $this->pdo->prepare("UPDATE " . $this->table . " SET ".rtrim($sql,",")."
 			WHERE id = ".$this->getId().";");
 		}
+		var_dump($col);
 		var_dump($query);
 		$query->execute($data);
 
@@ -83,5 +84,24 @@ class Database
 		echo $this->getId();
 
 	}
+    public function getPwd($pwd, $email){
+        $this->table = DBPREFIX."editor";
+        $query = $this->pdo->prepare("SELECT password FROM ".$this->table." WHERE email = ?");
+        $query-> execute([$email]);
+        $password = $query-> fetch(\PDO::FETCH_ASSOC);
+        $password = $password['password'];
+        if(password_verify($pwd, $password)){
+            return true;
+        }else{
+            return false;
+        }
+	}
+	public function getUsername($email){
+        $this->table = DBPREFIX."editor";
+	    $query = $this->pdo->prepare("SELECT username FROM ".$this->table."WHERE email ="."'".$email."'");
+	    $query->execute();
+	    $result = $query->fetch(\PDO::FETCH_ASSOC);
+	    return $result['email'];
+    }
 
 }
