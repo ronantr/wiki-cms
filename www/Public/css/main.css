@@ -61,6 +61,7 @@ header nav li a:not([href]){
 	flex-direction: column;
 	text-align: center;
 	padding: 20px;
+	margin
 	
 }
 
