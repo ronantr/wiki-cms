@@ -41,38 +41,31 @@ class Form
 	public static function showForm($form)
     {
 
-        $html = "<form class='" . ($form["config"]["class"] ?? "") . "' method='" . (self::cleanWord($form["config"]["method"]) ?? "GET") . "' action='" . ($form["config"]["action"] ?? "") . "'>";
+        $html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
 
 
         foreach ($form["input"] as $name => $dataInput) {
 
-            $html .= "<label for='" . $name . "'>" . ($dataInput["label"] ?? "") . " </label>";
+            $html .="<label for='".$name."'>".($dataInput["label"]??"")." </label>";
 
-            if ($dataInput["type"] === "textarea") {
-                $html .= "<textarea 
-                             id='" . $name . "'
-                             class='" . ($dataInput["class"] ?? "") . "' 
-                            name='" . $name . "'
-                            type='" . ($dataInput["type"] ?? "textarea") . "'
-                            placeholder='" . ($dataInput["placeholder"] ?? "") . "'
-						" . ((!empty($dataInput["required"])) ? "required='required'" : "") . "";
-            } else {
-                $html .= "<input 
-						id='" . $name . "'
-			 			class='" . ($dataInput["class"] ?? "") . "' 
-						name='" . $name . "'
-						type='" . ($dataInput["type"] ?? "text") . "'
-						placeholder='" . ($dataInput["placeholder"] ?? "") . "'
-						" . ((!empty($dataInput["required"])) ? "required='required'" : "") . "
+
+            $html .= "<input 
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "text")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
 						>";
-            }
-
-            $html .= "<input type='submit' value='" . (self::cleanWord($form["config"]["Submit"]) ?? "Valider") . "'></form>";
 
 
-            echo $html;
         }
 
+
+        $html .= "<input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+
+
+        echo $html;
     }
 
 

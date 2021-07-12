@@ -66,7 +66,7 @@ class Database
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
             echo '<br><br><br>';
-            var_dump($query);
+            //var_dump($query);
             $query->execute($data);
 		}else{
 
