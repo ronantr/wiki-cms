@@ -6,6 +6,7 @@ use App\Core\Security;
 use App\Core\View;
 
 
+
 class Base{
 
 
@@ -35,8 +36,6 @@ class Base{
 
 		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
-		
-		
 	}
 
 

@@ -48,7 +48,7 @@ class Database
 					get_class_vars(get_class())
 				);
         $columns = array_keys($data);
-        var_dump($data);
+        //var_dump($data);
         switch($columns[0]){
             case 'username':
                 $this->table = DBPREFIX."editor";
@@ -60,12 +60,14 @@ class Database
 		if(is_null($this->getId())){
 			//INSERT
 
-            var_dump(array_keys($data));
+            //var_dump(array_keys($data));
 
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
             echo '<br><br><br>';
+            var_dump($query);
+            $query->execute($data);
 		}else{
 
 			$sql = "";
@@ -74,10 +76,11 @@ class Database
 			}
 			$query = $this->pdo->prepare("UPDATE " . $this->table . " SET ".rtrim($sql,",")."
 			WHERE id = ".$this->getId().";");
+            //var_dump($query);
+            $query->execute();
 		}
-		var_dump($col);
-		var_dump($query);
-		$query->execute($data);
+
+
 
 		if(is_null($this->getId()))
 			$this->setId($this->pdo->lastInsertId()) ;
@@ -86,7 +89,7 @@ class Database
 	}
     public function getPwd($pwd, $email){
         $this->table = DBPREFIX."editor";
-        $query = $this->pdo->prepare("SELECT password FROM ".$this->table." WHERE email = ?");
+        $query = $this->pdo->prepare("SELECT password FROM ".$this->table." WHERE email = ?".";");
         $query-> execute([$email]);
         $password = $query-> fetch(\PDO::FETCH_ASSOC);
         $password = $password['password'];
@@ -98,10 +101,17 @@ class Database
 	}
 	public function getUsername($email){
         $this->table = DBPREFIX."editor";
-	    $query = $this->pdo->prepare("SELECT username FROM ".$this->table."WHERE email ="."'".$email."'");
+	    $query = $this->pdo->prepare("SELECT username FROM ".$this->table."WHERE email ="."'".$email."'".";");
 	    $query->execute();
 	    $result = $query->fetch(\PDO::FETCH_ASSOC);
 	    return $result['email'];
+    }
+    public function getPost(){
+        $this->table = DBPREFIX."article";
+        $query = $this->pdo->prepare("SELECT title , content FROM".$this->table).";";
+        $query->execute();
+        $post = $query-> fetch(\PDO::FETCH_ASSOC);
+        return $post;
     }
 
 }

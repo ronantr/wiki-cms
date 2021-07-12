@@ -1,3 +1,4 @@
+### BASE ###
 /:
   controller: Base
   action: Default
@@ -6,7 +7,7 @@
   controller: Base
   action: dashboard
 
-
+### SECURITY ###
 /s-inscrire:
   controller: Security
   action: register
@@ -28,6 +29,12 @@
 /liste-des-utilisateurs:
   controller: Security
   action: listofusers
+
+### POST ###
+
 /post:
-  controller: Security
+  controller: Post
   action: post
+/liste-post:
+  controller: Post
+  action: default

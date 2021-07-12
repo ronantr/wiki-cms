@@ -6,9 +6,8 @@ use App\Core\Security as coreSecurity;
 use App\Core\Database;
 use App\Core\View;
 use App\Core\Form;
-use App\Core\ConstantManager;
 use App\Models\User;
-use App\Models\Post;
+
 
 class Security{
 
@@ -98,27 +97,6 @@ class Security{
 
 		echo "Là je liste tous les utilisateurs";
 	}
-	public function postAction(){
-		//Affiche moi la vue post;
-		$post = new Post();
-		$view = new View("post", "back");
-		$form = $post->buildFormRegister();
-		$view->assign("form", $form);
 
-		
-
-		if(!empty($_POST)){
-			$errors = Form::validator($_POST, $form);
-		}
-		if(empty($errors)){
-                //$view->assign("formErrors", $errors);
-				$post->setPost_title("Test");
-				$post->setPost_content("Test du content");
-				$post->save();
-
-			}else{
-				$view->assign("formErrors", $errors);
-			}
-	}
 
 }

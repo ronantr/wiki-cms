@@ -28,11 +28,11 @@ $a = $route->getAction();
 
 $cWithNamespace = $route->getControllerWithNamespace();
 
-
+/*
 //echo $route->getUri("Security", "listofusers");
 //echo $route->getUri("Security", "login");
 
-/*
+
 
 
 $uriExploded = explode("/", $uriExploded[0]);
