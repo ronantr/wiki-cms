@@ -34,6 +34,10 @@ class User extends Database
 	public function setPwd($password){
 		$this->password = $password;
 	}
+
+	public function getUsername(){
+		return $username;
+	}
 	//public function setStatus($status){
 	//	$this->status = $status;
 	//}
