@@ -1,0 +1,52 @@
+
+body{
+    margin:0;
+}
+
+header{
+	background-color: #E9FBFE;
+	padding: 10px 0;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+}
+
+header .container{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#logo-link{
+	line-height: 0;
+}
+
+#logo-link img{
+	width: 50px;
+}
+
+
+header nav ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+}
+
+
+header nav a{
+	padding: 1em;
+	display: block;
+	color: black;
+	text-decoration: none;
+}
+
+header nav li a:not([href]){
+	pointer-events: none;
+}
+
+
+.container{
+	max-width: 1170px;
+	margin: auto;
+}
