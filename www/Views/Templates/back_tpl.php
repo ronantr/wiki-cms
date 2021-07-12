@@ -24,10 +24,14 @@
 				</nav>
 			</div>
 		</header>
-
-
-		<!-- intégrer le vue -->
-		<?php include $this->view ?>
-
+		<main>
+			<div class="nav_gauche">
+				<div class="row">
+					
+				</div>
+			</div>
+			<!-- intégrer le vue -->
+			<?php include $this->view ?>
+		</main>
 	</body>
 </html>
