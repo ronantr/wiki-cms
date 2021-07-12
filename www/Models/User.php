@@ -35,7 +35,7 @@ class User extends Database
 		$this->password = $password;
 	}
 
-	public function getUsername(){
+	public function getUsername2(){
 		return $username;
 	}
 	//public function setStatus($status){
