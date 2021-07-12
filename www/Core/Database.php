@@ -104,7 +104,7 @@ class Database
 	    $query = $this->pdo->prepare("SELECT username FROM ".$this->table."WHERE email ="."'".$email."'".";");
 	    $query->execute();
 	    $result = $query->fetch(\PDO::FETCH_ASSOC);
-	    return $result['email'];
+	    return $result['username'];
     }
     public function getPost(){
         $this->table = DBPREFIX."article";
