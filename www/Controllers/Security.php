@@ -61,12 +61,26 @@ class Security{
         $view->assign("form", $form);
 	}
 
-	public function loginAction(){
+public function loginAction(){
 		$user = new User();
-		$view = new View();
-		$form = $user->buildFormLogin();
-		$view->assign("form", $form);
-		session_start();
+		$view = new View("login");
+		$form = $user->formBuilderLogin();
+
+		if(isset($_POST["email"]) && isset($_POST["pwd"]))
+        {
+            $email= htmlspecialchars($_POST["email"]);
+            $password = htmlspecialchars($_POST["pwd"]);
+
+            if($email !== "" && $password !== "" && $user->getPwd($email,$password)){
+                $_SESSION['username']= $user->getUsername($email);
+                $_SESSION['loggin']=true;
+                $view->assign("form", $form);
+                session_start();
+                header('Location: \Dashbord');
+            }else{
+                header('Location: \login');
+            }
+        }
 	    echo "controller security action login";
 
 	}
