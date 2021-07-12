@@ -75,13 +75,32 @@ class Database
 			$query = $this->pdo->prepare("UPDATE " . $this->table . " SET ".rtrim($sql,",")."
 			WHERE id = ".$this->getId().";");
 		}
+		var_dump($col);
 		var_dump($query);
-		$query->execute($columns);
+		$query->execute($data);
 
 		if(is_null($this->getId()))
 			$this->setId($this->pdo->lastInsertId()) ;
-		echo $this->getId();
-
+			echo $this->getId();
+		}
+	public function getPwd($pwd, $email){
+        	$this->table = DBPREFIX."editor";
+        	$query = $this->pdo->prepare("SELECT password FROM ".$this->table." WHERE email = ?");
+        	$query-> execute([$email]);
+        	$password = $query-> fetch(\PDO::FETCH_ASSOC);
+        	$password = $password['password'];
+       	 if(password_verify($pwd, $password)){
+           		return true;
+        	}else{
+            		return false;
+        	}
 	}
+	public function getUsername($email){
+        $this->table = DBPREFIX."editor";
+	    $query = $this->pdo->prepare("SELECT username FROM ".$this->table."WHERE email ="."'".$email."'");
+	    $query->execute();
+	    $result = $query->fetch(\PDO::FETCH_ASSOC);
+	    return $result['username'];
+    }
 
 }
