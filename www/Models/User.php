@@ -91,7 +91,7 @@ class User extends Database
 
 			];
 	}
-    /*public function formBuilderLogin(){
+    public function formBuilderLogin(){
         return [
 
             "config"=>[
@@ -125,7 +125,7 @@ class User extends Database
             ]
 
         ];
-    }*/
+    }
 
 }
 
