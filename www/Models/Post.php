@@ -2,6 +2,8 @@
 namespace App\Models;
 
 use App\Core\Database;
+use App\Core\Form;
+
 
 class Post extends Database
 {

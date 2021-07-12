@@ -39,30 +39,14 @@ class View
 		$this->data[$key] = $value;
 	}
 
-	public static function lookupfile(string $file){
-		$filename = explode(".", trim($file));
-		$extension = array_pop($filename);
-		
-		switch ($extension){
-			case "css" :
-				return '/public/css/'.$file;
-			break;
-			case "js" :
-				return '/public/js/'.$file;
-			break;
-			case "png" || "jpg" || "jpeg" || "svg":
-				return '/public/images/'.$file;
-			default:
-				echo "Fichier Non Trouvé";
-				break;
-		}
-	}
+
 
 	public function __destruct(){
 		// $this->data = ["pseudo"=>"Prof"];  ----> $pseudo = "Prof";
 		extract($this->data);
 		include $this->template;
 	}
+
 
 }
 

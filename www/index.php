@@ -1,9 +1,10 @@
 <?php
 namespace App;
 
-use App\Core\View;
+
 use App\Core\Routing; 
-use App\Core\ConstantManager;
+use App\Core\ConstantManager; 
+
 require "Autoloader.php";
 Autoloader::register();
 
@@ -27,11 +28,11 @@ $a = $route->getAction();
 
 $cWithNamespace = $route->getControllerWithNamespace();
 
-
+/*
 //echo $route->getUri("Security", "listofusers");
 //echo $route->getUri("Security", "login");
 
-/*
+
 
 
 $uriExploded = explode("/", $uriExploded[0]);
@@ -67,3 +68,4 @@ if( file_exists("./Controllers/".$c.".php")){
 }else{
 	die("Le fichier ".$c." n'existe pas");
 }
+
