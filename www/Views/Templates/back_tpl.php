@@ -15,12 +15,10 @@
 				</a>
 				<nav id="main-nav">
 					<ul>
-						<li><a href="#">Premium</a></li>
-						<li><a href="#">Aide</a></li>
-						<li><a href="#">Télécharger</a></li>
+						<li><a href="#">Pseudo</a></li>
+						<li><a href="#">Create Post</a></li>
 						<li><a>|</a></li>
-						<li><a href="#">S'inscrire</a></li>
-						<li><a href="#">Se connecter</a></li>
+						<li><a href="#">Déconnexion</a></li>
 					</ul>
 				</nav>
 			</div>
