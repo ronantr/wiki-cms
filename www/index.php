@@ -7,7 +7,7 @@ use App\Core\ConstantManager;
 
 require "Autoloader.php";
 Autoloader::register();
-
+session_start();
 new ConstantManager();
 
 /*

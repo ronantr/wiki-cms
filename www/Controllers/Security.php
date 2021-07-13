@@ -65,33 +65,37 @@ class Security{
 		$user = new User();
 		$view = new View("login");
 		$form = $user->buildFormLogin();
+		$erreur_affiche = false;
 
 		if(!empty($_POST)){
 			$errors = Form::validator($_POST, $form);
-		if(isset($_POST["email"]) && isset($_POST["password"]))
-        {
-            $user->setEmail(htmlspecialchars($_POST["email"]));
-			$email= htmlspecialchars($_POST["email"]);
-            //$password = (password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
-			$password = htmlspecialchars($_POST["password"]);
-            if($email !== "" && $password !== "" && $user->getPwd($email,$password)){
-                $_SESSION['username']= $user->getUsername($email);
-                $_SESSION['loggin']=true;
-                $view->assign("form", $form);
-                session_start();
-                header('Location: \tableau-de-bord');
-            }else{
-                //header('Location: \login');
-				$view->assign("formErrors", $errors);
-            }
-        }
-	    echo "controller security action login";
+			if(isset($_POST["email"]) && isset($_POST["password"]))
+			{
+				$user->setEmail(htmlspecialchars($_POST["email"]));
+				$email= htmlspecialchars($_POST["email"]);
+				//$password = (password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+				$password = htmlspecialchars($_POST["password"]);
+				if($email != "" && $password != "" && $user->getPwd($email,$password)){
+					session_start();
+					$_SESSION['username']= $user->getUsername($email);
+					$_SESSION['login']=true;
+					// $view->assign("form", $form);
+					header('Location: \tableau-de-bord');
+				}
+				else{
+					$erreur_affiche = true;
+				}
+			}
 		}
 	$view->assign("form", $form);
+	if($erreur_affiche){
+		$view->assign("formErrors", $errors);
+	}
 	}
 
 	public function logoutAction(){
-		echo "controller security action logout";
+		$_SESSION['login'] = false;
+		header('Location: \ ');
 	}
 
 	public function listofusersAction(){

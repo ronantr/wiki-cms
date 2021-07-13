@@ -4,9 +4,13 @@ namespace App\Core;
 
 class Security
 {
+	
 
 	public function isConnected(){
-		return true;
+		if (empty($_SESSION['login'])){
+			$_SESSION['login'] = false;
+		}
+		return $_SESSION['login'];
 	}
 
  
