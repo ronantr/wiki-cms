@@ -46,22 +46,22 @@ class Form
 
         foreach ($form["input"] as $name => $dataInput) {
 
-            $html .="<label for='".$name."'>".($dataInput["label"]??"")." </label>";
+            $html .="</br><label for='".$name."'>".($dataInput["label"]??"")." </label>";
 
             if ($dataInput["type"]  ==="mytextarea" ){
 
 
-                $html .= "<input 
+                $html .= "</br><textarea	 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
 						type='".($dataInput["type"] ?? "mytextarea")."'
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
-						>";
+						></textarea></br>";
 
             }else{
-            $html .= "<input 
+            $html .= "</br><input 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
@@ -75,7 +75,7 @@ class Form
         }
 
 
-        $html .= "<input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+        $html .= "</br><input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
 
 
         echo $html;

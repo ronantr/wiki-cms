@@ -11,7 +11,7 @@ use App\Core\Form;
 class Post{
 
     public function defaultAction(){
-       $Posts = new ModelPost;
+        $Posts = new ModelPost;
         $allPosts = $Posts->getPosts();
         $view = new View("listepost", "back");
         $view->assign("allPosts", $allPosts);
@@ -39,5 +39,38 @@ class Post{
             }
         }
         $view->assign("form", $form);
+    }
+    public function posteditAction(){
+        //Affiche moi la vue post;
+        $Post = new ModelPost();
+        $view = new View("edit-post", "back");
+        $view->assign("allPosts",$Post->getPosts());
+        if(!empty($_POST)){
+            if($_POST['id'] != ''){
+                $Post->setId($_POST['id']);
+            }
+        }
+
+        $form = $Post->buildFormRegister();
+        $view->assign("form", $form);
+
+        if(!empty($_POST)){
+            $errors = Form::validator($_POST, $form);
+
+            if(empty($errors)){
+                $view->assign("formErrors", $errors);
+                $Post->setPost_title($_POST["title"]);
+                $Post->setPost_content($_POST["content"]);
+                $Post->save();
+
+            }else{
+                $view->assign("formErrors", $errors);
+            }
+        }
+        
+    }
+    public function postdeleteAction($id){
+        $Post = new ModelPost();
+        $Post->deletePost($id);
     }
 }

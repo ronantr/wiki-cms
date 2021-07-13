@@ -8,6 +8,9 @@
   action: dashboard
 
 ### SECURITY ###
+/resgister:
+  controller: Security
+  action: register
 /s-inscrire:
   controller: Security
   action: register
@@ -35,6 +38,7 @@
 /post:
   controller: Post
   action: post
+
 /liste-post:
   controller: Post
   action: default

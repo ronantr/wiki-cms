@@ -11,14 +11,16 @@
         <tbody>
             <?php
             foreach($allPosts as $key => $value){
-                $html = "
+                $id = $value["id"];
+                ?>
                 <tr>
-                    <td>".($value["id"])."</td>
-                    <td>".($value["title"])."</td>
-                    <td>".($value["content"])."</td>
-                    <td><a href=\post\'".($value["id"])."'>affichier<a> <a href=\post\'".($value["id"])."'> supprimer<a> <a href=\post\'".($value["id"])."'> editer<a>
-                </tr>";
-                echo $html;
+                    <td><?php echo $id;?></td>
+                    <td><?php echo($value["title"]);?></td>
+                    <td><?php echo($value["content"]);?></td>
+                    <td><a href="\post\<?php echo $id;?>">affichier</a> <a href="\post\<?php echo $id;?>">supprimer</a> <a href="\post\<?php echo $id;?>"> editer<a>
+
+                </tr>
+                <?php 
             }
             ?>
         </tbody>
