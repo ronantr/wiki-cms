@@ -85,6 +85,7 @@ class Database
 		if(is_null($this->getId()))
 			$this->setId($this->pdo->lastInsertId()) ;
 		echo $this->getId();
+		$_SESSION['id'] = $this->pdo->lastInsertId();
 
 	}
     public function getPwd($pwd, $email){
@@ -101,17 +102,17 @@ class Database
 	}
 	public function getUsername($email){
         $this->table = DBPREFIX."editor";
-	    $query = $this->pdo->prepare("SELECT username FROM ".$this->table."WHERE email ="."'".$email."'".";");
+	    $query = $this->pdo->prepare("SELECT username FROM ".$this->table." WHERE email = "."'".$email."'".";");
 	    $query->execute();
 	    $result = $query->fetch(\PDO::FETCH_ASSOC);
 	    return $result['username'];
     }
-    public function getPost(){
+    public function getPosts(){
         $this->table = DBPREFIX."article";
-        $query = $this->pdo->prepare("SELECT title , content FROM".$this->table).";";
+        $query = $this->pdo->prepare("SELECT * FROM ".$this->table." ; ");
         $query->execute();
-        $post = $query-> fetch(\PDO::FETCH_ASSOC);
-        return $post;
+        $posts = $query->fetchall();
+        return $posts;
     }
 
 }

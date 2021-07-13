@@ -11,13 +11,11 @@ use App\Core\Form;
 class Post{
 
     public function defaultAction(){
-//        $Posts = new ModelPost;
-//        $allPosts = $Posts->getAllPosts();
-//
-//        $view = new View("Post/Posts", "back");
-//        $view->assign("allPosts", $allPosts);
+       $Posts = new ModelPost;
+        $allPosts = $Posts->getPosts();
+        $view = new View("listepost", "back");
+        $view->assign("allPosts", $allPosts);
         echo "controller post action default";
-
         }
 
     public function postAction(){
