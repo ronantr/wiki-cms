@@ -72,8 +72,8 @@ class Security{
         {
             $user->setEmail(htmlspecialchars($_POST["email"]));
 			$email= htmlspecialchars($_POST["email"]);
-            $password = (password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
-
+            //$password = (password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+			$password = htmlspecialchars($_POST["password"]);
             if($email !== "" && $password !== "" && $user->getPwd($email,$password)){
                 $_SESSION['username']= $user->getUsername($email);
                 $_SESSION['loggin']=true;
@@ -81,7 +81,8 @@ class Security{
                 session_start();
                 header('Location: \tableau-de-bord');
             }else{
-                header('Location: \login');
+                //header('Location: \login');
+				$view->assign("formErrors", $errors);
             }
         }
 	    echo "controller security action login";

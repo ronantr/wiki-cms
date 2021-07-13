@@ -88,9 +88,9 @@ class Database
 		$_SESSION['id'] = $this->pdo->lastInsertId();
 
 	}
-    public function getPwd($pwd, $email){
+    public function getPwd( $email,$pwd){
         $this->table = DBPREFIX."editor";
-        $query = $this->pdo->prepare("SELECT password FROM ".$this->table." WHERE email = ?".";");
+        $query = $this->pdo->prepare("SELECT password FROM ".$this->table." WHERE email = '".$email."';");
         $query-> execute([$email]);
         $password = $query-> fetch(\PDO::FETCH_ASSOC);
         $password = $password['password'];
