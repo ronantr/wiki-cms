@@ -28,7 +28,7 @@
 					<a href="/tableau-de-bord">Dashboard Home</a>
 					<a href="#">Media</a>
 					<a href="#">Pages</a>
-					<a href="#">Articles</a>
+					<a href="/liste-post">Posts</a>
 					<a href="#">Commentaires</a>
 					<a href="#">Thèmes</a>
 					<a href="#">Utilisateurs</a>
