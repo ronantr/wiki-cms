@@ -23,8 +23,6 @@
 					</ul>
 				</nav>
 			</div>
-		</header>
-		<main>
 			<div class="nav_gauche">
 				<div class="row">
 					<a href="#">Dashboard Home</a>
@@ -37,8 +35,12 @@
 					<a href="#">Paramètres</a>
 				</div>
 			</div>
+		</header>
+		<main>
 			<section class="main">
-				<?php include $this->view ?>
+				<div class="containermain">
+					<?php include $this->view ?>
+				</div>
 			</section>
 		</main>
 	</body>

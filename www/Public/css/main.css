@@ -8,7 +8,8 @@ header{
 	padding: 10px 0;
 	top: 0;
 	width: 100%;
-	z-index: 2;
+	z-index: 11112;
+	position: fixed;
 }
 
 header .container{
@@ -52,22 +53,23 @@ header nav li a:not([href]){
 }
 
 .nav_gauche{
-	height: 100%;
+	width: 20%;
+	position:fixed;
 }
 .row{
 	display: flex;
-	width: 20%;
 	background-color:#F3F3F3;
 	flex-direction: column;
 	text-align: center;
-	padding: 20px;
-	margin
+	padding: 0 20px;
+	margin-top:10px;
+	padding-bottom: 50px;
 	
 }
 
 .row a{
 	text-decoration: none;
-	padding: 15px;
+	padding: 20px;
 	color: rgb(46, 35, 41);
 	margin: 10px;
 	background-color: #a5c9cf;
@@ -81,4 +83,12 @@ header nav li a:not([href]){
 
 .main{
 	width: 80%;
+	margin-left: 20%;
+	margin-top: 6%;
+}
+
+.containermain{
+	max-width: 1050px;
+	margin: 0 auto;
+	width: 100%;
 }
