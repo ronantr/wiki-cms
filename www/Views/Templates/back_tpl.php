@@ -23,15 +23,25 @@
 					</ul>
 				</nav>
 			</div>
-		</header>
-		<main>
 			<div class="nav_gauche">
 				<div class="row">
-					
+					<a href="/tableau-de-bord">Dashboard Home</a>
+					<a href="#">Media</a>
+					<a href="#">Pages</a>
+					<a href="#">Articles</a>
+					<a href="#">Commentaires</a>
+					<a href="#">Thèmes</a>
+					<a href="#">Utilisateurs</a>
+					<a href="#">Paramètres</a>
 				</div>
 			</div>
-			<!-- intégrer le vue -->
-			<?php include $this->view ?>
+		</header>
+		<main>
+			<section class="main">
+				<div class="containermain">
+					<?php include $this->view ?>
+				</div>
+			</section>
 		</main>
 	</body>
 </html>
