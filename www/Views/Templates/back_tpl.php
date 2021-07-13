@@ -17,7 +17,7 @@
 				<nav id="main-nav">
 					<ul>
 						<li><a href="#">Pseudo</a></li>
-						<li><a href="#">Create Post</a></li>
+						<li><a href="post">Create Post</a></li>
 						<li><a>|</a></li>
 						<li><a href="#">Déconnexion</a></li>
 					</ul>

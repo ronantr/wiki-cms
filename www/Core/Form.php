@@ -69,6 +69,7 @@ class Form
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
 						>";
+						
             }
 
         }

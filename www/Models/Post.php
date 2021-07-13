@@ -43,7 +43,7 @@ class Post extends Database
 					"title"=>[
 									"type"=>"text",
 									"class"=>"form_input",
-									"label"=>"titre",
+									"label"=>"titre :",
 									"lengthMax"=>"120",
 									"lengthMin"=>"2",
 									"required"=>true,
@@ -54,7 +54,7 @@ class Post extends Database
 									"type"=>"mytextarea",
 									"lengthMax"=>"32500",
 									"lengthMin"=>"2",
-									"label"=>"content",
+									"label"=>"content :",
 									"required"=>true,
 									"error"=>"Votre Contenue doit faire entre 2 et 32500 caractères",
 									"placeholder"=>"Contenue"
