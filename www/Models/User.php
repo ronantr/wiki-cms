@@ -96,7 +96,8 @@ class User extends Database
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-                "class"=>"form_control",
+                "class"=>"form_login",
+				"Submit"=>"Ce Connecter",
                 "id"=>"form_login"
             ],
             "input"=>[
@@ -112,12 +113,11 @@ class User extends Database
                 ],
 
                 "password"=>[
-                    "type"=>"password",
-                    "label"=>"Votre mot de passe",
-                    "required"=>true,
-                    "class"=>"form_input",
-                    "minLength"=>8,
-                    "error"=>"Votre mot de passe doit faire au minimum 8 caractères"
+					"type"=>"password",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+					"placeholder"=>"Votre mot de passe"
                 ]
             ]
 
