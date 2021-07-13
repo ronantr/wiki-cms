@@ -19,7 +19,7 @@
 						<li><a href="#"> <?php isset($_SESSION["username"]) ? 'test' : 'invité';?> </a></li>
 						<li><a href="post">Create Post</a></li>
 						<li><a>|</a></li>
-						<li><a href="#">Déconnexion</a></li>
+						<li><a href="/logout">Déconnexion</a></li>
 					</ul>
 				</nav>
 			</div>
