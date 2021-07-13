@@ -50,8 +50,9 @@ class Security{
                 //$view->assign("formErrors", $errors);
 				$user->setUsername($_POST["username"]);
 				$user->setEmail($_POST["email"]);
-				$user->setPwd($_POST["password"]);
+				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
 				$user->save();
+				header("Location: /login");
                 //var_dump($user);
 			}else{
 				$view->assign("formErrors", $errors);

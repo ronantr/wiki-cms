@@ -48,7 +48,19 @@ class Form
 
             $html .="<label for='".$name."'>".($dataInput["label"]??"")." </label>";
 
+            if ($dataInput["type"]  ==="mytextarea" ){
 
+
+                $html .= "<input 
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "mytextarea")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
+						>";
+
+            }else{
             $html .= "<input 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
@@ -57,7 +69,7 @@ class Form
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
 						>";
-
+            }
 
         }
 
