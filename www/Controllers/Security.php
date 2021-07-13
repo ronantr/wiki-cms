@@ -64,7 +64,7 @@ class Security{
 	public function loginAction(){
 		$user = new User();
 		$view = new View("login");
-		$form = $user->formBuilderLogin();
+		$form = $user->buildFormLogin();
 
 		if(isset($_POST["email"]) && isset($_POST["pwd"]))
         {

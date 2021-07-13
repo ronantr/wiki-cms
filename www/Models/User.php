@@ -47,7 +47,6 @@ class User extends Database
 
 	public function buildFormRegister(){
 		return [
-
 				"config"=>[
 					"method"=>"POST",
 					"Action"=>"",
@@ -91,18 +90,16 @@ class User extends Database
 
 			];
 	}
-    public function formBuilderLogin(){
+    public function buildFormLogin(){
         return [
 
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
                 "class"=>"form_control",
-                "id"=>"form_register",
-                "submit"=>"S'inscrire"
+                "id"=>"form_login"
             ],
-            "inputs"=>[
-
+            "input"=>[
                 "email"=>[
                     "type"=>"email",
                     "placeholder"=>"Votre email",
