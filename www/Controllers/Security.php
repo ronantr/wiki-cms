@@ -49,7 +49,7 @@ class Security{
 			if(empty($errors)){
                 //$view->assign("formErrors", $errors);
 				$user->setUsername($_POST["username"]);
-				$user->setEmail($_POST["email"]);
+				$user->setEmail(htmlspecialchars($_POST["email"]));
 				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
 				$user->save();
 				header("Location: /login");
@@ -64,25 +64,30 @@ class Security{
 	public function loginAction(){
 		$user = new User();
 		$view = new View("login");
-		$form = $user->formBuilderLogin();
+		$form = $user->buildFormLogin();
 
-		if(isset($_POST["email"]) && isset($_POST["pwd"]))
+		if(!empty($_POST)){
+			$errors = Form::validator($_POST, $form);
+		if(isset($_POST["email"]) && isset($_POST["password"]))
         {
-            $email= htmlspecialchars($_POST["email"]);
-            $password = htmlspecialchars($_POST["pwd"]);
-
+            $user->setEmail(htmlspecialchars($_POST["email"]));
+			$email= htmlspecialchars($_POST["email"]);
+            //$password = (password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+			$password = htmlspecialchars($_POST["password"]);
             if($email !== "" && $password !== "" && $user->getPwd($email,$password)){
                 $_SESSION['username']= $user->getUsername($email);
                 $_SESSION['loggin']=true;
                 $view->assign("form", $form);
                 session_start();
-                header('Location: \Dashbord');
+                header('Location: \tableau-de-bord');
             }else{
-                header('Location: \login');
+                //header('Location: \login');
+				$view->assign("formErrors", $errors);
             }
         }
 	    echo "controller security action login";
-
+		}
+	$view->assign("form", $form);
 	}
 
 	public function logoutAction(){

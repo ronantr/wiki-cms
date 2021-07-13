@@ -47,7 +47,6 @@ class User extends Database
 
 	public function buildFormRegister(){
 		return [
-
 				"config"=>[
 					"method"=>"POST",
 					"Action"=>"",
@@ -91,18 +90,17 @@ class User extends Database
 
 			];
 	}
-    public function formBuilderLogin(){
+    public function buildFormLogin(){
         return [
 
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-                "class"=>"form_control",
-                "id"=>"form_register",
-                "submit"=>"S'inscrire"
+                "class"=>"form_login",
+				"Submit"=>"Ce Connecter",
+                "id"=>"form_login"
             ],
-            "inputs"=>[
-
+            "input"=>[
                 "email"=>[
                     "type"=>"email",
                     "placeholder"=>"Votre email",
@@ -115,12 +113,11 @@ class User extends Database
                 ],
 
                 "password"=>[
-                    "type"=>"password",
-                    "label"=>"Votre mot de passe",
-                    "required"=>true,
-                    "class"=>"form_input",
-                    "minLength"=>8,
-                    "error"=>"Votre mot de passe doit faire au minimum 8 caractères"
+					"type"=>"password",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+					"placeholder"=>"Votre mot de passe"
                 ]
             ]
 
