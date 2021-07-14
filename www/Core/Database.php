@@ -128,4 +128,11 @@ class Database
         return $users;
 	}
 
+	public function CorbeilleUser($id){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET isDeleted = 1 WHERE id = '$id';");
+		$query->execute();
+
+	}
+
 }
