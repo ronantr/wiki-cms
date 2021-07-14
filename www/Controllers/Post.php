@@ -15,13 +15,13 @@ class Post{
         $allPosts = $Posts->getPosts();
         $view = new View("listepost", "back");
         $view->assign("allPosts", $allPosts);
-        echo "controller post action default";
+       //echo "controller post action default";
         }
 
-    public function postAction(){
+    public function postajouteAction(){
         //Affiche moi la vue post;
         $Post = new ModelPost();
-        $view = new View("post", "back");
+        $view = new View("add-post", "back");
         $form = $Post->buildFormRegister();
 
 
@@ -33,12 +33,14 @@ class Post{
                 $Post->setPost_title($_POST["title"]);
                 $Post->setPost_content($_POST["content"]);
                 $Post->save();
-
+                header('Location: \liste-post?message=2');
             }else{
                 $view->assign("formErrors", $errors);
             }
         }
         $view->assign("form", $form);
+        
+
     }
     public function posteditAction(){
         //Affiche moi la vue post;
@@ -76,5 +78,15 @@ class Post{
                 $Post->deletePost($_GET['id']);
         }
         header('Location: \liste-post?message=1');
+    }
+
+    public function postAction(){
+        $Post = new ModelPost;
+        $allPosts = $Post->getPosts();
+        //print_r($allPosts);
+        
+            $view = new View("post", "back");
+            $view->assign("allPosts", $allPosts);
+        
     }
 }
