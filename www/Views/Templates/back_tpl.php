@@ -32,7 +32,7 @@
 					<a href="/liste-post">Posts</a>
 					<a href="#">Commentaires</a>
 					<a href="#">Thèmes</a>
-					<a href="#">Utilisateurs</a>
+					<a href="/admin/liste-utilisateurs">Utilisateurs</a>
 					<a href="#">Paramètres</a>
 				</div>
 			</div>

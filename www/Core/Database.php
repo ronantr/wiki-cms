@@ -130,6 +130,7 @@ class Database
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
 		$query->execute();
 	}
+
 	public function getCommentaires(){
 		$this->table = DBPREFIX."commentaire";
 	    $query = $this->pdo->prepare("SELECT * FROM ".$this->table." ; ");
@@ -143,4 +144,21 @@ class Database
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
 		$query->execute();
 	}
+
+	public function getUsers(){
+		$table = DBPREFIX."editor";
+        $query = $this->pdo->prepare("SELECT * FROM $table ; ");
+        $query->execute();
+        $users = $query->fetchall();
+        return $users;
+	}
+
+	public function CorbeilleUser($id){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET isDeleted = 1 WHERE id = '$id';");
+		$query->execute();
+
+	}
+
+
 }

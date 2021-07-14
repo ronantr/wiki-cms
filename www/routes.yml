@@ -67,3 +67,19 @@
 /commentaire:
   controller: Commentaire
   action: commentaire
+
+
+### Utilisateurs ###
+
+/admin/liste-utilisateurs:
+  controller: User
+  action: default
+
+/admin/users-edit:
+  controller: User
+  action: useredit
+
+/admin/users-delete:
+  controller: User
+  action: userdelete
+
