@@ -53,3 +53,10 @@
 /post:
   controller: Post
   action: post
+
+
+### Utilisateurs ###
+
+/admin-utilisateurs:
+  controller: User
+  action: default
