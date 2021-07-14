@@ -1,4 +1,4 @@
-<h2>Veuillez vous Connecter</h2>
+
 
 <?php if(!empty($formErrors)):?>
 	<?php foreach($formErrors as $error):?>
@@ -6,4 +6,7 @@
 	<?php endforeach;?>
 <?php endif;?>
 
-<?php  App\Core\Form::showForm($form); ?>
+<div class="login">
+	<h1>Connexion</h1>
+	<?php  App\Core\Form::showForm($form); ?>
+</div>

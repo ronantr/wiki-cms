@@ -57,7 +57,7 @@ class User extends Database
 					"username"=>[
 									"type"=>"text",
 									"class"=>"form_input",
-									"label"=>"Prénom",
+									"label"=>"Nom Prénom",
 									"lengthMax"=>"120",
 									"lengthMin"=>"2",
 									"required"=>true,
@@ -65,6 +65,7 @@ class User extends Database
 									"placeholder"=>"Votre prénom"
 									],
                     "email"=>[
+									"label"=>"Email",
 									"type"=>"email",
 									"lengthMax"=>"320",
 									"lengthMin"=>"8",
@@ -73,6 +74,7 @@ class User extends Database
 									"placeholder"=>"Votre email"
 									],
 					"password"=>[
+									"label"=>"Password",
 									"type"=>"password",
 									"lengthMin"=>"8",
 									"required"=>true,
@@ -80,6 +82,7 @@ class User extends Database
 									"placeholder"=>"Votre mot de passe"
 									],
 					"pwdConfirm"=>[
+									"label"=>"Confirmation Password",
 									"type"=>"password",
 									"confirm"=>"pwd",
 									"required"=>true,
@@ -97,7 +100,7 @@ class User extends Database
                 "method"=>"POST",
                 "action"=>"",
                 "class"=>"form_login",
-				"Submit"=>"Ce Connecter",
+				"Submit"=>"Connecter",
                 "id"=>"form_login"
             ],
             "input"=>[
@@ -113,6 +116,7 @@ class User extends Database
                 ],
 
                 "password"=>[
+					"label"=>"Votre mot de passe",
 					"type"=>"password",
 					"lengthMin"=>"8",
 					"required"=>true,

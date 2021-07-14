@@ -17,6 +17,7 @@ class Base{
 
 		//Affiche moi la vue home;
 		$view = new View();
+		$view->assign("title","Votre site");
 		$view->assign("pseudo", $pseudo);
 		$view->assign("age", 21);
 		$view->assign("genre", "h");
@@ -36,6 +37,7 @@ class Base{
 
 		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
+		$view->assign("title","Dashboard Admin");
 	}
 
 

@@ -42,6 +42,10 @@ header nav a{
 	text-decoration: none;
 }
 
+header nav a:hover{
+	color:#AA2D2D;
+}
+
 header nav li a:not([href]){
 	pointer-events: none;
 }
@@ -55,6 +59,10 @@ header nav li a:not([href]){
 .nav_gauche{
 	width: 20%;
 	position:fixed;
+}
+
+.nav_height{
+	height: 100vh;
 }
 .row{
 	display: flex;
@@ -91,4 +99,28 @@ header nav li a:not([href]){
 	max-width: 1050px;
 	margin: 0 auto;
 	width: 100%;
+}
+
+.login{
+	max-width: 300px;
+	display: flex;
+	margin: 50px auto;
+	flex-direction: column;
+	padding-top: 50px;
+}
+
+.login label{
+	color: #555;
+	font-size: 1.5em;
+
+}
+
+.login input{
+	margin:20px 0;
+	width: 100%;
+	height: 30px;
+}
+
+.login h1{
+	font-size: 2em;
 }
