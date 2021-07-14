@@ -53,3 +53,17 @@
 /post:
   controller: Post
   action: post
+
+### COMMENTAIRE ###
+/add-commentaire:
+  controller: Commentaire
+  action: default
+/admin/liste-commentaire:
+  controller: Commentaire
+  action: commentaireajoute
+/delete-commentaire:
+  controller: Commentaire
+  action: commentairedelete
+/commentaire:
+  controller: Commentaire
+  action: commentaire

@@ -49,6 +49,7 @@ class Database
 				);
         $columns = array_keys($data);
         //var_dump($data);
+		var_dump($columns);
         switch($columns[0]){
             case 'username':
                 $this->table = DBPREFIX."editor";
@@ -56,6 +57,9 @@ class Database
             case 'title':
                 $this->table = DBPREFIX."article";
                 break;
+			case 'content':
+				$this->table = DBPREFIX."commentaire";
+				break;
         }
 		if(is_null($this->getId())){
 			//INSERT
@@ -125,7 +129,18 @@ class Database
 		$this->table = DBPREFIX."article";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
 		$query->execute();
-		
 	}
-
+	public function getCommentaires(){
+		$this->table = DBPREFIX."commentaire";
+	    $query = $this->pdo->prepare("SELECT * FROM ".$this->table." ; ");
+        $query->execute();
+        $commentaire = $query->fetchall();
+        return $commentaire;
+	}
+	
+	public function deleteCommentaire($id){
+		$this->table = DBPREFIX."commentaire";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
+		$query->execute();
+	}
 }
