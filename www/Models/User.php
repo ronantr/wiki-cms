@@ -10,16 +10,32 @@ class User extends Database
 	protected $email;
 	protected $password;
 	//protected $status = 0;
-	//protected $role = 0;
-	//protected $isDeleted = 0;
+	protected $role;
+	protected $isDeleted;
+	protected $emailVerified;
 
 	public function __construct(){
 		parent::__construct();
+		
+		
 	}
 	public function setId($id){
 		//Il va chercher en BDD toutes les informations de l'utilisateur
 		//et il va alimenter l'objet avec toutes ces données
 		$this->id = $id;
+	}
+
+
+	public function setIsDeleted($isDeleted){
+		$this->isDeleted = $isDeleted;
+	}
+
+	public function setEmailVerified($emailVerified){
+		$this->emailVerified = $emailVerified;
+	}
+
+	public function setRole($role){
+		$this->role = $role;
 	}
 
 	public function getId(){

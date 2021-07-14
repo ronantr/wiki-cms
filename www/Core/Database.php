@@ -120,5 +120,12 @@ class Database
 		$query->execute();
 		
 	}
+	public function getUsers(){
+		$table = DBPREFIX."editor";
+        $query = $this->pdo->prepare("SELECT * FROM $table ; ");
+        $query->execute();
+        $users = $query->fetchall();
+        return $users;
+	}
 
 }
