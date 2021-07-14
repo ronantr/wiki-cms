@@ -68,16 +68,23 @@ class Database
             echo '<br><br><br>';
             //var_dump($query);
             $query->execute($data);
-		}else{
-
-			$sql = "";
-			foreach ($columns as $col => $value){
-			$sql .= $col . " = '" . $value . "',";
+		}else{            
+			foreach ($data as $key => $value) {
+			if (!is_null($value)) {
+				$Update[] = $key . "=:" . $key;
 			}
-			$query = $this->pdo->prepare("UPDATE " . $this->table . " SET ".rtrim($sql,",")."
-			WHERE id = ".$this->getId().";");
-            //var_dump($query);
-            $query->execute();
+		}
+
+		$sql = "UPDATE " . $this->table . " SET " . implode(",", $Update) . " WHERE id=" . $this->getId();
+		$query = $this->pdo->prepare($sql);
+
+		foreach ($data as $key => $value) {
+			if (!is_null($value)) {
+				$query->bindValue(":$key", $value);
+			}
+
+		}
+	   $query->execute();
 		}
 
 

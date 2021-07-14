@@ -43,7 +43,7 @@
   controller: Post
   action: default
 
-/post-delete:
+/delete-post:
   controller: Post
   action: postdelete
 

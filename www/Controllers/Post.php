@@ -50,13 +50,16 @@ class Post{
         $view = new View("edit-post", "back");
         $view->assign("title","Admin Edit Post");
         $view->assign("allPosts",$Post->getPosts());
-        if(!empty($_POST)){
-            if($_POST['id'] != ''){
-                $Post->setId($_POST['id']);
+        foreach($Post->getPosts() as $post){
+            if($post["id"]==$_GET["id"]){
+            
+                $Post->setId($post["id"]);
+                $Post->setPost_title($post["title"]);
+                $Post->setPost_content($post["content"]);
             }
         }
 
-        $form = $Post->buildFormRegister();
+        $form = $Post->buildFormEdit();
         $view->assign("form", $form);
 
         if(!empty($_POST)){
@@ -67,11 +70,13 @@ class Post{
                 $Post->setPost_title($_POST["title"]);
                 $Post->setPost_content($_POST["content"]);
                 $Post->save();
+                header('Location: \liste-post?message=3');
 
             }else{
                 $view->assign("formErrors", $errors);
             }
         }
+        
         
     }
     public function postdeleteAction(){
