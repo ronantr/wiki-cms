@@ -18,7 +18,6 @@ class View
 		
 	}
 
-
 	public function setTemplate($template){
 		if(file_exists("Views/Templates/".$template."_tpl.php")){
 			$this->template = "Views/Templates/".$template."_tpl.php";
