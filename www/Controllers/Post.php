@@ -69,8 +69,12 @@ class Post{
         }
         
     }
-    public function postdeleteAction($id){
+    public function postdeleteAction(){
+        $id=$_GET['id'];
         $Post = new ModelPost();
-        $Post->deletePost($id);
+        if (!empty($_GET['id'])) {
+                $Post->deletePost($_GET['id']);
+        }
+        header('Location: \liste-post?message=1');
     }
 }

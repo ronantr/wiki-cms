@@ -42,3 +42,9 @@
 /liste-post:
   controller: Post
   action: default
+/post-delete:
+  controller: Post
+  action: postdelete
+/post-edit:
+  controller: Post
+  action: postedit

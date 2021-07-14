@@ -114,14 +114,11 @@ class Database
         $posts = $query->fetchall();
         return $posts;
     }
-	public function deletePost(){
+	public function deletePost($id){
 		$this->table = DBPREFIX."article";
-		//if(!empty($_GET['id'])){
-		//	$Post_id = $_GET['id'];
-
-		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$Post_id' ");
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
 		$query->execute();
-		//}
+		
 	}
 
 }
