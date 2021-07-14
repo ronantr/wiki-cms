@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<head>
   <script src="https://cdn.tiny.cloud/1/eo59fq7w6j1puvdqjeu1rpwttfb7zmw1xt5pz6cxsykca6l9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
@@ -22,6 +22,7 @@
   </script>
 </head>
 
+
 <h2>Nouveau POST</h2>
 
 <?php if(!empty($formErrors)):?>
@@ -31,3 +32,4 @@
 <?php endif;?>
 
 <?php  App\Core\Form::showForm($form); ?>
+</body>
