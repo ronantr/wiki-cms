@@ -135,8 +135,8 @@ class Database
 		$this->table = DBPREFIX."commentaire";
 	    $query = $this->pdo->prepare("SELECT * FROM ".$this->table." ; ");
         $query->execute();
-        $commentaire = $query->fetchall();
-        return $commentaire;
+        $commentaires = $query->fetchall();
+        return $commentaires;
 	}
 	
 	public function deleteCommentaire($id){

@@ -14,10 +14,10 @@ class Commentaire{
     public function defaultAction(){
         $Commentaire = new ModelCommentaire();
         $allCommentaire = $Commentaire->getCommentaires();
-        $view = new View("listecommentaire", "back");
-        $view->assign("allCommentaire", $allCommentaire);
+        $view = new View("admin-listecommentaire", "back");
+        $view->assign("allCommentaires", $allCommentaire);
         $view->assign("title","Admin Liste Commentaire");
-        echo "controller commentaire action default";
+        //echo "controller commentaire action default";
         }
 
     public function commentaireajouteAction(){
@@ -68,7 +68,7 @@ class Commentaire{
                     $view->assign("formErrors", $errors);
                     $Commentaire->setCommentaire_content($_POST["content"]);
                     $Commentaire->save();
-                    header('Location: \liste-commentaire?message=3');
+                    header('Location: \admin\liste-commentaire?message=3');
     
                 }else{
                     $view->assign("formErrors", $errors);
@@ -83,7 +83,7 @@ class Commentaire{
             if (!empty($_GET['id'])) {
                     $Commentaire->deleteCommentaire($_GET['id']);
             }
-            header('Location: \liste-commentaire?message=1');
+            header('Location: \admin\liste-commentaire?message=1');
         }
     
         public function commentaireAction(){

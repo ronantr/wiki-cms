@@ -57,14 +57,14 @@
 ### COMMENTAIRE ###
 /add-commentaire:
   controller: Commentaire
-  action: default
+  action: commentaireajoute
 /admin/liste-commentaire:
   controller: Commentaire
-  action: commentaireajoute
-/delete-commentaire:
+  action: default 
+/admin/delete-commentaire:
   controller: Commentaire
   action: commentairedelete
-/commentaire:
+/admin/commentaire:
   controller: Commentaire
   action: commentaire
 
