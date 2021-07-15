@@ -9,6 +9,8 @@ class Commentaire extends Database
 {
 	private $id=null;
 	protected $content;
+    protected $id_article;
+    protected $id_user;
 
 	public function __construct(){
 		parent::__construct();
@@ -46,13 +48,47 @@ class Commentaire extends Database
     {
         return $this->content;
     }
+
+    /**
+    * @param $id_article
+    */
+
+	public function setCommentaire_id_article($id_article){
+		$this->id_article = $id_article;
+	}
+    /**
+    * @return mixed
+    */
+
+    public function getId_article()
+    {
+        return $this->id_article;
+    }
+
+    /**
+    * @param $id_article
+    */
+
+	public function setCommentaire_id_user($id_user){
+		$this->id_user = $id_user;
+	}
+
+	/**
+    * @return mixed
+    */
+
+    public function getId_user()
+    {
+        return $this->id_user;
+    }    
+
     public function buildFormRegister(){ 
 		return [
 
 				"config"=>[
 					"method"=>"POST",
 					"Action"=>"",
-					"Submit"=>"Post",
+					"Submit"=>"commenter",
 					"class"=>"form_register"
 				],
 				"input"=>[
