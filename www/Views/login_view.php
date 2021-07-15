@@ -6,7 +6,7 @@
 	<?php endforeach;?>
 <?php endif;?>
 
-<div class="login">
+<div class="login flex-col">
 	<h1>Connexion</h1>
 	<?php  App\Core\Form::showForm($form); ?>
 </div>
