@@ -1,0 +1,24 @@
+{
+  "name": "cms-styles",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --include-path scss scss/main.scss www/public/css/main.css",
+    "watch": "nodemon -e scss -x \"npm run scss\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IW3G42/wiki-cms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IW3G42/wiki-cms/issues"
+  },
+  "homepage": "https://github.com/IW3G42/wiki-cms#readme",
+  "dependencies": {
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.12"
+  }
+}
