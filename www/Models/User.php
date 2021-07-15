@@ -10,9 +10,9 @@ class User extends Database
 	protected $email;
 	protected $password;
 	//protected $status = 0;
-	protected $role;
-	protected $isDeleted;
-	protected $emailVerified;
+	protected $role = 0;
+	protected $isDeleted = 0;
+	protected $emailVerified = 0;
 
 	public function __construct(){
 		parent::__construct();
@@ -24,18 +24,8 @@ class User extends Database
 		//et il va alimenter l'objet avec toutes ces données
 		$this->id = $id;
 	}
-
-
-	public function setIsDeleted($isDeleted){
-		$this->isDeleted = $isDeleted;
-	}
-
 	public function setEmailVerified($emailVerified){
 		$this->emailVerified = $emailVerified;
-	}
-
-	public function setRole($role){
-		$this->role = $role;
 	}
 
 	public function getId(){
@@ -50,15 +40,15 @@ class User extends Database
 	public function setPwd($password){
 		$this->password = $password;
 	}
-	//public function setStatus($status){
-	//	$this->status = $status;
-	//}
-	//public function setRole($role){
-	//	$this->role = $role;
-	//}
-	//public function setIsDeleted($isDeleted){
-	//	$this->isDeleted = $isDeleted;
-	//}
+	public function setStatus($status){
+		$this->status = $status;
+	}
+	public function setRole($role){
+		$this->role = $role;
+	}
+	public function setIsDeleted($isDeleted){
+		$this->isDeleted = $isDeleted;
+	}
 
 
 	public function buildFormRegister(){
@@ -104,8 +94,25 @@ class User extends Database
 									"required"=>true,
 									"error"=>"Votre mot de passe de confirmation est incorrect",
 									"placeholder"=>"Confirmation"
+									],
+					"role"=>[
+									"type"=>"hidden",
+									"required"=>true,
+									"defaultValue"=>0
+									],
+					"emailVerified"=>[
+									"type"=>"hidden",
+									"required"=>true,
+									"defaultValue"=>0
+									],
+					"isDeleted"=>[
+									"type"=>"hidden",
+									"required"=>true,
+									"defaultValue"=>0
 									]
-				]
+
+									]
+
 
 			];
 	}
