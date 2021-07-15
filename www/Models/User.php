@@ -67,43 +67,46 @@ class User extends Database
 					"method"=>"POST",
 					"Action"=>"",
 					"Submit"=>"S'inscrire",
-					"class"=>"form_register"
+					"class"=>"form"
 				],
 				"input"=>[
 					"username"=>[
 									"type"=>"text",
-									"class"=>"form_input",
-									"label"=>"Nom Prénom",
+									"class"=>"form-input",
+									"label"=>"Nom d&apos;utilisateur",
 									"lengthMax"=>"120",
 									"lengthMin"=>"2",
 									"required"=>true,
-									"error"=>"Votre prénom doit faire entre 2 et 120 caractères",
-									"placeholder"=>"Votre prénom"
+									"error"=>"Votre nom d&apos;utilisateur doit faire entre 2 et 120 caractères",
+									"placeholder"=>"Nom d&apos;utilisateur"
 									],
                     "email"=>[
 									"label"=>"Email",
+									"class"=>"form-input",
 									"type"=>"email",
 									"lengthMax"=>"320",
 									"lengthMin"=>"8",
 									"required"=>true,
 									"error"=>"Votre email doit faire entre 8 et 320 caractères",
-									"placeholder"=>"Votre email"
+									"placeholder"=>"Email"
 									],
 					"password"=>[
 									"label"=>"Password",
+									"class"=>"form-input",
 									"type"=>"password",
 									"lengthMin"=>"8",
 									"required"=>true,
 									"error"=>"Votre mot de passe doit faire plus de 8 caractères",
-									"placeholder"=>"Votre mot de passe"
+									"placeholder"=>"Mot de passe"
 									],
 					"pwdConfirm"=>[
 									"label"=>"Confirmation Password",
+									"class"=>"form-input",
 									"type"=>"password",
 									"confirm"=>"pwd",
 									"required"=>true,
 									"error"=>"Votre mot de passe de confirmation est incorrect",
-									"placeholder"=>"Confirmation"
+									"placeholder"=>"Confirmation mot de passe"
 									]
 				]
 
@@ -115,7 +118,7 @@ class User extends Database
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-                "class"=>"form_login",
+                "class"=>"form",
 				"Submit"=>"Connecter",
                 "id"=>"form_login"
             ],
@@ -125,7 +128,7 @@ class User extends Database
                     "placeholder"=>"Votre email",
                     "label"=>"Votre Email",
                     "required"=>true,
-                    "class"=>"form_input",
+                    "class"=>"form-input",
                     "minLength"=>8,
                     "maxLength"=>320,
                     "error"=>"Votre email doit faire entre 8 et 320 caractères"
@@ -135,6 +138,7 @@ class User extends Database
 					"label"=>"Votre mot de passe",
 					"type"=>"password",
 					"lengthMin"=>"8",
+                    "class"=>"form-input",
 					"required"=>true,
 					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
 					"placeholder"=>"Votre mot de passe"

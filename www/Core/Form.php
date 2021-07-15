@@ -47,23 +47,23 @@ class Form
 
         foreach ($form["input"] as $name => $dataInput) {
 
-            $html .="</br><label for='".$name."'>".($dataInput["label"]??"")." </label>";
+            $html .="<label for='".$name."'>".($dataInput["label"]??"")." </label>";
 
 
             if ($dataInput["type"]  ==="mytextarea" ){
 
 
-                $html .= "</br><textarea	 
+                $html .= "<textarea	 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
 						type='".($dataInput["type"] ?? "mytextarea")."'
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
-						>".((!empty($dataInput["defaultValue"]))?"" . $dataInput["defaultValue"] . "":"")."</textarea></br>";
+						>".((!empty($dataInput["defaultValue"]))?"" . $dataInput["defaultValue"] . "":"")."</textarea>";
 
             }else{
-            $html .= "</br><input 
+            $html .= "<input 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
@@ -83,23 +83,23 @@ class Form
 
         foreach ($form["input"] as $name => $dataInput) {
 
-            $html .="</br><label for='".$name."'>".($dataInput["label"]??"")." </label>";
+            $html .="<label for='".$name."'>".($dataInput["label"]??"")." </label>";
 
 
             if ($dataInput["type"]  ==="mytextarea" ){
 
 
-                $html .= "</br><textarea	 
+                $html .= "<textarea	 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
 						type='".($dataInput["type"] ?? "mytextarea")."'
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
-						>".((!empty($dataInput["defaultValue"]))?"" . $dataInput["defaultValue"] . "":"")."</textarea></br>";
+						>".((!empty($dataInput["defaultValue"]))?"" . $dataInput["defaultValue"] . "":"")."</textarea>";
 
             }else{
-            $html .= "</br><input 
+            $html .= "<input 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
@@ -115,7 +115,7 @@ class Form
 
 	}
 
-        $html .= "</br><input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+        $html .= "<input type='submit' class='form-submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
 
 
         echo $html;
