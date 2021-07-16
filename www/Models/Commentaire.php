@@ -92,11 +92,7 @@ class Commentaire extends Database
 					"class"=>"form_register"
 				],
 				"input"=>[
-					"id"=>[
-                        "type"=>"hidden",
-                        "required"=>true,
-                        "defaultValue"=>$this->getId()
-                    ],
+
 					"content"=>[
 									"type"=>"mytextarea",
 									"lengthMax"=>"32500",
@@ -105,7 +101,17 @@ class Commentaire extends Database
 									"error"=>"Votre Contenue doit faire entre 2 et 32500 caractères",
 									"placeholder"=>"Contenue",
 									"defaultValue"=>$this->getContent()
-									]
+                    ],
+                    "id_article"=>[
+                        "type"=>"hidden",
+                        "required"=>true,
+                        "defaultValue"=>$this->getId_article()
+                    ],
+                    "id_user"=>[
+                        "type"=>"hidden",
+                        "required"=>true,
+                        "defaultValue"=>"1"
+                    ]
 						]
 				];
 	}

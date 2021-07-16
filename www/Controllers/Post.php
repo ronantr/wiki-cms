@@ -108,11 +108,12 @@ class Post{
                 $view->assign("formErrors", $errors);
                 $Commentaire->setId($_GET["id"]);
                 $Commentaire->setCommentaire_id_article($_POST["id_article"]);
-                $Commentaire->setCommentaire_id_user($_SESSION["id_user"]);
+                $Commentaire->setCommentaire_id_user($_POST["id_user"]);
                 $Commentaire->setCommentaire_content($_POST["content"]);
                 $Commentaire->save();
-                //$id = $_POST["id_article"];
-               //header('Location: \post?id='.$id.'&message=2');
+                $id = $_GET["id"];
+            
+               header('Location: \post?id='.$id.'&message=2');
             }else{
                 $view->assign("formErrors", $errors);
             }

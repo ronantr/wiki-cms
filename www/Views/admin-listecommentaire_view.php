@@ -24,14 +24,16 @@
         </thead>
         <tbody>
             <?php
-            foreach($allCommentaires as $key => $value){
-                $id = $value["id"];
+            foreach($allCommentaires as $Commentaire){
+                //$id = $value["id"];
+                //echo($allCommentaires);
                 ?>
                 <tr>
-                    <td><?php echo $id;?></td>
-                    <td><?php echo($value["title"]);?></td>
-                    <td><?php echo($value["content"]);?></td>
-                    <td><a href="\commentaire?id=<?php echo $id;?>">affichier</a> <a href="\admin\delete-commentaire?id=<?php echo $id;?>">supprimer</a> <a href="\edit-commentaire?id=<?php echo $id;?>"> editer<a>
+                <td><?php echo $Commentaire["id"]?></td>
+                    <td><?php echo($Commentaire["id_article"]);?></td>
+                    <td><?php echo($Commentaire["id_user"]);?></td>
+                    <td><?php echo($Commentaire["content"]);?></td>
+                    <td><a href="\commentaire?id=<?php echo $id;?>">affichier</a> <a href="\delete-commentaire?id=<?php echo $id;?>">supprimer</a> <a href="\edit-commentaire?id=<?php echo $id;?>"> editer<a>
                 </tr>
                 <?php 
             }
