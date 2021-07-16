@@ -113,7 +113,7 @@ class Post{
                 $Commentaire->save();
                 $id = $_GET["id"];
             
-               header('Location: \post?id='.$id.'&message=2');
+               //header('Location: \post?id='.$id.'&message=2');
             }else{
                 $view->assign("formErrors", $errors);
             }

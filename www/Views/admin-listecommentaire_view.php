@@ -33,7 +33,7 @@
                     <td><?php echo($Commentaire["id_article"]);?></td>
                     <td><?php echo($Commentaire["id_user"]);?></td>
                     <td><?php echo($Commentaire["content"]);?></td>
-                    <td><a href="\commentaire?id=<?php echo $id;?>">affichier</a> <a href="\delete-commentaire?id=<?php echo $id;?>">supprimer</a> <a href="\edit-commentaire?id=<?php echo $id;?>"> editer<a>
+                    <td><a href="\admin\commentaire?id=<?php echo $Commentaire["id"];?>">affichier</a> <a href="\admin\delete-commentaire?id=<?php echo $Commentaire["id"];?>">supprimer</a> <a href="\admin\edit-commentaire?id=<?php echo $Commentaire["id"];?>"> editer<a>
                 </tr>
                 <?php 
             }
