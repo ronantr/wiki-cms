@@ -62,7 +62,15 @@ class Database
 				break;
         }
 		echo $this->getId();
-		if(is_null($this->getId())){
+
+		if ($this->table == DBPREFIX."commentaire"){
+			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
+				".implode(",", $columns)."
+				) VALUES (:".implode(",:", $columns).");");
+				//echo '<br><br><br>';
+				//var_dump($query);
+				$query->execute($data);
+		}elseif(is_null($this->getId())){
 			//INSERT
 
             //var_dump(array_keys($data));
@@ -71,7 +79,7 @@ class Database
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
             echo '<br><br><br>';
-            var_dump($query);
+            //var_dump($query);
             $query->execute($data);
 		}else{            
 			foreach ($data as $key => $value) {
@@ -82,7 +90,7 @@ class Database
 
 		$sql = "UPDATE " . $this->table . " SET " . implode(",", $Update) . " WHERE id=" . $this->getId();
 		$query = $this->pdo->prepare($sql);
-		print_r($query);
+		//print_r($query);
 		foreach ($data as $key => $value) {
 			if (!is_null($value)) {
 				$query->bindValue(":$key", $value);
