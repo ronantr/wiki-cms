@@ -6,6 +6,9 @@
     case 2:
         echo'<h1>User a été modifier</h1>';
         break;
+    case 3:
+        echo'<h1>User a été Restaurer</h1>';
+        break;
 }
 }
 ?>

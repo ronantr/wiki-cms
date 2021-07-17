@@ -71,7 +71,7 @@ class User{
         if (!empty($user_id)) {
                 $user->Restaurer($user_id);
         }
-        header('Location: /admin/liste-utilisateurs-deleted?message=2');
+        header('Location: /admin/liste-utilisateurs?message=3');
     }
 
 }
