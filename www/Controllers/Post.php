@@ -99,8 +99,8 @@ class Post{
         $view = new View("post", "back");
         $view->assign("allPosts", $allPosts);
         $view->assign("allCommentaire", $allCommentaire);
-        $form = $Commentaire->buildFormRegister();   
-
+        $Commentaire->setCommentaire_id_article($_GET["id"]);
+        $form = $Commentaire->buildFormCommentaire();   
         if(!empty($_POST)){
             $errors = Form::validator($_POST, $form);
 

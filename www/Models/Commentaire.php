@@ -82,7 +82,7 @@ class Commentaire extends Database
         return $this->id_user;
     }    
 
-    public function buildFormRegister(){ 
+    public function buildFormCommentaire(){ 
 		return [
 
 				"config"=>[
