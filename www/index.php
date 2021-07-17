@@ -4,6 +4,7 @@ namespace App;
 
 use App\Core\Routing; 
 use App\Core\ConstantManager; 
+use APP\Core\Security;
 
 require "Autoloader.php";
 Autoloader::register();
@@ -23,15 +24,10 @@ $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
 //  /ajout-d-un-utilisateur
 $uri = $uriExploded[0];
 $uriex = explode("/",$uri);
-echo $_SESSION['role'];
-if($uriex[1] == "admin"){
-	if($_SESSION['role'] == 1){
-		
-	}
-	else{
-		header('Location: /login');
-	}
-}
+$security = new Security;
+$security->isAutorized($uriex);
+
+
 $route = new Routing($uri);
 $c = $route->getController();
 $a = $route->getAction();

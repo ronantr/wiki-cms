@@ -11,8 +11,12 @@
         break;
 }
 }
+
+    if( isset($message) && $message == 3 ){
+        echo '<h1>User a été Restaurer</h1>';
+    }
 ?>
-<button type="button"><a href="/admin/liste-utilisateurs-deleted">Corbeille</a></button>
+<button type="button"><a href="/admin/users/liste-utilisateurs-deleted">Corbeille</a></button>
 <table>
 <thead>
     <tr>
@@ -33,7 +37,7 @@
             <td><?php echo $user['id']; ?> </td>
             <td><?php echo $user['username']; ?> </td>
             <td><?php echo $user['email']; ?> </td>
-            <td><form action="/admin/users-edit?id=<?php echo $user['id'];?>" method="POST">
+            <td><form action="/admin/users/edit?id=<?php echo $user['id'];?>" method="POST">
                 <select name="role">
                     <option value=1 <?php if($user['role'] == 1){ echo "Selected";} ?>>Administrateur</option>
                     <option value=2 <?php if($user['role'] == 2){ echo "Selected";} ?>>Abonné</option>
@@ -43,7 +47,7 @@
             <!-- if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> -->
             <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié";} ?> </td>
             <td><input type="submit" value="Edit Rôle"></td></form>
-            <td><a href="/admin/users-delete?id=<?php echo $user['id'];?>">Supprimer</a></td>
+            <td><a href="/admin/users/delete?id=<?php echo $user['id'];?>">Supprimer</a></td>
         </tr>
     <?php }} ?>
 </tbody>

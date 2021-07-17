@@ -5,7 +5,6 @@ use App\Models\User as ModelsUser;
 use App\Core\View;
 
 class User{
-
     // private $users = array();
 
     // public function __construct(){
@@ -35,7 +34,7 @@ class User{
         if (!empty($user_id)) {
             $user->setuserrole($user_id,$user_role);
         }
-        header('Location: /admin/liste-utilisateurs?message=2');
+        header('Location: /admin/users/liste-utilisateurs?message=2');
     }
 
     public function userdeleteAction(){
@@ -44,7 +43,7 @@ class User{
         if (!empty($user_id)) {
                 $user->CorbeilleUser($user_id);
         }
-        header('Location: /admin/liste-utilisateurs?message=1');
+        header('Location: /admin/users/liste-utilisateurs?message=1');
 
     }
 
@@ -54,7 +53,7 @@ class User{
         if (!empty($user_id)) {
                 $user->userdelete($user_id);
         }
-        header('Location: /admin/liste-utilisateurs-deleted?message=1');
+        header('Location: /admin/users/liste-utilisateurs-deleted?message=1');
 
     }
 
@@ -71,7 +70,7 @@ class User{
         if (!empty($user_id)) {
                 $user->Restaurer($user_id);
         }
-        header('Location: /admin/liste-utilisateurs?message=3');
+        header('Location: /admin/users/liste-utilisateurs?message=3');
     }
 
 }
