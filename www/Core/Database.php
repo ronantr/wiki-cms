@@ -153,12 +153,32 @@ class Database
         return $users;
 	}
 
+	public function userdelete($id){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
+		$query->execute();
+	}
+
 	public function CorbeilleUser($id){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("UPDATE $this->table SET isDeleted = 1 WHERE id = '$id';");
 		$query->execute();
 
 	}
+
+	public function restaurer($id){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET isDeleted = 0 WHERE id = '$id';");
+		$query->execute();
+	}
+
+	public function setuserrole($id,$role){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET role = $role WHERE id = '$id';");
+		$query->execute();
+	}
+
+
 
 
 }

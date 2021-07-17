@@ -83,3 +83,14 @@
   controller: User
   action: userdelete
 
+/admin/liste-utilisateurs-deleted:
+  controller: User
+  action: corbeille
+
+/admin/users-delete-def:
+  controller: User
+  action: userdelete_definitely
+
+/admin/users-restaurer:
+  controller: User
+  action: userrestaurer

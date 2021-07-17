@@ -40,7 +40,7 @@
 		<main>
 			<section class="main">
 				<div class="containermain">
-					<?php include $this->view ?>
+					<?php include $this->view; ?>
 				</div>
 			</section>
 		</main>
