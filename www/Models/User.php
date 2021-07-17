@@ -24,31 +24,59 @@ class User extends Database
 		//et il va alimenter l'objet avec toutes ces données
 		$this->id = $id;
 	}
-	public function setEmailVerified($emailVerified){
-		$this->emailVerified = $emailVerified;
-	}
-
 	public function getId(){
 		return $this->id;
 	}
+
+	public function setEmailVerified($emailVerified){
+		$this->emailVerified = $emailVerified;
+	}
+	public function getEmailVerified(){
+		return $this->emailVerified;
+	}
+
 	public function setUsername($username){
 		$this->username = $username;
 	}
+	public function getUsername(){
+		return $this->username;
+	}
+
 	public function setEmail($email){
 		$this->email = $email;
 	}
+	public function getEmail(){
+		return $this->email;
+	}
+
 	public function setPwd($password){
 		$this->password = $password;
 	}
+	public function getPassword(){
+		return $this->password;
+	}
+
 	public function setStatus($status){
 		$this->status = $status;
 	}
+	public function getStatus(){
+		return $this->status;
+	}
+
 	public function setRole($role){
 		$this->role = $role;
 	}
+	public function getRole(){
+		return $this->role;
+	}
+
 	public function setIsDeleted($isDeleted){
 		$this->isDeleted = $isDeleted;
 	}
+	public function getIsdeleted(){
+		return $this->isDeleted;
+	}
+	
 
 
 	public function buildFormRegister(){

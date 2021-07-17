@@ -19,9 +19,19 @@ $a = "add" sinon par défaut je veux "default"
 */
 
 $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
+
 //  /ajout-d-un-utilisateur
 $uri = $uriExploded[0];
-
+$uriex = explode("/",$uri);
+echo $_SESSION['role'];
+if($uriex[1] == "admin"){
+	if($_SESSION['role'] == 1){
+		
+	}
+	else{
+		header('Location: /login');
+	}
+}
 $route = new Routing($uri);
 $c = $route->getController();
 $a = $route->getAction();
