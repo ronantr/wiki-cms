@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Core\Database;
 use App\Core\View;
 use App\Core\Form;
+use App\Models\Commentaire as ModelCommentaire;
 
 class Post{
 
@@ -91,10 +92,33 @@ class Post{
     public function postAction(){
         $Post = new ModelPost;
         $allPosts = $Post->getPosts();
+        $Commentaire = new ModelCommentaire;
+        $allCommentaire = $Commentaire->getCommentaires();
         //print_r($allPosts);
         
-            $view = new View("post", "back");
-            $view->assign("allPosts", $allPosts);
-        
+        $view = new View("post", "back");
+        $view->assign("allPosts", $allPosts);
+        $view->assign("allCommentaire", $allCommentaire);
+        $form = $Commentaire->buildFormRegister();   
+
+        if(!empty($_POST)){
+            $errors = Form::validator($_POST, $form);
+
+            if(empty($errors)){
+                $view->assign("formErrors", $errors);
+                $Commentaire->setId($_GET["id"]);
+                $Commentaire->setCommentaire_id_article($_POST["id_article"]);
+                $Commentaire->setCommentaire_id_user($_POST["id_user"]);
+                $Commentaire->setCommentaire_content($_POST["content"]);
+                $Commentaire->save();
+                $id = $_GET["id"];
+            
+               //header('Location: \post?id='.$id.'&message=2');
+            }else{
+                $view->assign("formErrors", $errors);
+            }
+        }
+        $view->assign("form", $form);
+
     }
 }

@@ -49,7 +49,7 @@ class Database
 				);
         $columns = array_keys($data);
         //var_dump($data);
-		var_dump($columns);
+		//var_dump($columns);
         switch($columns[0]){
             case 'username':
                 $this->table = DBPREFIX."editor";
@@ -61,11 +61,20 @@ class Database
 				$this->table = DBPREFIX."commentaire";
 				break;
         }
-		if(is_null($this->getId())){
+		echo $this->getId();
+
+		if ($this->table == DBPREFIX."commentaire"){
+			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
+				".implode(",", $columns)."
+				) VALUES (:".implode(",:", $columns).");");
+				//echo '<br><br><br>';
+				//var_dump($query);
+				$query->execute($data);
+		}elseif(is_null($this->getId())){
 			//INSERT
 
             //var_dump(array_keys($data));
-
+			
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
@@ -81,7 +90,7 @@ class Database
 
 		$sql = "UPDATE " . $this->table . " SET " . implode(",", $Update) . " WHERE id=" . $this->getId();
 		$query = $this->pdo->prepare($sql);
-
+		//print_r($query);
 		foreach ($data as $key => $value) {
 			if (!is_null($value)) {
 				$query->bindValue(":$key", $value);
@@ -89,6 +98,7 @@ class Database
 
 		}
 	   $query->execute();
+	   
 		}
 
 
@@ -135,8 +145,8 @@ class Database
 		$this->table = DBPREFIX."commentaire";
 	    $query = $this->pdo->prepare("SELECT * FROM ".$this->table." ; ");
         $query->execute();
-        $commentaire = $query->fetchall();
-        return $commentaire;
+        $commentaires = $query->fetchall();
+        return $commentaires;
 	}
 	
 	public function deleteCommentaire($id){

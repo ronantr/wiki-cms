@@ -30,7 +30,7 @@
 					<a href="#">Media</a>
 					<a href="#">Pages</a>
 					<a href="/liste-post">Posts</a>
-					<a href="#">Commentaires</a>
+					<a href="/admin/liste-commentaire">Commentaires</a>
 					<a href="#">Thèmes</a>
 					<a href="/admin/liste-utilisateurs">Utilisateurs</a>
 					<a href="#">Paramètres</a>
