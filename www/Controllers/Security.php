@@ -77,10 +77,17 @@ class Security{
 				$password = htmlspecialchars($_POST["password"]);
 				if($email != "" && $password != "" && $user->getPwd($email,$password)){
 					session_start();
-					$_SESSION['username']= $user->getUsername($email);
+					$_SESSION['username']= $user->getUsernamedb($email);
+					$_SESSION['role'] = $user->getRoledb($email);
 					$_SESSION['login']=true;
 					// $view->assign("form", $form);
-					header('Location: \tableau-de-bord');
+					echo $user->getRoledb($email);
+					if ($_SESSION['role'] == 1 || $_SESSION['role'] == 3 ){
+						header('Location: \admin\tableau-de-bord');
+					}
+					else{
+						header('Location: \ ');
+					}
 				}
 				else{
 					$erreur_affiche = true;
