@@ -121,13 +121,23 @@ class Database
             return false;
         }
 	}
-	public function getUsername($email){
+	public function getUsernamedb($email){
         $this->table = DBPREFIX."editor";
 	    $query = $this->pdo->prepare("SELECT username FROM $this->table WHERE email = '$email';");
 	    $query->execute();
 	    $result = $query->fetch(\PDO::FETCH_ASSOC);
 	    return $result['username'];
-    }
+	}
+
+	public function getRoledb($email){
+        $this->table = DBPREFIX."editor";
+	    $query = $this->pdo->prepare("SELECT role FROM $this->table WHERE email = '$email';");
+	    $query->execute();
+	    $result = $query->fetch(\PDO::FETCH_ASSOC);
+	    return $result['role'];
+	}
+	
+
     public function getPosts(){
         $this->table = DBPREFIX."article";
         $query = $this->pdo->prepare("SELECT * FROM ".$this->table." ; ");

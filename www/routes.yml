@@ -3,7 +3,7 @@
   controller: Base
   action: Default
 
-/tableau-de-bord:
+/admin/tableau-de-bord:
   controller: Base
   action: dashboard
 
@@ -71,26 +71,26 @@
 
 ### Utilisateurs ###
 
-/admin/liste-utilisateurs:
+/admin/users/liste-utilisateurs:
   controller: User
   action: default
 
-/admin/users-edit:
+/admin/users/edit:
   controller: User
   action: useredit
 
-/admin/users-delete:
+/admin/users/delete:
   controller: User
   action: userdelete
 
-/admin/liste-utilisateurs-deleted:
+/admin/users/liste-utilisateurs-deleted:
   controller: User
   action: corbeille
 
-/admin/users-delete-def:
+/admin/users/delete-def:
   controller: User
   action: userdelete_definitely
 
-/admin/users-restaurer:
+/admin/users/restaurer:
   controller: User
   action: userrestaurer

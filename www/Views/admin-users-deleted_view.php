@@ -32,8 +32,8 @@
             <td><?php echo $user['email']; ?> </td>
             <td><?php if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> </td>
             <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié";} ?> </td>
-            <td><a href="/admin/users-restaurer?id=<?php echo $user['id'];?>">Restaurer</a></td>
-            <td><a href="/admin/users-delete-def?id=<?php echo $user['id'];?>">Supprimer</a></td>
+            <td><a href="/admin/users/restaurer?id=<?php echo $user['id'];?>">Restaurer</a></td>
+            <td><a href="/admin/users/delete-def?id=<?php echo $user['id'];?>">Supprimer</a></td>
         </tr>
     <?php }} ?>
 </tbody>
