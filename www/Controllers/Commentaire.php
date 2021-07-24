@@ -25,7 +25,7 @@ class Commentaire{
             $Commentaire = new ModelCommentaire();
             $view = new View("add-commentaire", "back");
             $view->assign("title","Admin Création Commentaire");
-            $form = $Commentaire->buildFormRegister();
+            $form = $Commentaire->buildFormCommentaire();
     
     
             if(!empty($_POST)){
