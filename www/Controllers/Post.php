@@ -14,7 +14,7 @@ class Post{
     public function defaultAction(){
         $Posts = new ModelPost;
         $allPosts = $Posts->getPosts();
-        $view = new View("listepost", "back");
+        $view = new View("admin/listepost", "back");
         $view->assign("allPosts", $allPosts);
         $view->assign("title","Admin Liste Post");
         echo "controller post action default";
@@ -23,7 +23,7 @@ class Post{
     public function postajouteAction(){
         //Affiche moi la vue post;
         $Post = new ModelPost();
-        $view = new View("add-post", "back");
+        $view = new View("admin/add-post", "back");
         $view->assign("title","Admin Création Post");
         $form = $Post->buildFormRegister();
 
@@ -48,7 +48,7 @@ class Post{
     public function posteditAction(){
         //Affiche moi la vue post;
         $Post = new ModelPost();
-        $view = new View("edit-post", "back");
+        $view = new View("admin/edit-post", "back");
         $view->assign("title","Admin Edit Post");
         $view->assign("allPosts",$Post->getPosts());
         foreach($Post->getPosts() as $post){
@@ -96,7 +96,7 @@ class Post{
         $allCommentaire = $Commentaire->getCommentaires();
         //print_r($allPosts);
         
-        $view = new View("post", "back");
+        $view = new View("admin/post", "back");
         $view->assign("allPosts", $allPosts);
         $view->assign("allCommentaire", $allCommentaire);
         $Commentaire->setCommentaire_id_article($_GET["id"]);

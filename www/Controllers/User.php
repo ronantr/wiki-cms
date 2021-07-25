@@ -22,7 +22,7 @@ class User{
     // }
     public function defaultAction(){
         $users = new ModelsUser;
-        $view = new View("admin-users","back");
+        $view = new View("admin/admin-users","back");
         $view->assign("users",$users->getUsers());
         $view->assign("title","Liste des utilisateur");
     }
@@ -59,7 +59,7 @@ class User{
 
     public function corbeilleAction(){
         $users = new ModelsUser;
-        $view = new View("admin-users-deleted","back");
+        $view = new View("admin/admin-users-deleted","back");
         $view->assign("users",$users->getUsers());
         $view->assign("title","Utilisateur Supprimer");
     }
