@@ -29,7 +29,7 @@
 					<a href="/admin/tableau-de-bord">Dashboard Home</a>
 					<a href="#">Media</a>
 					<a href="#">Pages</a>
-					<a href="/liste-post">Posts</a>
+					<a href="/admin/liste-post">Posts</a>
 					<a href="/admin/liste-commentaire">Commentaires</a>
 					<a href="#">Thèmes</a>
 					<?php if($_SESSION['role'] == 1){  ?> <a href="/admin/users/liste-utilisateurs">Utilisateurs</a> <?php } ?>

@@ -30,7 +30,7 @@
                     <td><?php echo $id;?></td>
                     <td><?php echo($value["title"]);?></td>
                     <td><?php echo($value["content"]);?></td>
-                    <td><a href="\post?id=<?php echo $id;?>">affichier</a> <a href="\delete-post?id=<?php echo $id;?>">supprimer</a> <a href="\edit-post?id=<?php echo $id;?>"> editer<a>
+                    <td><a href="\admin\post?id=<?php echo $id;?>">affichier</a> <a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a> <a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a>
                 </tr>
                 <?php 
             }

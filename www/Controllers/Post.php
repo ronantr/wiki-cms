@@ -36,7 +36,7 @@ class Post{
                 $Post->setPost_title($_POST["title"]);
                 $Post->setPost_content($_POST["content"]);
                 $Post->save();
-                header('Location: \liste-post?message=2');
+                header('Location: \admin\liste-post?message=2');
             }else{
                 $view->assign("formErrors", $errors);
             }
@@ -71,7 +71,7 @@ class Post{
                 $Post->setPost_title($_POST["title"]);
                 $Post->setPost_content($_POST["content"]);
                 $Post->save();
-                header('Location: \liste-post?message=3');
+                header('Location: \admin\liste-post?message=3');
 
             }else{
                 $view->assign("formErrors", $errors);
@@ -86,7 +86,7 @@ class Post{
         if (!empty($_GET['id'])) {
                 $Post->deletePost($_GET['id']);
         }
-        header('Location: \liste-post?message=1');
+        header('Location: \admin\liste-post?message=1');
     }
 
     public function postAction(){

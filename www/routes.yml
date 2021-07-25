@@ -35,22 +35,22 @@
 
 ### POST ###
 
-/add-post:
+/admin/add-post:
   controller: Post
   action: postajoute
 
-/liste-post:
+/admin/liste-post:
   controller: Post
   action: default
 
-/delete-post:
+/admin/delete-post:
   controller: Post
   action: postdelete
 
-/edit-post:
+/admin/edit-post:
   controller: Post
   action: postedit
-/post:
+/admin/post:
   controller: Post
   action: post
 
