@@ -29,10 +29,19 @@ $security->isAutorized($uriex);
 
 
 $route = new Routing($uri);
+
+
 $c = $route->getController();
 $a = $route->getAction();
-
 $cWithNamespace = $route->getControllerWithNamespace();
+
+
+if($route->dbexiste($uri)){
+	$c = $route->getControllerPage();
+	$a = $route->getActionPage();
+	$cWithNamespace = $route->getControllerWithNamespacePage();
+}
+
 
 /*
 //echo $route->getUri("Security", "listofusers");
@@ -59,7 +68,7 @@ if( file_exists("./Controllers/".$c.".php")){
 	if(class_exists($cWithNamespace)){
 		//$c = App\Security // User
 		$cObject = new $cWithNamespace();
-
+		
 		if(method_exists($cObject, $a)){
 			//$a = loginAction // defaultAction
 			$cObject->$a();

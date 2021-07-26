@@ -213,7 +213,13 @@ class Database
 		$query->execute();
 	}
 
-
+	public function getUris(){
+		$this->table = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table ; ");
+		$query->execute();
+        $pages = $query->fetchall();
+        return $pages;
+	}
 
 
 }
