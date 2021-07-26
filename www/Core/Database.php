@@ -198,6 +198,21 @@ class Database
 		$query->execute();
 	}
 
+	public function getCategories(){
+		$this->table = DBPREFIX."categorie";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table ; ");
+		$query->execute();
+        $categories = $query->fetchall();
+        return $categories;
+	}
+
+	public function update_post_cat($id_post,$id_cat){
+		$this->table = DBPREFIX."article";
+		$query = $this->pdo->prepare("UPDATE $this->table SET id_categorie = $id_cat WHERE id = $id_post;");
+		
+		$query->execute();
+	}
+
 
 
 

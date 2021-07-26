@@ -18,7 +18,11 @@
                 <td>id</td>
                 <td>Titre</td>
                 <td>content</td>
-                <td>action</td>
+                <td>Catégorie</td>
+                <td>Affichage</td>
+                <td>Delete</td>
+                <td>Modification</td>
+                <td>Edit Catégorie</td>
             </tr>
         </thead>
         <tbody>
@@ -30,7 +34,21 @@
                     <td><?php echo $id;?></td>
                     <td><?php echo($value["title"]);?></td>
                     <td><?php echo($value["content"]);?></td>
-                    <td><a href="\admin\post?id=<?php echo $id;?>">affichier</a> <a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a> <a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a>
+                    <td><form action="\admin\edit-cat-post?id=<?php echo $id;?>" method="post"><select name="categorie">
+                            <option value="">...</option>
+                    <?php 
+                        foreach($categories as $categorie){
+                            $id_cat = $categorie['id'];
+                            $name_cat = $categorie['name'];
+                            ?> <option value= <?php echo $id_cat; if($categorie['id'] == $value['id_categorie']){ echo " selected";} ?> ><?php echo $name_cat ;?></option>
+                            <?php
+                        }
+                    ?>
+                    </select></td>
+                    <td><a href="\admin\post?id=<?php echo $id;?>">affichier</a></td>
+                    <td><a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a></td>
+                    <td><a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a></td>
+                    <td><button type="submit">Change Catégorie</button></form></td>
                 </tr>
                 <?php 
             }

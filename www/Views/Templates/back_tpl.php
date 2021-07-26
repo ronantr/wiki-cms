@@ -18,7 +18,7 @@
 				<nav id="main-nav">
 					<ul>
 						<li><a href="#"> <?php isset($_SESSION["username"]) ? 'test' : 'invité';?> </a></li>
-						<li><a href="/add-post">Create Post</a></li>
+						<li><a href="/admin/add-post">Create Post</a></li>
 						<li><a>|</a></li>
 						<li><a href="/logout">Déconnexion</a></li>
 					</ul>

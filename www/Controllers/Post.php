@@ -14,8 +14,10 @@ class Post{
     public function defaultAction(){
         $Posts = new ModelPost;
         $allPosts = $Posts->getPosts();
+        $allCat = $Posts->getCategories();
         $view = new View("admin/listepost", "back");
         $view->assign("allPosts", $allPosts);
+        $view->assign("categories",$allCat);
         $view->assign("title","Admin Liste Post");
         echo "controller post action default";
         }
@@ -120,5 +122,20 @@ class Post{
         }
         $view->assign("form", $form);
 
+    }
+
+    public function UpdatePostCatAction(){
+        $id_acticle = $_GET['id'];
+        $id_cat =$_POST['categorie'];
+        if(!empty($id_cat)){
+            $posts = new ModelPost;
+            $posts->update_post_cat($id_acticle,$id_cat);
+        }else{
+            $posts = new ModelPost;
+            $posts->update_post_cat($id_acticle,$id_cat = "NULL");
+        }
+        
+        
+        header('Location: /admin/liste-post');
     }
 }

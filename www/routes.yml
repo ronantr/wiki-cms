@@ -53,6 +53,9 @@
 /admin/post:
   controller: Post
   action: post
+/admin/edit-cat-post:
+  controller: Post
+  action: UpdatePostCat
 
 ### COMMENTAIRE ###
 /add-commentaire:
