@@ -13,13 +13,12 @@ class ConstantManager
 	public function __construct(){
 
 		if(!file_exists($this->envFile) || !installer::checkEnvExist()){
-		//die("Le fichier ".$this->envFile." n'existe pas");
+		die("Le fichier ".$this->envFile." n'existe pas");
 	return false;	
 	}
 		$this->parseFile($this->envFile);
 
 		if(!empty($this->data["ENV"])){
-			//Parse : .env.prod ou .env.dev
 			$this->parseFile($this->envFile.".".$this->data["ENV"]);
 		}
 
