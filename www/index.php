@@ -5,6 +5,9 @@ namespace App;
 use App\Core\Routing; 
 use App\Core\ConstantManager; 
 use APP\Core\Security;
+use App\Core\Installer;
+
+
 
 require "Autoloader.php";
 Autoloader::register();
@@ -63,6 +66,8 @@ if( file_exists("./Controllers/".$c.".php")){
 		if(method_exists($cObject, $a)){
 			//$a = loginAction // defaultAction
 			$cObject->$a();
+
+
 		}else{
 			die("L'action ".$a." n'existe pas");
 		}

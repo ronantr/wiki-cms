@@ -45,12 +45,16 @@ class View
 		switch ($extension){
 			case "css" :
 				return '/public/css/'.$file;
-			break;
+				break;
 			case "js" :
 				return '/public/js/'.$file;
-			break;
+				break;
 			case "png" || "jpg" || "jpeg" || "svg":
 				return '/public/images/'.$file;
+				break;
+			case "sql":
+				return '/public/sql/'.$file;
+				break;
 			default:
 				echo "Fichier Non Trouvé";
 				break;

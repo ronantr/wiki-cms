@@ -197,7 +197,28 @@ class Database
 		$query = $this->pdo->prepare("UPDATE $this->table SET role = $role WHERE id = '$id';");
 		$query->execute();
 	}
-
+	
+	public function createDatabase($query) {
+        
+        $query = $this->pdo->exec($query);
+        return true;
+    }
+	public function renameDatabase(){
+		$DBPREFIX = DBPREFIX;
+		$DBPREFIX_article = $DBPREFIX."article";
+		$DBPREFIX_commentaire = $DBPREFIX."commentaire";
+		$DBPREFIX_editor = $DBPREFIX."editor";
+		$DBPREFIX_static = $DBPREFIX."static";
+		$query = $this->pdo->prepare("alter table article rename  TO $DBPREFIX_article ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table commentaire rename  TO $DBPREFIX_commentaire ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table editor rename  TO $DBPREFIX_editor ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table static rename  TO $DBPREFIX_static ;");
+		$query->execute();
+		return true;
+	}
 
 
 
