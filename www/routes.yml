@@ -1,4 +1,7 @@
+############
 ### BASE ###
+############
+
 /:
   controller: Base
   action: Default
@@ -7,7 +10,10 @@
   controller: Base
   action: dashboard
 
+################
 ### SECURITY ###
+################
+
 /resgister:
   controller: Security
   action: register
@@ -33,7 +39,9 @@
   controller: Security
   action: listofusers
 
+############ 
 ### POST ###
+############
 
 /admin/add-post:
   controller: Post
@@ -57,7 +65,10 @@
   controller: Post
   action: UpdatePostCat
 
+###################
 ### COMMENTAIRE ###
+###################
+
 /add-commentaire:
   controller: Commentaire
   action: commentaireajoute
@@ -71,8 +82,9 @@
   controller: Commentaire
   action: commentaire
 
-
+####################
 ### Utilisateurs ###
+####################
 
 /admin/users/liste-utilisateurs:
   controller: User
@@ -97,3 +109,14 @@
 /admin/users/restaurer:
   controller: User
   action: userrestaurer
+
+###############
+###installer###
+###############
+
+/installer:
+  controller: Installer
+  action: initialisation
+/make-install:
+  controller: Installer
+  action: makeInstall

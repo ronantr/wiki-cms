@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Core\Installer;
+
 class ConstantManager
 {
 
@@ -10,9 +12,10 @@ class ConstantManager
 
 	public function __construct(){
 
-		if(!file_exists($this->envFile))
-		die("Le fichier ".$this->envFile." n'existe pas");
-
+		if(!file_exists($this->envFile) || !installer::checkEnvExist()){
+		//die("Le fichier ".$this->envFile." n'existe pas");
+	return false;	
+	}
 		$this->parseFile($this->envFile);
 
 		if(!empty($this->data["ENV"])){

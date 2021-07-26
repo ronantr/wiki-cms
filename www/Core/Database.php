@@ -198,12 +198,37 @@ class Database
 		$query->execute();
 	}
 
+
 	public function getCategories(){
 		$this->table = DBPREFIX."categorie";
 		$query = $this->pdo->prepare("SELECT * FROM $this->table ; ");
 		$query->execute();
         $categories = $query->fetchall();
         return $categories;
+	}
+	
+	public function createDatabase($query) {
+        
+        $query = $this->pdo->exec($query);
+        return true;
+	}
+	
+	public function renameDatabase(){
+		$DBPREFIX = DBPREFIX;
+		$DBPREFIX_article = $DBPREFIX."article";
+		$DBPREFIX_commentaire = $DBPREFIX."commentaire";
+		$DBPREFIX_editor = $DBPREFIX."editor";
+		$DBPREFIX_static = $DBPREFIX."static";
+		$query = $this->pdo->prepare("alter table article rename  TO $DBPREFIX_article ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table commentaire rename  TO $DBPREFIX_commentaire ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table editor rename  TO $DBPREFIX_editor ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table static rename  TO $DBPREFIX_static ;");
+		$query->execute();
+		return true;
+
 	}
 
 	public function update_post_cat($id_post,$id_cat){
