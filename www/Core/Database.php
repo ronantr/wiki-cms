@@ -216,14 +216,20 @@ class Database
 	public function renameDatabase(){
 		$DBPREFIX = DBPREFIX;
 		$DBPREFIX_article = $DBPREFIX."article";
+		$DBPREFIX_categorie = $DBPREFIX."categorie";
 		$DBPREFIX_commentaire = $DBPREFIX."commentaire";
 		$DBPREFIX_editor = $DBPREFIX."editor";
 		$DBPREFIX_static = $DBPREFIX."static";
+		$DBPREFIX_page_categorie = $DBPREFIX."page_categorie";
 		$query = $this->pdo->prepare("alter table article rename  TO $DBPREFIX_article ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table commentaire rename  TO $DBPREFIX_commentaire ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table editor rename  TO $DBPREFIX_editor ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table categorie rename  TO $DBPREFIX_categorie ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table page_categorie rename  TO $DBPREFIX_page_categorie ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table static rename  TO $DBPREFIX_static ;");
 		$query->execute();
