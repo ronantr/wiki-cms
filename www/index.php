@@ -32,18 +32,18 @@ $security->isAutorized($uriex);
 
 
 $route = new Routing($uri);
-
+$installer = new Installer();
 
 $c = $route->getController();
 $a = $route->getAction();
 $cWithNamespace = $route->getControllerWithNamespace();
 
-
+if($installer->checkInstall() && $installer->checkDatabaseConnection()){
 if($route->dbexiste($uri)){
 	$c = $route->getControllerPage();
 	$a = $route->getActionPage();
 	$cWithNamespace = $route->getControllerWithNamespacePage();
-}
+}}
 
 
 /*
