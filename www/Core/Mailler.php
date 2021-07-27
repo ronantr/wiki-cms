@@ -3,19 +3,32 @@ namespace App\Core;
 
 
 use PHPMailer\PHPMailer\PHPMailer;
+use App\Models\User;
 
+class Mailer
+{
+    public function sendMail($username,$email,$createAt){
+        $mail = new PHPMailer();
+        
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $createAt = $_POST['createdAt'];
+        $cle = $createAt."_".$email;
+        $cle = password_hash(($cle), PASSWORD_BCRYPT);
+    
+        $subject = 'Activer votre compte';
+        $body = "Bienvenue sur VotreSite,". PHP_EOL; PHP_EOL."
+        Pour activer votre compte, veuillez cliquer sur le lien ci-dessous".PHP_EOL."
+        ou copier/coller dans votre navigateur Internet.".PHP_EOL."
+        http://votresite.com/activation.php?log=".urlencode($username)."&cle=".urlencode($cle); PHP_EOL; PHP_EOL."
+        --------------------".PHP_EOL."
+        Ceci est un mail automatique, Merci de ne pas y répondre.";
 
-if(isset($_POST['username']) && isset($_POST['email'])){
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $body = $_POST['body'];
+        require_once "PHPMailer/PHPMailer.php";
+        require_once "PHPMailer/SMTP.php";
+        require_once "PHPMailer/Exception.php";
 
-    require_once "PHPMailer/PHPMailer.php";
-    require_once "PHPMailer/SMTP.php";
-    require_once "PHPMailer/Exception.php";
-
-    $mail = new PHPMailer();
+    
 
     //smtp settings
     $mail->isSMTP();
@@ -44,6 +57,7 @@ if(isset($_POST['username']) && isset($_POST['email'])){
     }
 
     exit(json_encode(array("status" => $status, "response" => $response)));
-}
 
+}
+}
 ?>

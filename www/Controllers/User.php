@@ -3,6 +3,7 @@ namespace App;
 
 use App\Models\User as ModelsUser;
 use App\Core\View;
+use App\Core\Mailler;
 
 class User{
     // private $users = array();
@@ -71,6 +72,16 @@ class User{
                 $user->Restaurer($user_id);
         }
         header('Location: /admin/users/liste-utilisateurs?message=3');
+    }
+    public function userAction(){
+        $user_email = $_SESSION['email'];
+        if (!empty($user_email)) {
+        $user = new ModelsUser();
+        $view = new View("admin/admin-user","back");
+        $view->assign("users",$user->getUsers());
+        
+            
+        }
     }
 
 }

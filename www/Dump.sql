@@ -126,4 +126,5 @@ ALTER TABLE `article`
 
 ALTER TABLE `page_categorie`
   ADD CONSTRAINT `FK_page_categorie2` FOREIGN KEY (`id_page`) REFERENCES `wk_page` (`id`);
+  commit;
 

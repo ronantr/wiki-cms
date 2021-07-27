@@ -58,7 +58,7 @@
 /admin/edit-post:
   controller: Post
   action: postedit
-/admin/post:
+/post:
   controller: Post
   action: post
 /admin/edit-cat-post:
@@ -109,6 +109,9 @@
 /admin/users/restaurer:
   controller: User
   action: userrestaurer
+/admin/user:
+  controller: User
+  action: User
 
 ###############
 ###installer###
