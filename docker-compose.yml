@@ -15,14 +15,13 @@ services:
 
   database:
     image: mysql:5.7
-    platform: linux/amd64
     container_name: mysql-mvc
     ports :
       - "3306:3306"
     environment:
       MYSQL_DATABASE: wiki
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: tamer
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
     volumes:
       - ./db_data:/var/lib/mysql
