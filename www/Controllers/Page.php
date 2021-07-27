@@ -27,7 +27,20 @@ public function addpageAction(){
 }
 
 public function createAction(){
-    print_r ($_POST['pagecat']);
+    $pages = new ModelsPage;
+    $pages->savePages($_POST['url'],$_POST['slug']);
+    $lastepage = $pages->getlastedpage();
+    print_r($lastepage);
+    $pages->setId($lastepage[0]['id']);
+    if(!empty($_POST['pagecat'])){
+        foreach($_POST['pagecat'] as $cat){
+            $pages->savepagecat($pages->getId(),$cat);
+        
+        }
+    }
+
+
+
 }
 
 }
