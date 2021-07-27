@@ -73,12 +73,12 @@ class Database
 		}elseif(is_null($this->getId())){
 			//INSERT
 
-            //var_dump(array_keys($data));
+            var_dump(array_keys($data));
 			
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
-            echo '<br><br><br>';
+            //echo '<br><br><br>';
             //var_dump($query);
             $query->execute($data);
 		}else{            
@@ -185,7 +185,16 @@ class Database
 		$query->execute();
 
 	}
-
+	public function VerifUser($id){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerfied = 1 WHERE id = '$id';");
+		$query->execute();
+	}
+	public function ModificationUser($email,$password){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET password = '$password' WHERE email = '$email';");
+		$query->execute();
+	}
 	public function restaurer($id){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("UPDATE $this->table SET isDeleted = 0 WHERE id = '$id';");

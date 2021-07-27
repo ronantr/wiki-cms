@@ -4,6 +4,7 @@ namespace App;
 use App\Models\User as ModelsUser;
 use App\Core\View;
 
+
 class User{
     // private $users = array();
 
@@ -72,5 +73,16 @@ class User{
         }
         header('Location: /admin/users/liste-utilisateurs?message=3');
     }
+    public function userAction(){
+        $user_username = $_SESSION['username'];
+        if (!empty($user_username)) {
+        $user = new ModelsUser();
+        $view = new View("admin/admin-user","back");
+        $view->assign("users",$user->getUsers());
+        
+            
+        }
+    }
+   
+    }
 
-}
