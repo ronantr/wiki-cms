@@ -221,6 +221,7 @@ class Database
 		$DBPREFIX_editor = $DBPREFIX."editor";
 		$DBPREFIX_static = $DBPREFIX."static";
 		$DBPREFIX_page_categorie = $DBPREFIX."page_categorie";
+		$DBPREFIX_page = $DBPREFIX."page";
 		$query = $this->pdo->prepare("alter table article rename  TO $DBPREFIX_article ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table commentaire rename  TO $DBPREFIX_commentaire ;");
@@ -232,6 +233,8 @@ class Database
 		$query = $this->pdo->prepare("alter table page_categorie rename  TO $DBPREFIX_page_categorie ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table static rename  TO $DBPREFIX_static ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table page rename  TO $DBPREFIX_page ;");
 		$query->execute();
 		return true;
 
