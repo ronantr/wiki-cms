@@ -83,7 +83,7 @@ class Routing{
 		$page = new Page;
 		$uris = $page->getUris();
 		foreach ($uris as $url){
-			if ($url['url'] == $uri){
+			if ($url['url'] == "/".$uri){
 				return true;
 			}
 		}
