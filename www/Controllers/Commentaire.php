@@ -14,7 +14,7 @@ class Commentaire{
     public function defaultAction(){
         $Commentaire = new ModelCommentaire();
         $allCommentaire = $Commentaire->getCommentaires();
-        $view = new View("admin-listecommentaire", "back");
+        $view = new View("admin/admin-listecommentaire", "back");
         $view->assign("allCommentaires", $allCommentaire);
         $view->assign("title","Admin Liste Commentaire");
         //echo "controller commentaire action default";
@@ -25,7 +25,7 @@ class Commentaire{
             $Commentaire = new ModelCommentaire();
             $view = new View("add-commentaire", "back");
             $view->assign("title","Admin Création Commentaire");
-            $form = $Commentaire->buildFormRegister();
+            $form = $Commentaire->buildFormCommentaire();
     
     
             if(!empty($_POST)){

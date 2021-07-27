@@ -10,9 +10,9 @@ class User extends Database
 	protected $email;
 	protected $password;
 	//protected $status = 0;
-	protected $role = 0;
+	protected $role =2;
 	protected $isDeleted = 0;
-	protected $emailVerified = 0;
+	protected $emailVerified =0;
 
 	public function __construct(){
 		parent::__construct();
@@ -24,31 +24,59 @@ class User extends Database
 		//et il va alimenter l'objet avec toutes ces données
 		$this->id = $id;
 	}
-	public function setEmailVerified($emailVerified){
-		$this->emailVerified = $emailVerified;
-	}
-
 	public function getId(){
 		return $this->id;
 	}
+
+	public function setEmailVerified($emailVerified){
+		$this->emailVerified = $emailVerified;
+	}
+	public function getEmailVerified(){
+		return $this->emailVerified;
+	}
+
 	public function setUsername($username){
 		$this->username = $username;
 	}
+	public function getUsername(){
+		return $this->username;
+	}
+
 	public function setEmail($email){
 		$this->email = $email;
 	}
+	public function getEmail(){
+		return $this->email;
+	}
+
 	public function setPwd($password){
 		$this->password = $password;
 	}
+	public function getPassword(){
+		return $this->password;
+	}
+
 	public function setStatus($status){
 		$this->status = $status;
 	}
+	public function getStatus(){
+		return $this->status;
+	}
+
 	public function setRole($role){
 		$this->role = $role;
 	}
+	public function getRole(){
+		return $this->role;
+	}
+
 	public function setIsDeleted($isDeleted){
 		$this->isDeleted = $isDeleted;
 	}
+	public function getIsdeleted(){
+		return $this->isDeleted;
+	}
+	
 
 
 	public function buildFormRegister(){
@@ -96,22 +124,7 @@ class User extends Database
 									"confirm"=>"pwd",
 									"required"=>true,
 									"error"=>"Votre mot de passe de confirmation est incorrect",
-									"placeholder"=>"Confirmation mot de passe"
-									],
-					"role"=>[
-									"type"=>"hidden",
-									"required"=>true,
-									"defaultValue"=>0
-									],
-					"emailVerified"=>[
-									"type"=>"hidden",
-									"required"=>true,
-									"defaultValue"=>0
-									],
-					"isDeleted"=>[
-									"type"=>"hidden",
-									"required"=>true,
-									"defaultValue"=>0
+									"placeholder"=>"Confirmation de mot de passe"
 									]
 
 									]

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Core;
-
+use App\Models\Page;
 
 class Routing{
 
@@ -10,6 +10,8 @@ class Routing{
 	public $action="default";
 	public $routes = [];
 	public $slugs = [];
+	public $controllerPage="Page";
+	public $actionPage="mainAction";
 
 
 	public function __construct($uri){
@@ -42,12 +44,24 @@ class Routing{
 		return $this->controller;
 	}
 
+	public function getControllerPage(){
+		return $this->controllerPage;
+	}
+
 	public function getAction(){
 		return $this->action;
 	}
 
+	public function getActionPage(){
+		return $this->actionPage;
+	}
+
 	public function getControllerWithNamespace(){
 		return APP_NAMESPACE.$this->controller;
+	}
+
+	public function getControllerWithNamespacePage(){
+		return APP_NAMESPACE.$this->controllerPage;
 	}
 
 
@@ -63,6 +77,16 @@ class Routing{
 
 
 		die("Aucun route ne correspond à ".$controller." -> ".$action );
+	}
+
+	public function dbexiste($uri){
+		$page = new Page;
+		$uris = $page->getUris();
+		foreach ($uris as $url){
+			if ($url['url'] == "/".$uri){
+				return true;
+			}
+		}
 	}
 
 

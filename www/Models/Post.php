@@ -10,6 +10,7 @@ class Post extends Database
 	private $id=null;
 	protected $title;
 	protected $content;
+	protected $id_categorie;
 
 	public function __construct(){
 		parent::__construct();
@@ -30,6 +31,7 @@ class Post extends Database
 	public function getId(){
 		return $this->id;
 	}
+
 
     /**
     * @param $title

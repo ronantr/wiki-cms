@@ -1,13 +1,19 @@
+############
 ### BASE ###
+############
+
 /:
   controller: Base
   action: Default
 
-/tableau-de-bord:
+/admin/tableau-de-bord:
   controller: Base
   action: dashboard
 
+################
 ### SECURITY ###
+################
+
 /resgister:
   controller: Security
   action: register
@@ -33,28 +39,36 @@
   controller: Security
   action: listofusers
 
+############ 
 ### POST ###
+############
 
-/add-post:
+/admin/add-post:
   controller: Post
   action: postajoute
 
-/liste-post:
+/admin/liste-post:
   controller: Post
   action: default
 
-/delete-post:
+/admin/delete-post:
   controller: Post
   action: postdelete
 
-/edit-post:
+/admin/edit-post:
   controller: Post
   action: postedit
-/post:
+/admin/post:
   controller: Post
   action: post
+/admin/edit-cat-post:
+  controller: Post
+  action: UpdatePostCat
 
+###################
 ### COMMENTAIRE ###
+###################
+
 /add-commentaire:
   controller: Commentaire
   action: commentaireajoute
@@ -68,18 +82,58 @@
   controller: Commentaire
   action: commentaire
 
-
+####################
 ### Utilisateurs ###
+####################
 
-/admin/liste-utilisateurs:
+/admin/users/liste-utilisateurs:
   controller: User
   action: default
 
-/admin/users-edit:
+/admin/users/edit:
   controller: User
   action: useredit
 
-/admin/users-delete:
+/admin/users/delete:
   controller: User
   action: userdelete
 
+/admin/users/liste-utilisateurs-deleted:
+  controller: User
+  action: corbeille
+
+/admin/users/delete-def:
+  controller: User
+  action: userdelete_definitely
+
+/admin/users/restaurer:
+  controller: User
+  action: userrestaurer
+
+###############
+###installer###
+###############
+
+/installer:
+  controller: Installer
+  action: initialisation
+/make-install:
+  controller: Installer
+  action: makeInstall
+
+
+###############
+#####Pages#####
+###############
+
+/admin/liste-Pages:
+  controller: Page
+  action: default
+
+/admin/add-page:
+  controller: Page
+  action: addpage
+
+/admin/add-page-send:
+  controller: Page
+  action: create
