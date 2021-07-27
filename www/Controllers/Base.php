@@ -4,7 +4,7 @@ namespace App;
 
 use App\Core\Security;
 use App\Core\View;
-
+use App\Core\Installer;
 
 
 class Base{
@@ -21,7 +21,10 @@ class Base{
 		$view->assign("pseudo", $pseudo);
 		$view->assign("age", 21);
 		$view->assign("genre", "h");
-
+		$installer = new installer;
+		if(!$installer->checkInstall() xor file_exists('.env.prod')){
+			header('location: /installer');
+		}
 		//envoyer le pseudo à la vue
 	}
 

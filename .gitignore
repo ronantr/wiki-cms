@@ -5,3 +5,4 @@ db_data
 www/.DS_Store
 
 www/.erzrezr
+www/.env.prod
