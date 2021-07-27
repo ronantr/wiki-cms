@@ -4,7 +4,7 @@
             echo '<h1>Connexion à la base de données impossible</h1>';
             break;
         case 2:
-            echo '<h1>Errer</h1>';
+            echo '<h1>Erreur</h1>';
             break;
     }
 }
