@@ -12,7 +12,7 @@ class Installer
 {
     public function initialisationAction(){
         $installer = new CoreInstaller();
-        if($installer->checkInstall() != "false") {
+        if($installer->checkEnvExist() == "false") {
             
             $view = new View("installer", "installer");
         } else {
