@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <td>id page</td>
+            <td>Name</td>
             <td>Url</td>
             <td>Date Création</td>
             <td>Status</td>
@@ -10,11 +11,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        
             <?php foreach($pages as $page){ 
                 $id = $page['id'];
                 ?>
+                <tr>
                 <td><?php echo $page['id']; ?></td>
+                <td><?php echo $page['slug']; ?></td>
                 <td>/<?php echo $page['url']; ?></td>
                 <td><?php echo $page['createdAt']; ?></td>
                 <?php switch($page['status']){
@@ -30,8 +33,7 @@
                 } ?>
                 <td><a href="/admin/page-edit?id=<?php echo $id;?>">Modifier</a></td>
                 <td><a href="/admin/page-delete?id=<?php echo $id;?>">Supprimer</a></td>
+            </tr>
             <?php } ?>
-
-        </tr>
     </tbody>
 </table>

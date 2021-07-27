@@ -273,6 +273,40 @@ class Database
 		$query->execute();
 	}
 
+	public function pagedelete($id){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id_page = $id;");
+		$query->execute();
+		$this->table = DBPREFIX."page";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = $id;");
+		$query->execute();
+	}
+
+	public function getpage($id){
+		$this->table = DBPREFIX."page";
+		$join = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id = $id;");
+		$query->execute();
+		$page = $query->fetchall();
+        return $page;
+
+	}
+
+	public function getCategoriesById($id){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("SELECT id_categorie FROM $this->table WHERE id_page = $id ORDER BY id_categorie ; ");
+		$query->execute();
+		$cat = $query->fetchall();
+		return $cat;
+	}
+
+	public function delatepagecat($id_page){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id_page = $id_page;");
+		$query->execute();
+	}
+
+
 
 
 

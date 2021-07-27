@@ -137,3 +137,15 @@
 /admin/add-page-send:
   controller: Page
   action: create
+
+/admin/page-delete:
+  controller: Page
+  action: delete
+
+/admin/page-edit:
+  controller: Page
+  action: editpage
+
+/admin/edit-page-send:
+  controller : Page
+  action: editer

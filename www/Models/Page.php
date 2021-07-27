@@ -13,13 +13,22 @@ class Page extends Database
 		parent::__construct();
 	}
 
+	/**
+    * @param $id
+    */
+	public function setId($id){
+		//Il va chercher en BDD toutes les informations de l'utilisateur
+		//et il va alimenter l'objet avec toutes ces données
+		$this->id = $id;
+	}
+	
+    /**
+    * @return mixed
+    */
 	public function getId(){
 		return $this->id;
 	}
 
-	public function setId($id){
-		$this->id = $id;
-	}
 
 	public function setUrl($url){
 		$this->url = $url;
