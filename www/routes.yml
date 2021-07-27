@@ -34,6 +34,9 @@
   controller: Security
   action: logout
 
+/recuperationmdp:
+  controller: Security
+  action: recuperationmdp
 
 /liste-des-utilisateurs:
   controller: Security
@@ -112,6 +115,7 @@
 /admin/user:
   controller: User
   action: User
+
 
 ###############
 ###installer###

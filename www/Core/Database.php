@@ -190,6 +190,11 @@ class Database
 		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerfied = 1 WHERE id = '$id';");
 		$query->execute();
 	}
+	public function ModificationUser($email,$password){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET password = '$password' WHERE email = '$email';");
+		$query->execute();
+	}
 	public function restaurer($id){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("UPDATE $this->table SET isDeleted = 0 WHERE id = '$id';");

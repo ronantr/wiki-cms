@@ -12,7 +12,7 @@
 	<body>
 		<header>
 			<div class="container">
-				<a href="#" id="logo-link">
+				<a href="/" id="logo-link">
 					<img src=<?php echo App\Core\View::lookupfile('Logo.png'); ?> alt="logo">
 				</a>
 				<nav id="main-nav">
@@ -27,8 +27,8 @@
 			</div>
 			<div class="nav_gauche">
 				<div class="row">
-					<a href="/admin/tableau-de-bord">Dashboard Home</a>
-					<a href="#">Media</a>
+					<a href="/admin/tableau-de-bord">Dashboard </a>
+					<a href="/">Home</a>
 					<a href="/admin/liste-Pages">Pages</a>
 					<a href="/admin/liste-post">Posts</a>
 					<a href="/admin/liste-commentaire">Commentaires</a>

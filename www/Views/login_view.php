@@ -9,4 +9,5 @@
 <div class="login">
 	<h1>Connexion</h1>
 	<?php  App\Core\Form::showForm($form); ?>
+	<a href="/recuperationmdp">Mot de Passe oublié</a>
 </div>

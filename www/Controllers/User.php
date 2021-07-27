@@ -3,7 +3,7 @@ namespace App;
 
 use App\Models\User as ModelsUser;
 use App\Core\View;
-use App\Core\Mailler;
+
 
 class User{
     // private $users = array();
@@ -74,8 +74,8 @@ class User{
         header('Location: /admin/users/liste-utilisateurs?message=3');
     }
     public function userAction(){
-        $user_email = $_SESSION['email'];
-        if (!empty($user_email)) {
+        $user_username = $_SESSION['username'];
+        if (!empty($user_username)) {
         $user = new ModelsUser();
         $view = new View("admin/admin-user","back");
         $view->assign("users",$user->getUsers());
@@ -83,5 +83,6 @@ class User{
             
         }
     }
+   
+    }
 
-}

@@ -204,6 +204,40 @@ class User extends Database
 
         ];
     }
+	public function buildFormRecuperation(){
+		return [
+
+            "config"=>[
+                "method"=>"POST",
+                "action"=>"",
+                "class"=>"form_Recuperation",
+				"Submit"=>"Recuperation",
+                "id"=>"form_Recuperatio"
+            ],
+            "input"=>[
+                "email"=>[
+                    "type"=>"email",
+                    "placeholder"=>"Votre email",
+                    "label"=>"Votre Email",
+                    "required"=>true,
+                    "class"=>"form_input",
+                    "minLength"=>8,
+                    "maxLength"=>320,
+                    "error"=>"Votre email doit faire entre 8 et 320 caractères"
+				],
+
+				"password"=>[
+					"label"=>"Votre mot de passe",
+					"type"=>"password",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+					"placeholder"=>"Votre mot de passe"
+                ]
+            ]
+
+        ];
+	}
 
 }
 
