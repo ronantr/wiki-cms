@@ -12,9 +12,7 @@
     <body>
     <main>
 			<section class="main">
-				<div class="containermain">
                     <?php include $this->view; ?>
-				</div>
 			</section>
 		</main>
 	</body>

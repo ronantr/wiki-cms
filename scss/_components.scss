@@ -9,14 +9,14 @@ $primary: #456dda;
     //border: 1px solid black;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, .2);
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.2);
     .form-input {
         display: inline-block;
         color: black;
         padding: 10px;
         width: 250px;
         box-sizing: border-box;
-        background-color: rgba(0, 0, 0, 0.10);
+        background-color: rgba(0, 0, 0, 0.1);
         border: none;
         border-radius: 2px;
         margin: 10px auto;
@@ -34,7 +34,7 @@ $primary: #456dda;
     }
     .form-input:focus {
         outline: none !important;
-        border:2px solid $primary;
+        border: 2px solid $primary;
     }
     .form-submit {
         padding: 15px 30px;
@@ -56,13 +56,14 @@ $primary: #456dda;
 
 .navbar {
     width: 100%;
+    margin-bottom: 50px;
     //border: 1px solid black;
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, .2);
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
     height: 50px;
     a {
         margin: 10px;
