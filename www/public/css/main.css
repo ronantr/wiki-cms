@@ -59,3 +59,22 @@ body {
   .form .form-submit:hover {
     color: #456dda;
     background-color: transparent; }
+
+.navbar {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
+  height: 50px; }
+  .navbar a {
+    margin: 10px;
+    color: inherit; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%; }
