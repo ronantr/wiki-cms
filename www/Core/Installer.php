@@ -98,7 +98,7 @@ class Installer
         $userf = new User();
         $userf->setUsername($user['Username']);
         $userf->setEmail($user['Email']);
-        $userf->setPwd($user['Password']);
+        $userf->setPwd(password_hash(htmlspecialchars($user['Password']), PASSWORD_BCRYPT));
         $userf->setRole("1");
         $userf->setIsDeleted(0);
         //$user->setIsVerified(1);
