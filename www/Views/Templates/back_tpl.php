@@ -18,6 +18,7 @@
 				<nav id="main-nav">
 					<ul>
 						<li><a href="#"> <?php isset($_SESSION["username"]) ? 'test' : 'invité';?> </a></li>
+						<li><a href="/admin/add-page">Create Page</a></li>
 						<li><a href="/admin/add-post">Create Post</a></li>
 						<li><a>|</a></li>
 						<li><a href="/logout">Déconnexion</a></li>
@@ -28,7 +29,7 @@
 				<div class="row">
 					<a href="/admin/tableau-de-bord">Dashboard Home</a>
 					<a href="#">Media</a>
-					<a href="#">Pages</a>
+					<a href="/admin/liste-Pages">Pages</a>
 					<a href="/admin/liste-post">Posts</a>
 					<a href="/admin/liste-commentaire">Commentaires</a>
 					<a href="#">Thèmes</a>

@@ -120,3 +120,20 @@
 /make-install:
   controller: Installer
   action: makeInstall
+
+
+###############
+#####Pages#####
+###############
+
+/admin/liste-Pages:
+  controller: Page
+  action: default
+
+/admin/add-page:
+  controller: Page
+  action: addpage
+
+/admin/add-page-send:
+  controller: Page
+  action: create
