@@ -12,13 +12,12 @@ class Installer
 {
     public function initialisationAction(){
         $installer = new CoreInstaller();
-        if($installer->checkEnvExist() == false) {
+        if($installer->checkEnvExist() == 'false') {
             
             $view = new View("installer", "installer");
             $view->assign("title","Installer");
         } else {
             header('location: / ');
-            die();
         }
     }
 
