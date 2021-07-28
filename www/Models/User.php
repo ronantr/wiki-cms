@@ -181,7 +181,7 @@ class User extends Database
                 "action"=>"",
                 "class"=>"form",
 				"Submit"=>"Connecter",
-                "id"=>"form_login"
+                "id"=>"form"
             ],
             "input"=>[
                 "email"=>[
@@ -214,7 +214,7 @@ class User extends Database
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-                "class"=>"form_Recuperation",
+                "class"=>"form",
 				"Submit"=>"Recuperation",
                 "id"=>"form_Recuperatio"
             ],
@@ -224,7 +224,7 @@ class User extends Database
                     "placeholder"=>"Votre email",
                     "label"=>"Votre Email",
                     "required"=>true,
-                    "class"=>"form_input",
+                    "class"=>"form-input",
                     "minLength"=>8,
                     "maxLength"=>320,
                     "error"=>"Votre email doit faire entre 8 et 320 caractères"
@@ -235,6 +235,7 @@ class User extends Database
 					"type"=>"password",
 					"lengthMin"=>"8",
 					"required"=>true,
+					"class"=> "form-input",
 					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
 					"placeholder"=>"Votre mot de passe"
                 ]
