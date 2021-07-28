@@ -19,7 +19,6 @@ class Post{
         $view->assign("allPosts", $allPosts);
         $view->assign("categories",$allCat);
         $view->assign("title","Admin Liste Post");
-        echo "controller post action default";
         }
 
     public function postajouteAction(){
