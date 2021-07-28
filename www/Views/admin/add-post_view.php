@@ -30,6 +30,7 @@
 		<li><?= $error ;?>
 	<?php endforeach;?>
 <?php endif;?>
-
+<div class="flex-col">
 <?php  App\Core\Form::showForm($form); ?>
+</div>
 </body>

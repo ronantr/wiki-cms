@@ -71,7 +71,7 @@ class Post extends Database
 					"method"=>"POST",
 					"Action"=>"",
 					"Submit"=>"Post",
-					"class"=>"form_register"
+					"class"=>"form"
 				],
 				"input"=>[
 					"id"=>[
@@ -84,6 +84,7 @@ class Post extends Database
 									"class"=>"form_input",
 									"label"=>"titre :",
 									"lengthMax"=>"120",
+									"class"=>"form-input",
 									"lengthMin"=>"2",
 									"required"=>true,
 									"error"=>"Votre Titre doit faire entre 2 et 120 caractères",
@@ -93,6 +94,7 @@ class Post extends Database
 					"content"=>[
 									"type"=>"mytextarea",
 									"lengthMax"=>"32500",
+									"class"=>"tinymce",
 									"lengthMin"=>"2",
 									"label"=>"content :",
 									"error"=>"Votre Contenue doit faire entre 2 et 32500 caractères",
