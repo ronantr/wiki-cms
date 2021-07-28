@@ -97,14 +97,13 @@ class Installer
     public function creationUser($user) {
         
         $userf = new User();
-        var_dump($user);
         $Password = password_hash(htmlspecialchars($user['Password']), PASSWORD_BCRYPT);
         $userf->setUsername($user['Username']);
         $userf->setEmail($user['Email']);
         $userf->setPwd($Password);
         $userf->setRole("1");
         //$userf->setIsDeleted(0);
-        var_dump($userf);
+        
         $userf->save();
     }
 
