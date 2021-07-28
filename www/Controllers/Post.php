@@ -139,4 +139,21 @@ class Post{
         
         header('Location: /admin/liste-post');
     }
+
+    public function publicpostAction(){
+        $post = new ModelPost;
+        $posts = $post->getPosts();
+        $view = new View('public/liste-article','front');
+        $view->assign('posts',$posts);
+        $view->assign("title","Liste Acticle");
+    }
+
+    public function public_single_postAction(){
+        $id_post = $_GET['id'];
+        $posts = new ModelPost;
+        $post = $posts->getpostbyid($id_post);
+        $view = new View('public/single-post','front');
+        $view->assign('post', $post);
+        $view->assign("title",$post[0]['title']);
+    }
 }

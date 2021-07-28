@@ -68,6 +68,14 @@
   controller: Post
   action: UpdatePostCat
 
+/liste-articles:
+  controller: Post
+  action: publicpost
+
+/single-post:
+  controller: Post
+  action: public_single_post
+
 ###################
 ### COMMENTAIRE ###
 ###################
@@ -112,7 +120,7 @@
 /admin/users/restaurer:
   controller: User
   action: userrestaurer
-/admin/user:
+/user:
   controller: User
   action: User
 

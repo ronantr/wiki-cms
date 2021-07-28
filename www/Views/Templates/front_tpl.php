@@ -22,7 +22,8 @@
 					<?php if (!App\Core\Security::isConnected()) { ?> <a href="/login">Connexion</a>
 						<a href="/s-inscrire">Incription</a>
 					<?php } else { ?>
-						<a href="#"> <?php echo $_SESSION['username'] ?> </a>
+						<a href="/user?nom=<?php echo $_SESSION['username'] ?>"> <?php echo $_SESSION['username'] ?> </a>
+
 						<a href="/logout">Déconnexion</a><?php
 														} ?>
 
