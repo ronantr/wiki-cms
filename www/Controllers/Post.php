@@ -99,6 +99,7 @@ class Post{
         //print_r($allPosts);
         
         $view = new View("admin/post", "back");
+        $view->assign("title","Post");
         $view->assign("allPosts", $allPosts);
         $view->assign("allCommentaire", $allCommentaire);
         $Commentaire->setCommentaire_id_article($_GET["id"]);

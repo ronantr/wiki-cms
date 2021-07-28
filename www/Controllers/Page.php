@@ -14,10 +14,6 @@ class Page{
         
     }
 
-    public function mainAction(){
-        $view = new View("test", "front");
-        
-    }
 
     public function addpageAction(){
         $categorie = new Categorie;
@@ -68,6 +64,7 @@ class Page{
         $id_categories = $pages->getCategoriesById($id_page);
         $categories = $pages->getCategories();
         $view = new View('admin/edit-page','back');
+        $view->assign("title","Editeur de page");
         $view->assign('page',$page);
         $view->assign('id_categories',$id_categories);
         $view->assign('categories',$categories);

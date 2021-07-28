@@ -9,6 +9,7 @@ class Categorie{
         $categories = new ModelsCategorie;
         $cats = $categories->getCategories();
         $view = new View('admin/liste-categorie','back');
+        $view->assign("title","Liste Categorie");
         $view->assign('categories',$cats);
     }
 

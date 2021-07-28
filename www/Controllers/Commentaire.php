@@ -93,6 +93,7 @@ class Commentaire{
             
                 $view = new View("post", "back");
                 $view->assign("allCommentaires", $allCommentaires);
+                $view->assign("title","Post");
             
         }
 
