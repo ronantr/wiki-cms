@@ -110,6 +110,10 @@
   controller: User
   action: userrestaurer
 
+/admin/valider-user:
+  controller: User
+  action: valideruser
+
 ###############
 ###installer###
 ###############

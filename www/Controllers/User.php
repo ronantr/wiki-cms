@@ -73,4 +73,11 @@ class User{
         header('Location: /admin/users/liste-utilisateurs?message=3');
     }
 
+    public function valideruserAction(){
+        $id = $_GET['id'];
+        $user = new ModelsUser();
+        $user->validerUser($id);
+        header('Location: /admin/users/liste-utilisateurs');
+    }
+
 }

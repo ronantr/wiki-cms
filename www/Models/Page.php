@@ -37,6 +37,10 @@ class Page extends Database
 	public function setSlug($slug){
 		$this->slug = $slug;
 	}
+
+	public function setStatus($status){
+		$this->status = $status;
+	}
 	
 }
 ?>

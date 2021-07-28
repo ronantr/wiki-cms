@@ -28,8 +28,16 @@ class Page{
 
     public function createAction(){
         if(isset($_POST)){
+            
             $pages = new ModelsPage;
-            $pages->savePages($_POST['url'],$_POST['slug']);
+            $verification = $pages->getallpage();
+            foreach($verification as $page){
+                if($page['url'] == $_POST['url'] ){
+                    header('Location: /admin/liste-Pages?message=4');
+                    exit;
+                }
+            }
+            $pages->savePages(htmlspecialchars($_POST['url']),htmlspecialchars($_POST['slug']));
             $lastepage = $pages->getlastedpage();
             $pages->setId($lastepage[0]['id']);
             if(!empty($_POST['pagecat'])){
@@ -37,7 +45,7 @@ class Page{
                     $pages->savepagecat($pages->getId(),$cat);
                 }
             }
-            header('Location: /admin/liste-Pages');
+            header('Location: /admin/liste-Pages?message=1');
         }
         else{
             header('Location: /admin/tableau-de-bord');
@@ -50,7 +58,7 @@ class Page{
         $id_page = $_GET['id'];
         $pages = new ModelsPage;
         $pages->pagedelete($id_page);
-        header('Location: /admin/liste-Pages');
+        header('Location: /admin/liste-Pages?message=3');
     }
 
     public function editpageAction(){
@@ -70,11 +78,12 @@ class Page{
         $page = new ModelsPage;
         $page->setId($_POST['id']);
         if(!empty($_POST['url'])){
-            $page->setUrl($_POST['url']);
+            $page->setUrl(htmlspecialchars($_POST['url']));
         }
         if(!empty($_POST['slug'])){
-            $page->setSlug($_POST['slug']);
+            $page->setSlug(htmlspecialchars($_POST['slug']));
         }
+        $page->setStatus($_POST['status']);
         $same=array();
         $page->save();
         $id_categories = $page->getCategoriesById($_POST['id']);
@@ -85,7 +94,7 @@ class Page{
             }
         }
 
-        header('location: /admin/liste-Pages');
+        header('location: /admin/liste-Pages?message=2');
         // foreach($_POST['pagecat'] as $cat){
         //     foreach($id_categories as $id){
         //         if($cat == $id['id_categorie']){

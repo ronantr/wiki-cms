@@ -17,7 +17,7 @@
         <?php foreach($categories as $cat){ ?>
         <tr>
             <td><?php echo $cat['id']; ?></td>
-            <td><?php echo $cat['name']; ?></td>
+            <td><?php echo htmlspecialchars_decode($cat['name']); ?></td>
             <td><?php echo $cat['creatAt']; ?></td>
             <td><a href="/admin/cat-delete?id=<?php echo $cat['id'];?>">Supprimer</a></td>
         

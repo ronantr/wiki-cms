@@ -66,7 +66,7 @@
                     <td><?php echo $Commentaire["id"]?></td>
                     <td><?php echo($Commentaire["id_article"]);?></td>
                     <td><?php echo($Commentaire["id_user"]);?></td>
-                    <td><?php echo($Commentaire["content"]);?></td>
+                    <td><?php echo(htmlspecialchars_decode($Commentaire["content"]));?></td>
                 </tr>
         </tbody>
         <?php }} ?>

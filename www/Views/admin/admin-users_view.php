@@ -35,8 +35,8 @@
         if ($user['isDeleted'] == 0){?>
         <tr>
             <td><?php echo $user['id']; ?> </td>
-            <td><?php echo $user['username']; ?> </td>
-            <td><?php echo $user['email']; ?> </td>
+            <td><?php echo htmlspecialchars_decode($user['username']); ?> </td>
+            <td><?php echo htmlspecialchars_decode($user['email']); ?> </td>
             <td><form action="/admin/users/edit?id=<?php echo $user['id'];?>" method="POST">
                 <select name="role">
                     <option value=1 <?php if($user['role'] == 1){ echo "Selected";} ?>>Administrateur</option>
@@ -45,7 +45,7 @@
                 </select> 
             </td>
             <!-- if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> -->
-            <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié";} ?> </td>
+            <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié"; ?> <button type="button"><a href="/admin/valider-user?id=<?php echo $user['id'];?>">Validé</a></button> <?php } ?> </td>
             <td><input type="submit" value="Edit Rôle"></td></form>
             <td><a href="/admin/users/delete?id=<?php echo $user['id'];?>">Supprimer</a></td>
         </tr>

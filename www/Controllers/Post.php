@@ -35,8 +35,8 @@ class Post{
 
             if(empty($errors)){
                 $view->assign("formErrors", $errors);
-                $Post->setPost_title($_POST["title"]);
-                $Post->setPost_content($_POST["content"]);
+                $Post->setPost_title(htmlspecialchars($_POST["title"]));
+                $Post->setPost_content(htmlspecialchars($_POST["content"]));
                 $Post->save();
                 header('Location: \admin\liste-post?message=2');
             }else{
@@ -57,8 +57,8 @@ class Post{
             if($post["id"]==$_GET["id"]){
             
                 $Post->setId($post["id"]);
-                $Post->setPost_title($post["title"]);
-                $Post->setPost_content($post["content"]);
+                $Post->setPost_title(htmlspecialchars($post["title"]));
+                $Post->setPost_content(htmlspecialchars($post["content"]));
             }
         }
 
@@ -70,8 +70,8 @@ class Post{
 
             if(empty($errors)){
                 $view->assign("formErrors", $errors);
-                $Post->setPost_title($_POST["title"]);
-                $Post->setPost_content($_POST["content"]);
+                $Post->setPost_title(htmlspecialchars($_POST["title"]));
+                $Post->setPost_content(htmlspecialchars($_POST["content"]));
                 $Post->save();
                 header('Location: \admin\liste-post?message=3');
 
@@ -111,7 +111,7 @@ class Post{
                 $Commentaire->setId($_GET["id"]);
                 $Commentaire->setCommentaire_id_article($_POST["id_article"]);
                 $Commentaire->setCommentaire_id_user($_POST["id_user"]);
-                $Commentaire->setCommentaire_content($_POST["content"]);
+                $Commentaire->setCommentaire_content(htmlspecialchars($_POST["content"]));
                 $Commentaire->save();
                 $id = $_GET["id"];
             

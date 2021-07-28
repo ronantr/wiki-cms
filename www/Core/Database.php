@@ -173,6 +173,12 @@ class Database
         return $users;
 	}
 
+	public function validerUser($id){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerified = 1 WHERE id =$id; ");
+		$query->execute();
+	}
+
 	public function userdelete($id){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
@@ -286,6 +292,14 @@ class Database
 		$this->table = DBPREFIX."page";
 		$join = DBPREFIX."page_categorie";
 		$query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id = $id;");
+		$query->execute();
+		$page = $query->fetchall();
+        return $page;
+
+	}
+	public function getallpage(){
+		$this->table = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table ;");
 		$query->execute();
 		$page = $query->fetchall();
         return $page;

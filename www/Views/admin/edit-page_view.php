@@ -11,9 +11,14 @@
     <?php $comt =0;
     foreach ($categories as $categorie){
         $comt++;
-        ?> <input type="checkbox" id=<?php echo $categorie['name']; ?> name="pagecat[]" value=<?php echo $categorie['id']; foreach($id_categories as $id){ if($categorie['id'] == $id['id_categorie']){ echo " checked";}}?>>
-            <label for=<?php echo $categorie['name']; ?>><?php echo $categorie['name']; ?></label>
+        ?> <input type="checkbox" id=<?php echo htmlspecialchars_decode($categorie['name']); ?> name="pagecat[]" value=<?php echo $categorie['id']; foreach($id_categories as $id){ if($categorie['id'] == $id['id_categorie']){ echo " checked";}}?>>
+            <label for=<?php echo htmlspecialchars_decode($categorie['name']); ?>><?php echo htmlspecialchars_decode($categorie['name']); ?></label>
     <?php } ?>
+    <label>Status</label>
+    <select name="status">
+        <option value=0 <?php if($page[0]['status'] == 0){ echo" selected";} ?>>Publié</option>
+        <option value=1 <?php if($page[0]['status'] == 1){ echo" selected";} ?>>Brouillon</option>
+    </select>
     <button type="submit">Submit</button>
     
 </form>

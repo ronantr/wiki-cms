@@ -32,7 +32,7 @@
                 <td><?php echo $Commentaire["id"]?></td>
                     <td><?php echo($Commentaire["id_article"]);?></td>
                     <td><?php echo($Commentaire["id_user"]);?></td>
-                    <td><?php echo($Commentaire["content"]);?></td>
+                    <td><?php echo(htmlspecialchars_decode($Commentaire["content"]));?></td>
                     <td><a href="\admin\post?id=<?php echo $Commentaire["id_article"];?>">affichier</a> <a href="\admin\delete-commentaire?id=<?php echo $Commentaire["id"];?>">supprimer</a> <a href="\admin\edit-commentaire?id=<?php echo $Commentaire["id"];?>"> editer<a>
                 </tr>
                 <?php 
