@@ -34,6 +34,9 @@
   controller: Security
   action: logout
 
+/recuperationmdp:
+  controller: Security
+  action: recuperationmdp
 
 /liste-des-utilisateurs:
   controller: Security
@@ -58,7 +61,7 @@
 /admin/edit-post:
   controller: Post
   action: postedit
-/admin/post:
+/post:
   controller: Post
   action: post
 /admin/edit-cat-post:
@@ -109,6 +112,10 @@
 /admin/users/restaurer:
   controller: User
   action: userrestaurer
+/admin/user:
+  controller: User
+  action: User
+
 
 /admin/valider-user:
   controller: User

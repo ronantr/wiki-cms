@@ -45,7 +45,7 @@
                         }
                     ?>
                     </select></td>
-                    <td><a href="\admin\post?id=<?php echo $id;?>">affichier</a></td>
+                    <td><a href="\post?id=<?php echo $id;?>">affichier</a></td>
                     <td><a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a></td>
                     <td><a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a></td>
                     <td><button type="submit">Change Catégorie</button></form></td>

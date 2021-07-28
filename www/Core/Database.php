@@ -73,12 +73,12 @@ class Database
 		}elseif(is_null($this->getId())){
 			//INSERT
 
-            //var_dump(array_keys($data));
+            var_dump(array_keys($data));
 			
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
-            echo '<br><br><br>';
+            //echo '<br><br><br>';
             //var_dump($query);
             $query->execute($data);
 		}else{            
@@ -191,7 +191,16 @@ class Database
 		$query->execute();
 
 	}
-
+	public function VerifUser($email){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerified = 1 WHERE email = '$email';");
+		$query->execute();
+	}
+	public function ModificationUser($email,$password){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET password = '$password' WHERE email = '$email';");
+		$query->execute();
+	}
 	public function restaurer($id){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("UPDATE $this->table SET isDeleted = 0 WHERE id = '$id';");
@@ -227,6 +236,7 @@ class Database
 		$DBPREFIX_editor = $DBPREFIX."editor";
 		$DBPREFIX_static = $DBPREFIX."static";
 		$DBPREFIX_page_categorie = $DBPREFIX."page_categorie";
+		$DBPREFIX_page = $DBPREFIX."page";
 		$query = $this->pdo->prepare("alter table article rename  TO $DBPREFIX_article ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table commentaire rename  TO $DBPREFIX_commentaire ;");
@@ -238,6 +248,8 @@ class Database
 		$query = $this->pdo->prepare("alter table page_categorie rename  TO $DBPREFIX_page_categorie ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table static rename  TO $DBPREFIX_static ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table page rename  TO $DBPREFIX_page ;");
 		$query->execute();
 		return true;
 

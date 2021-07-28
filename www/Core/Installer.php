@@ -52,7 +52,7 @@ class Installer
     
 
     public function checkEnvExist() {
-        if( file_exists('.env.dev')|| file_exists('.env') || file_exists('.env.prod')) {
+        if( file_exists('.env') || file_exists('.env.prod')) {
             return true;
         }
         return false;
@@ -66,23 +66,18 @@ class Installer
                 $_POST ['data']['DBPWD']);
             return true;
         }catch(Exception $e){
+            return false;
 			die ("Erreur SQL ".$e->getMessage());
 		}
-    }
-    public function checkDatabaseExist() {
-        var_dump($_POST );
-
-        exit(0);
-        return false;
     }
     public function editEnvFiles($db) {
         $env = ".env";
         $env_prod = ".env.prod";
-        $this->putOnEnvFile($env);
-        $this->putOnEnvProdFile($env_prod,$db);
+        $this->EnvFile($env);
+        $this->EnvProdFile($env_prod,$db);
     }
 
-    public function putOnEnvProdFile($env_prod, $db) {
+    public function EnvProdFile($env_prod, $db) {
         $content_envprod = "";
         $content_envprod .= "DBDRIVER=mysql". PHP_EOL;
         foreach($db as $key => $value){
@@ -93,20 +88,23 @@ class Installer
         file_put_contents($env_prod, $content_envprod);
     }
 
-    public function putOnEnvFile($env) {
+    public function EnvFile($env) {
         $content_env = "APP_NAMESPACE=\App\ ".PHP_EOL;
         $content_env .= "ENV=prod". PHP_EOL;
         file_put_contents($env, $content_env);
     }
 
     public function creationUser($user) {
+        
         $userf = new User();
+        var_dump($user);
+        $Password = password_hash(htmlspecialchars($user['Password']), PASSWORD_BCRYPT);
         $userf->setUsername($user['Username']);
         $userf->setEmail($user['Email']);
-        $userf->setPwd($user['Password']);
+        $userf->setPwd($Password);
         $userf->setRole("1");
-        $userf->setIsDeleted(0);
-        //$user->setIsVerified(1);
+        //$userf->setIsDeleted(0);
+        var_dump($userf);
         $userf->save();
     }
 
