@@ -9,7 +9,7 @@ class Page{
         $pages = new ModelsPage;
         $view = new View('admin/liste-page','back');
         $view->assign('pages',$pages->getUris());
-        $view->assign("title","Liste Pages");
+        $view->assign("title","Admin Liste Pages");
 
         
     }
