@@ -28,8 +28,8 @@
         if ($user['isDeleted'] == 1){?>
         <tr>
             <td><?php echo $user['id']; ?> </td>
-            <td><?php echo $user['username']; ?> </td>
-            <td><?php echo $user['email']; ?> </td>
+            <td><?php echo htmlspecialchars_decode($user['username']); ?> </td>
+            <td><?php echo htmlspecialchars_decode($user['email']); ?> </td>
             <td><?php if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> </td>
             <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié";} ?> </td>
             <td><a href="/admin/users/restaurer?id=<?php echo $user['id'];?>">Restaurer</a></td>

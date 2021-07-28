@@ -34,6 +34,9 @@
   controller: Security
   action: logout
 
+/recuperationmdp:
+  controller: Security
+  action: recuperationmdp
 
 /liste-des-utilisateurs:
   controller: Security
@@ -58,7 +61,7 @@
 /admin/edit-post:
   controller: Post
   action: postedit
-/admin/post:
+/post:
   controller: Post
   action: post
 /admin/edit-cat-post:
@@ -109,6 +112,14 @@
 /admin/users/restaurer:
   controller: User
   action: userrestaurer
+/admin/user:
+  controller: User
+  action: User
+
+
+/admin/valider-user:
+  controller: User
+  action: valideruser
 
 ###############
 ###installer###
@@ -137,3 +148,31 @@
 /admin/add-page-send:
   controller: Page
   action: create
+
+/admin/page-delete:
+  controller: Page
+  action: delete
+
+/admin/page-edit:
+  controller: Page
+  action: editpage
+
+/admin/edit-page-send:
+  controller : Page
+  action: editer
+
+###############
+###Catégorie###
+###############
+
+/admin/liste-categorie:
+  controller: Categorie
+  action: default
+
+/admin/add-categorie:
+  controller: Categorie
+  action: add
+
+/admin/cat-delete:
+  controller: Categorie
+  action: delete

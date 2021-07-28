@@ -33,7 +33,7 @@ class Commentaire{
     
                 if(empty($errors)){
                     $view->assign("formErrors", $errors);
-                    $Commentaire->setCommentaire_content($_POST["content"]);
+                    $Commentaire->setCommentaire_content(htmlspecialchars($_POST["content"]));
                     $Commentaire->save();
                     header('Location: \liste-commentaire?message=2');
                 }else{
@@ -54,7 +54,7 @@ class Commentaire{
                 if($commentaire["id"]==$_GET["id"]){
                 
                     $Commentaire->setId($commentaire["id"]);
-                    $Commentaire->setCommentaire_content($commentaire["content"]);
+                    $Commentaire->setCommentaire_content(htmlspecialchars($commentaire["content"]));
                 }
             }
     
@@ -66,7 +66,7 @@ class Commentaire{
     
                 if(empty($errors)){
                     $view->assign("formErrors", $errors);
-                    $Commentaire->setCommentaire_content($_POST["content"]);
+                    $Commentaire->setCommentaire_content(htmlspecialchars($_POST["content"]));
                     $Commentaire->save();
                     header('Location: \admin\liste-commentaire?message=3');
     
@@ -93,6 +93,7 @@ class Commentaire{
             
                 $view = new View("post", "back");
                 $view->assign("allCommentaires", $allCommentaires);
+                $view->assign("title","Post");
             
         }
 
