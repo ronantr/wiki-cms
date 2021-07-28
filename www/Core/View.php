@@ -18,7 +18,6 @@ class View
 		
 	}
 
-
 	public function setTemplate($template){
 		if(file_exists("Views/Templates/".$template."_tpl.php")){
 			$this->template = "Views/Templates/".$template."_tpl.php";
@@ -37,6 +36,29 @@ class View
 
 	public function assign($key, $value){
 		$this->data[$key] = $value;
+	}
+
+	public static function lookupfile(string $file){
+		$filename = explode(".", trim($file));
+		$extension = array_pop($filename);
+
+		switch ($extension){
+			case "css" :
+				return '/public/css/'.$file;
+				break;
+			case "js" :
+				return '/public/js/'.$file;
+				break;
+			case "png" || "jpg" || "jpeg" || "svg":
+				return '/public/images/'.$file;
+				break;
+			case "sql":
+				return '/public/sql/'.$file;
+				break;
+			default:
+				echo "Fichier Non Trouvé";
+				break;
+		}
 	}
 
 

@@ -38,36 +38,88 @@ class Form
 
 
 
-	public static function showForm($form){
-
-		$html = "<form class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
-
-
-		foreach ($form["input"] as $name => $dataInput) {
-
-			$html .="<label for='".$name."'>".($dataInput["label"]??"")." </label>";
+	public static function showForm($form)
+    {
+	
+	if(empty($_GET)){
+        $html = "<form ".(!empty($form["config"]["id"]) ? "id='".$form["config"]["id"]."'": "")." class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
 
 
-			$html .= "<input 
+        foreach ($form["input"] as $name => $dataInput) {
+
+            $html .="</br><label for='".$name."'>".($dataInput["label"]??"")." </label>";
+
+
+            if ($dataInput["type"]  ==="mytextarea" ){
+
+
+                $html .= "</br><textarea	 
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "mytextarea")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
+						>".((!empty($dataInput["defaultValue"]))?"" . $dataInput["defaultValue"] . "":"")."</textarea></br>";
+
+            }else{
+            $html .= "</br><input 
 						id='".$name."'
 			 			class='".($dataInput["class"]??"")."' 
 						name='".$name."'
 						type='".($dataInput["type"] ?? "text")."'
 						placeholder='".($dataInput["placeholder"] ?? "")."'
 						".((!empty($dataInput["required"]))?"required='required'":"")."
+						".((!empty($dataInput["defaultValue"]))?"value='" . $dataInput["defaultValue"] . "'":"")."
 						>";
+						
+            }
+
+        }
+	}else{
+		//print_r($_GET);
+		$html = "<form ".(!empty($form["config"]["id"]) ? "id='".$form["config"]["id"]."'": "")." class='".($form["config"]["class"]??"")."' method='".( self::cleanWord($form["config"]["method"]) ?? "GET" )."' action='".( $form["config"]["action"] ?? "" )."'>";
 
 
-		}
-		
+        foreach ($form["input"] as $name => $dataInput) {
 
-		$html .= "<input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+            $html .="</br><label for='".$name."'>".($dataInput["label"]??"")." </label>";
 
 
-		echo $html;
+            if ($dataInput["type"]  ==="mytextarea" ){
+
+
+                $html .= "</br><textarea	 
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "mytextarea")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
+						>".((!empty($dataInput["defaultValue"]))?"" . $dataInput["defaultValue"] . "":"")."</textarea></br>";
+
+            }else{
+            $html .= "</br><input 
+						id='".$name."'
+			 			class='".($dataInput["class"]??"")."' 
+						name='".$name."'
+						type='".($dataInput["type"] ?? "text")."'
+						placeholder='".($dataInput["placeholder"] ?? "")."'
+						".((!empty($dataInput["required"]))?"required='required'":"")."
+						".((!empty($dataInput["defaultValue"]))?"value='" . $dataInput["defaultValue"] . "'":"")."
+						>";
+						
+            }
+
+        }
+
 	}
 
+        $html .= "</br><input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
 
+
+        echo $html;
+    }
 
 
 	public static function cleanWord($word){

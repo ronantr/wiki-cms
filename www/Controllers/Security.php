@@ -6,8 +6,8 @@ use App\Core\Security as coreSecurity;
 use App\Core\Database;
 use App\Core\View;
 use App\Core\Form;
-use App\Core\ConstantManager;
 use App\Models\User;
+
 
 class Security{
 
@@ -20,61 +20,91 @@ class Security{
 	public function registerAction(){
 		
 		
-		/*
+/*
 		$user = new User();
 		$user->setId(3);
-		$user->setLastname("Tutu");
-
-		 
+		$user->setUsername("Tutu");
+        $user->setEmail("toto@gmail.com");
+        $user->setPwd("Test1234");
+		 /*
 			[id:App\Models\User:private] => 3 
-			[firstname:protected] => Toto
-			[lastname:protected] => Tutu 
+			[username:protected] => Toto
 			[email:protected] => y.skrzypczyk@gmail.com
 			[pwd:protected] => Test1234
-			[country:protected] => fr
-			[status:protected] => 0 
-			[role:protected] => 0 
-			[isDeleted:protected] => 0 
-		*/
 
-
-		//$user->save();
+		$user->save();*/
 
 		$user = new User();
 		$view = new View("register");
+		$view->assign("title","Register");
 		$form = $user->buildFormRegister();
-		$view->assign("form", $form);
+
 
 		
 
 		if(!empty($_POST)){
 			$errors = Form::validator($_POST, $form);
-
+            //var_dump($form);
+            //print"<br>";
+            //var_dump($_POST);
 			if(empty($errors)){
-
-				$user->setFirstname("Toto");
-				$user->setLastname("Titi");
-				$user->setEmail("y.skrzypczyk@gmail.com");
-				$user->setPwd("Test1234");
-				$user->setCountry("fr");
-				//$user->save();
-
+                //$view->assign("formErrors", $errors);
+				$user->setUsername($_POST["username"]);
+				$user->setEmail(htmlspecialchars($_POST["email"]));
+				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+				$user->save();
+				header("Location: /login");
+                //var_dump($user);
 			}else{
 				$view->assign("formErrors", $errors);
 			}
-
 		}
-		
-		
-
+        $view->assign("form", $form);
 	}
 
 	public function loginAction(){
-		echo "controller security action login";
+		$user = new User();
+		$view = new View("login");
+		$view->assign("title","Login");
+		$form = $user->buildFormLogin();
+		$erreur_affiche = false;
+
+		if(!empty($_POST)){
+			$errors = Form::validator($_POST, $form);
+			if(isset($_POST["email"]) && isset($_POST["password"]))
+			{
+				$user->setEmail(htmlspecialchars($_POST["email"]));
+				$email= htmlspecialchars($_POST["email"]);
+				//$password = (password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+				$password = htmlspecialchars($_POST["password"]);
+				if($email != "" && $password != "" && $user->getPwd($email,$password)){
+					session_start();
+					$_SESSION['username']= $user->getUsernamedb($email);
+					$_SESSION['role'] = $user->getRoledb($email);
+					$_SESSION['login']=true;
+					// $view->assign("form", $form);
+					echo $user->getRoledb($email);
+					if ($_SESSION['role'] == 1 || $_SESSION['role'] == 3 ){
+						header('Location: \admin\tableau-de-bord');
+					}
+					else{
+						header('Location: \ ');
+					}
+				}
+				else{
+					$erreur_affiche = true;
+				}
+			}
+		}
+	$view->assign("form", $form);
+	if($erreur_affiche){
+		$view->assign("formErrors", $errors);
+	}
 	}
 
 	public function logoutAction(){
-		echo "controller security action logout";
+		$_SESSION['login'] = false;
+		header('Location: \ ');
 	}
 
 	public function listofusersAction(){
@@ -86,5 +116,6 @@ class Security{
 
 		echo "Là je liste tous les utilisateurs";
 	}
+
 
 }

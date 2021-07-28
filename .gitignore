@@ -1,2 +1,9 @@
-.env
+
+www/.env
 db_data
+.idea
+.DS_Store
+www/.DS_Store
+
+www/.erzrezr
+
