@@ -52,7 +52,7 @@ class Installer
     
 
     public function checkEnvExist() {
-        if( file_exists('.env') || file_exists('.env.prod')) {
+        if( file_exists('.env') && file_exists('.env.prod')) {
             return true;
         }
         return false;
