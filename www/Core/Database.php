@@ -185,9 +185,9 @@ class Database
 		$query->execute();
 
 	}
-	public function VerifUser($id){
+	public function VerifUser($email){
 		$this->table = DBPREFIX."editor";
-		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerfied = 1 WHERE id = '$id';");
+		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerified = 1 WHERE email = '$email';");
 		$query->execute();
 	}
 	public function ModificationUser($email,$password){
