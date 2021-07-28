@@ -73,7 +73,7 @@ class Database
 		}elseif(is_null($this->getId())){
 			//INSERT
 
-            var_dump(array_keys($data));
+            //var_dump(array_keys($data));
 			
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
