@@ -23,17 +23,39 @@
 					</ul>
 				</nav>
 			</div>
-			<div class="nav_gauche">
+		</header>	
+		<main>
+			<div class="nav_gauche_front" style="width:20%;padding-top: 50px;">
 				
 				<div class="row">
-					<div class="nav_height">
-						<h1 style="vertical-align:center;">Login pour la création des Posts ...</h1>
+					<div class="nav_height_front">
+						<h1 style="vertical-align:center;">Pages</h1>
+						 <?php $pages = new App\Models\Page;
+						 		$allpage= $pages->getallpage();
+						 	foreach($allpage as $page){
+								 ?> <h4><a href="/<?php echo htmlspecialchars_decode($page['url']); ?>"><?php echo htmlspecialchars_decode($page['slug']); ?></a></h4>
+							 <?php }
+						 ?>
+						<h1 style="vertical-align:center;">Catégories</h1>
+							<?php $cat = new App\Models\Categorie;
+									$categories= $cat->getCategories();
+								foreach($categories as $categorie){
+									?> <h4><a href="/categorie?id=<?php echo ($categorie['id']); ?>"><?php echo htmlspecialchars_decode($categorie['name']); ?></a></h4>
+								<?php }
+							?>
+						<h1 style="vertical-align:center;">Tous les Article</h1>
+						<?php $article = new App\Models\Post;
+									$posts= $article->getPosts();
+								foreach($posts as $post){
+									?> <h4><a href="/post?id=<?php echo ($post['id']); ?>"><?php echo htmlspecialchars_decode($post['title']); ?></a></h4>
+								<?php }
+							?>
 					</div>
 					
 				</div>
 			</div>
-		</header>
-		<main>
+		
+		
 			<section class="main">
 				<div class="containermain">
 					<?php include $this->view ?>
