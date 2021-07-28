@@ -144,7 +144,14 @@ class Database
         $query->execute();
         $posts = $query->fetchall();
         return $posts;
-    }
+	}
+	public function getpostbyid($id){
+		$this->table = DBPREFIX."article";
+        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id ; ");
+        $query->execute();
+        $posts = $query->fetchall();
+        return $posts;
+	}
 	public function deletePost($id){
 		$this->table = DBPREFIX."article";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
