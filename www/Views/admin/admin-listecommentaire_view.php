@@ -12,7 +12,7 @@
 }
 }
 ?><div>
-    <table id='tab'>
+    <table class='flex-col mt-50'>
         <thead>
             <tr>
                 <td>id</td>

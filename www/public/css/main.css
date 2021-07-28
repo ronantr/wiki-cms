@@ -17,6 +17,9 @@ body {
 .width-500 {
   width: 500px; }
 
+.mt-50 {
+  margin-top: 50px; }
+
 .form {
   color: #111;
   display: flex;
