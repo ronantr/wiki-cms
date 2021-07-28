@@ -51,7 +51,8 @@ class Mailer
 
     if($mail->send()){
         $user=new User;
-        echo $user->ModificationUser($email,$cle);
+        $user->ModificationUser($email,$cle);
+        $user->VerifUser($email);
         echo('test');
         return true;
     }

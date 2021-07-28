@@ -15,6 +15,7 @@ class Installer
         if($installer->checkEnvExist() == "false") {
             
             $view = new View("installer", "installer");
+            $view->assign("title","Installer");
         } else {
             header('location: / ');
         }

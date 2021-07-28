@@ -37,6 +37,7 @@ class Security{
 
 		$user = new User();
 		$view = new View("register");
+		$view->assign("title","Register");
 		$form = $user->buildFormRegister();
 
 
@@ -65,6 +66,7 @@ class Security{
 	public function loginAction(){
 		$user = new User();
 		$view = new View("login");
+		$view->assign("title","Login");
 		$form = $user->buildFormLogin();
 		$erreur_affiche = false;
 

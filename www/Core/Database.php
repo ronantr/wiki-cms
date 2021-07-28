@@ -173,6 +173,12 @@ class Database
         return $users;
 	}
 
+	public function validerUser($id){
+		$this->table = DBPREFIX."editor";
+		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerified = 1 WHERE id =$id; ");
+		$query->execute();
+	}
+
 	public function userdelete($id){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
@@ -185,9 +191,9 @@ class Database
 		$query->execute();
 
 	}
-	public function VerifUser($id){
+	public function VerifUser($email){
 		$this->table = DBPREFIX."editor";
-		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerfied = 1 WHERE id = '$id';");
+		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerified = 1 WHERE email = '$email';");
 		$query->execute();
 	}
 	public function ModificationUser($email,$password){
@@ -262,6 +268,87 @@ class Database
 		$query->execute();
         $pages = $query->fetchall();
         return $pages;
+	}
+
+	public function savePages($url,$slug){
+		$this->table = DBPREFIX."page";
+		$query = $this->pdo->prepare("INSERT INTO $this->table (url,slug,status) VALUES('$url','$slug',0);");
+		$query->execute();
+
+	}
+
+	public function getlastedpage(){
+		$this->table = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table ORDER BY id DESC LIMIT 1;");
+		$query->execute();
+		$page = $query->fetchall();
+        return $page;
+	}
+
+	public function savepagecat($id_page,$id_cat){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("INSERT INTO $this->table (id_page,id_categorie) VALUES($id_page,$id_cat);");
+		$query->execute();
+	}
+
+	public function pagedelete($id){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id_page = $id;");
+		$query->execute();
+		$this->table = DBPREFIX."page";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = $id;");
+		$query->execute();
+	}
+
+	public function getpage($id){
+		$this->table = DBPREFIX."page";
+		$join = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id = $id;");
+		$query->execute();
+		$page = $query->fetchall();
+        return $page;
+
+	}
+	public function getallpage(){
+		$this->table = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table ;");
+		$query->execute();
+		$page = $query->fetchall();
+        return $page;
+
+	}
+
+	public function getCategoriesById($id){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("SELECT id_categorie FROM $this->table WHERE id_page = $id ORDER BY id_categorie ; ");
+		$query->execute();
+		$cat = $query->fetchall();
+		return $cat;
+	}
+
+	public function delatepagecat($id_page){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id_page = $id_page;");
+		$query->execute();
+	}
+
+	public function createCat($name){
+		$this->table = DBPREFIX."categorie";
+		$query = $this->pdo->prepare("INSERT INTO $this->table (name) VALUES ('$name');");
+		$query->execute();
+	}
+
+	public function deleteCat($id){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id_categorie = $id;");
+		$query->execute();
+		$this->table = DBPREFIX."article";
+		$query = $this->pdo->prepare("UPDATE $this->table SET id_categorie = NULL WHERE id_categorie = $id;");
+		$query->execute();
+		$this->table = DBPREFIX."categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = $id;");
+		$query->execute();
+
 	}
 
 

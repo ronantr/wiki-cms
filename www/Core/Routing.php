@@ -83,7 +83,8 @@ class Routing{
 		$page = new Page;
 		$uris = $page->getUris();
 		foreach ($uris as $url){
-			if ($url['url'] == "/".$uri){
+			$uricredi = "/".$url['url'];
+			if ($url['url'] == $uricredi){
 				return true;
 			}
 		}

@@ -24,10 +24,14 @@
 
 				</nav>
 			</div>
+
 		</header>
 		<div class="flex-col height-100">
 			<?php include $this->view ?>
 		</div>
+
+		
+
 	</body>
 
 

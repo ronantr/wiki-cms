@@ -33,13 +33,13 @@
                 <tr>
                     <td><?php echo $id;?></td>
                     <td><?php echo($value["title"]);?></td>
-                    <td><?php echo($value["content"]);?></td>
+                    <td><?php echo(htmlspecialchars_decode($value["content"]));?></td>
                     <td><form action="\admin\edit-cat-post?id=<?php echo $id;?>" method="post"><select name="categorie">
                             <option value="">...</option>
                     <?php 
                         foreach($categories as $categorie){
                             $id_cat = $categorie['id'];
-                            $name_cat = $categorie['name'];
+                            $name_cat = htmlspecialchars_decode($categorie['name']);
                             ?> <option value= <?php echo $id_cat; if($categorie['id'] == $value['id_categorie']){ echo " selected";} ?> ><?php echo $name_cat ;?></option>
                             <?php
                         }
