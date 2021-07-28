@@ -84,6 +84,8 @@ class Page{
                 $page->savepagecat($_POST['id'],$cat);
             }
         }
+
+        header('location: /admin/liste-Pages');
         // foreach($_POST['pagecat'] as $cat){
         //     foreach($id_categories as $id){
         //         if($cat == $id['id_categorie']){
