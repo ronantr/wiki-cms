@@ -306,6 +306,24 @@ class Database
 		$query->execute();
 	}
 
+	public function createCat($name){
+		$this->table = DBPREFIX."categorie";
+		$query = $this->pdo->prepare("INSERT INTO $this->table (name) VALUES ('$name');");
+		$query->execute();
+	}
+
+	public function deleteCat($id){
+		$this->table = DBPREFIX."page_categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id_categorie = $id;");
+		$query->execute();
+		$this->table = DBPREFIX."article";
+		$query = $this->pdo->prepare("UPDATE $this->table SET id_categorie = NULL WHERE id_categorie = $id;");
+		$query->execute();
+		$this->table = DBPREFIX."categorie";
+		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = $id;");
+		$query->execute();
+
+	}
 
 
 

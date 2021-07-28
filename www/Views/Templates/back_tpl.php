@@ -30,12 +30,12 @@
 					<a href="/admin/tableau-de-bord">Dashboard Home</a>
 					<a href="#">Media</a>
 					<a href="/admin/liste-Pages">Pages</a>
+					<a href="/admin/liste-categorie">Catégories</a>
 					<a href="/admin/liste-post">Posts</a>
 					<a href="/admin/liste-commentaire">Commentaires</a>
 					<a href="#">Thèmes</a>
 					<?php if($_SESSION['role'] == 1){  ?> <a href="/admin/users/liste-utilisateurs">Utilisateurs</a> <?php } ?>
 						
-					<a href="#">Paramètres</a>
 				</div>
 			</div>
 		</header>

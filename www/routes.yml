@@ -149,3 +149,19 @@
 /admin/edit-page-send:
   controller : Page
   action: editer
+
+###############
+###Catégorie###
+###############
+
+/admin/liste-categorie:
+  controller: Categorie
+  action: default
+
+/admin/add-categorie:
+  controller: Categorie
+  action: add
+
+/admin/cat-delete:
+  controller: Categorie
+  action: delete
