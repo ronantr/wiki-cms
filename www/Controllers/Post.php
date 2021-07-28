@@ -19,7 +19,7 @@ class Post{
         $view->assign("allPosts", $allPosts);
         $view->assign("categories",$allCat);
         $view->assign("title","Admin Liste Post");
-    
+
         }
 
     public function postajouteAction(){

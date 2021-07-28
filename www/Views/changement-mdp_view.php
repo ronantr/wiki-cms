@@ -14,6 +14,6 @@
     <meta name="viewport">
 </head>
 <body>
-    <h1>Récuperation de PASSWORD</h1>
+    <h1>Récuperation de MDP</h1>
 <?php  App\Core\Form::showForm($form); ?>
 </body>

@@ -20,7 +20,7 @@ class Installer
     }
     
     public function install(){
-        echo'test';
+        //echo'test';
         $this->editEnvFiles($_POST['data'],$_POST );
         $install = $this->makeDatabase();
 
@@ -81,7 +81,7 @@ class Installer
         $content_envprod = "";
         $content_envprod .= "DBDRIVER=mysql". PHP_EOL;
         foreach($db as $key => $value){
-            echo $key." - ".$value.'<br>';
+            //echo $key." - ".$value.'<br>';
             $content_envprod .= strtoupper($key) . "=" . $value . PHP_EOL;
         }
 
@@ -97,14 +97,13 @@ class Installer
     public function creationUser($user) {
         
         $userf = new User();
-        var_dump($user);
         $Password = password_hash(htmlspecialchars($user['Password']), PASSWORD_BCRYPT);
         $userf->setUsername($user['Username']);
         $userf->setEmail($user['Email']);
         $userf->setPwd($Password);
         $userf->setRole("1");
         //$userf->setIsDeleted(0);
-        var_dump($userf);
+        
         $userf->save();
     }
 

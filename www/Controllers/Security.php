@@ -114,7 +114,7 @@ class Security{
 		$form = $user->buildFormRecuperation();
 		$view->assign("form", $form);
 		if(!empty($_POST)){			
-            $mail = $mailer->sendMail($_POST['email'],$_POST['password']);
+            $mail = $mailer->sendMail($_POST['email']);
 			$errors = Form::validator($_POST, $form);
 			if(empty($errors && $mail === true)){ 
     
