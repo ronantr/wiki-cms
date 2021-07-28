@@ -20,7 +20,7 @@ class Installer
     }
     
     public function install(){
-        echo'test';
+        //echo'test';
         $this->editEnvFiles($_POST['data'],$_POST );
         $install = $this->makeDatabase();
 
@@ -81,7 +81,7 @@ class Installer
         $content_envprod = "";
         $content_envprod .= "DBDRIVER=mysql". PHP_EOL;
         foreach($db as $key => $value){
-            echo $key." - ".$value.'<br>';
+            //echo $key." - ".$value.'<br>';
             $content_envprod .= strtoupper($key) . "=" . $value . PHP_EOL;
         }
 
