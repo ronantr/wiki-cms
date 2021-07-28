@@ -228,17 +228,7 @@ class User extends Database
                     "minLength"=>8,
                     "maxLength"=>320,
                     "error"=>"Votre email doit faire entre 8 et 320 caractères"
-				],
-
-				"password"=>[
-					"label"=>"Votre mot de passe",
-					"type"=>"password",
-					"lengthMin"=>"8",
-					"required"=>true,
-					"class"=> "form-input",
-					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
-					"placeholder"=>"Votre mot de passe"
-                ]
+				]
             ]
 
         ];
