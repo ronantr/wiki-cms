@@ -26,14 +26,14 @@ class Mailer
     $mail->isSMTP();
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "mvccmswiki@gmail.com";
-    $mail->Password = 'mvccmswiki42@';
+    $mail->Username = "locacarverify@gmail.com";
+    $mail->Password = 'weopbtpgeftfvvuc';
     $mail->Port = 465;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;  
 
     //email settings
     $mail->isHTML(true);
-    $mail->setFrom("mvccmswiki@gmail.com");
+    $mail->setFrom("locacarverify@gmail.com");
     $mail->addAddress($email);
 
     
