@@ -351,7 +351,26 @@ class Database
 
 	}
 
+	public function getallpostsbyid($id_page){
+		$article = DBPREFIX."article";
+		$page = DBPREFIX."page";
+		$page_cat = DBPREFIX."page_categorie";
+		$cat= DBPREFIX."categorie";
+		$query = $this->pdo->prepare("SELECT $article.title, $article.content, $cat.name FROM $cat, $article, $page, $page_cat WHERE $page.id = $page_cat.id_page AND $page_cat.id_categorie = $article.id_categorie AND $page.id = $id_page AND $cat.id = $page_cat.id_categorie;");
+		$query->execute();
+		$posts = $query->fetchall();
+		return $posts;
 
+	}
+
+	public function getallpostbycat($id_cat){
+		$cat = DBPREFIX."categorie";
+		$article = DBPREFIX."article";
+		$query = $this->pdo->prepare("SELECT $article.title, $article.content,$cat.name FROM $cat,$article WHERE $cat.id = $article.id_categorie AND $article.id_categorie = $id_cat;  ");
+		$query->execute();
+		$posts = $query->fetchall();
+		return $posts;
+	}
 
 
 }

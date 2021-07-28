@@ -14,6 +14,11 @@
 		<header>
 			<div class="container">
 				<nav class="navbar">
+						<a href="/liste-page">Les Pages</a>
+						<a href="/liste-categories">Les Catégories</a>
+						<a href="/liste-articles">Les Articles</a>
+
+						<a>|</a>
 					<?php if (!App\Core\Security::isConnected()) { ?> <a href="/login">Connexion</a>
 						<a href="/s-inscrire">Incription</a>
 					<?php } else { ?>

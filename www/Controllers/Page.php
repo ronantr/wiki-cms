@@ -130,6 +130,22 @@ class Page{
 
     }
 
+    public function publicpageAction(){
+        $pages = new ModelsPage;
+        $view = new View('public/liste-page','front');
+        $view->assign('pages',$pages->getUris());
+        $view->assign("title","Liste Pages");
+    }
+
+    public function public_single_pageAction(){
+        $id_page = $_GET['id'];
+        $page = new ModelsPage;
+        $posts = $page->getallpostsbyid($id_page);
+        $view = new View('public/single-page','front');
+        $view->assign('posts', $posts);
+        $view->assign("title","Page");
+    }
+
 
 
 }

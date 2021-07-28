@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<<<<<<< HEAD
+
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo $title ?></title>
@@ -15,11 +15,11 @@
 <body>
 	<nav class="navbar">
 		<a href="/admin/tableau-de-bord">Dashboard Home</a>
-		<a href="#">Media</a>
+		<a href="/">Site</a>
 		<a href="/admin/liste-Pages">Pages</a>
 		<a href="/admin/liste-post">Posts</a>
+		<a href="/admin/liste-categorie">Catégories</a>
 		<a href="/admin/liste-commentaire">Commentaires</a>
-		<a href="#">Thèmes</a>
 		<a>|</a>
 		<a href="/admin/add-page">Créer une page</a>
 		<a href="/admin/add-post">Créer un post</a>

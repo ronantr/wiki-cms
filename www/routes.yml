@@ -161,6 +161,14 @@
   controller : Page
   action: editer
 
+/liste-page:
+  controller : Page
+  action : publicpage
+
+/single-page:
+  controller : Page
+  action: public_single_page
+
 ###############
 ###Catégorie###
 ###############
@@ -176,3 +184,11 @@
 /admin/cat-delete:
   controller: Categorie
   action: delete
+
+/liste-categories:
+  controller : Categorie
+  action: publiccategorie
+
+/single-categorie:
+  controller : Categorie
+  action: public_single_categorie

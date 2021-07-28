@@ -26,4 +26,20 @@ class Categorie{
         $categories->deleteCat($id_cat);
         header('Location: /admin/liste-categorie');
     }
+
+    public function publiccategorieAction(){
+        $categories = new ModelsCategorie;
+        $view = new View('public/liste-categorie','front');
+        $view->assign('categories',$categories->getCategories());
+        $view->assign("title","Liste Catégorie");
+    }
+
+    public function public_single_categorieAction(){
+        $id_cat = $_GET['id'];
+        $cat = new ModelsCategorie;
+        $posts = $cat->getallpostbycat($id_cat);
+        $view = new View('public/single-categorie','front');
+        $view->assign('posts', $posts);
+        $view->assign("title","Catégories");
+    }
 }
