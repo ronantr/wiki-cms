@@ -233,6 +233,48 @@ class User extends Database
 
         ];
 	}
+    public function buildFormChangmentmdp(){
+        return [
+
+            "config"=>[
+                "method"=>"POST",
+                "action"=>"",
+                "class"=>"form",
+                "Submit"=>"Changement du mot de passe ",
+                "id"=>"form_Changmentmdp"
+            ],
+            "input"=>[
+                "email"=>[
+                    "type"=>"email",
+                    "placeholder"=>"Votre email",
+                    "label"=>"Votre Email",
+                    "required"=>true,
+                    "class"=>"form-input",
+                    "minLength"=>8,
+                    "maxLength"=>320,
+                    "error"=>"Votre email doit faire entre 8 et 320 caractères"
+                ],
+                "password"=>[
+                    "label"=>"Votre mot de passe",
+                    "type"=>"password",
+                    "lengthMin"=>"8",
+                    "class"=>"form-input",
+                    "required"=>true,
+                    "error"=>"Votre mot de passe doit faire plus de 8 caractères",
+                    "placeholder"=>"Votre mot de passe"
+                ],
+                "pwdConfirm"=>[
+                    "label"=>"Confirmation Password",
+                    "class"=>"form-input",
+                    "type"=>"password",
+                    "confirm"=>"pwd",
+                    "required"=>true,
+                    "error"=>"Votre mot de passe de confirmation est incorrect",
+                    "placeholder"=>"Confirmation de mot de passe"
+                ]
+            ]
+        ];
+    }
 
 }
 

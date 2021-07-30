@@ -124,6 +124,50 @@ class Security{
 				}
 			}
 		}
+	public function moficiationmdpAction(){
+	    $user = new User();
+	    $view = View("new-mdp");
+	    $form = $user->buildFormChangmentmdp();
+	    $view->assign("form", $form);
+        $erreur_affiche = false;
+
+        if(!empty($_POST)){
+            $errors = Form::validator($_POST, $form);
+            if(isset($_POST["email"]) && isset($_POST["password"]))
+            {
+                $user->setEmail(htmlspecialchars($_POST["email"]));
+                $email= htmlspecialchars($_POST["email"]);
+                //$password = (password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+                $password = htmlspecialchars($_POST["password"]);
+
+                if($email != "" && $password != "" && $user->getPwd($email,$password)){
+                    session_start();
+                    $user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+                    $user->save();
+                    $_SESSION['username']= $user->getUsernamedb($email);
+                    $_SESSION['role'] = $user->getRoledb($email);
+                    $_SESSION['login']=true;
+                    // $view->assign("form", $form);
+                    echo $user->getRoledb($email);
+
+                    if ($_SESSION['role'] == 1 || $_SESSION['role'] == 3 ){
+                        header('Location: \admin\tableau-de-bord');
+                    }
+                    else{
+                        header('Location: \ ');
+                    }
+                }
+                else{
+                    $erreur_affiche = true;
+                }
+            }
+        }
+        $view->assign("form", $form);
+        if($erreur_affiche){
+            $view->assign("formErrors", $errors);
+        }
+
+    }
 	public function listofusersAction(){
 
 		$security = new coreSecurity(); 
