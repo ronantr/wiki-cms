@@ -104,7 +104,7 @@ class Security{
 	}
 
 	public function logoutAction(){
-		$_SESSION['login'] = false;
+		unset($_SESSION["login"]);
 		header('Location: \ ');
 	}
 	public function recuperationmdpAction(){
