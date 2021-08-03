@@ -49,9 +49,10 @@ class Mailer
         $subject = 'Mot de passe CMS';
         $body = "Bienvenue sur cms,</br>";
         $body .= "</br>";
-        $body .= "Le mot de passe de votre compte a bien &eacute;t&eacute; modifi&eacute;. Votre mot de passe est ci-dessous </br>";
+        $body .= "Le mot de passe de votre compte a bien &eacute;t&eacute; modifi&eacute;. Votre mot de passe temporaire est ci-dessous </br>";
         $body .= "Votre nouveau mot de passe : " . $randomString;
         $body .= '</br>';
+        $body .= 'apres votre connecetion, il faudrait changer le mot de passe';
         $body .= '</br>             ';
         $body .= "-------------------- </br>";
         $body .= "Ceci est un mail automatique, Merci de ne pas y r&eacute;pondre.";
