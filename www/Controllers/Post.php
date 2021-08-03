@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Post as ModelPost;
 use App\Models\User;
 use App\Core\Database;
+use App\Core\Security;
 use App\Core\View;
 use App\Core\Form;
 use App\Models\Commentaire as ModelCommentaire;
@@ -12,6 +13,11 @@ use App\Models\Commentaire as ModelCommentaire;
 class Post{
 
     public function defaultAction(){
+         $security = Security::getInstance();
+         if(!$security->isConnected()){
+             header('Location: /login');
+         }
+        
         $Posts = new ModelPost;
         $allPosts = $Posts->getPosts();
         $allCat = $Posts->getCategories();
@@ -83,6 +89,10 @@ class Post{
         
     }
     public function postdeleteAction(){
+         $security = Security::getInstance();
+         if(!$security->isConnected()){
+             header('Location: /login');
+         }
         $id=$_GET['id'];
         $Post = new ModelPost();
         if (!empty($_GET['id'])) {
@@ -92,6 +102,10 @@ class Post{
     }
 
     public function postAction(){
+         $security = Security::getInstance();
+         if(!$security->isConnected()){
+             header('Location: /login');
+         }
         $Post = new ModelPost;
         $allPosts = $Post->getPosts();
         $Commentaire = new ModelCommentaire;
@@ -141,6 +155,10 @@ class Post{
     }
 
     public function publicpostAction(){
+         $security = Security::getInstance();
+         if(!$security->isConnected()){
+             header('Location: /login');
+         }
         $post = new ModelPost;
         $posts = $post->getPosts();
         $view = new View('public/liste-article','front');
