@@ -244,16 +244,6 @@ class User extends Database
                 "id"=>"form_Changmentmdp"
             ],
             "input"=>[
-                "email"=>[
-                    "type"=>"email",
-                    "placeholder"=>"Votre email",
-                    "label"=>"Votre Email",
-                    "required"=>true,
-                    "class"=>"form-input",
-                    "minLength"=>8,
-                    "maxLength"=>320,
-                    "error"=>"Votre email doit faire entre 8 et 320 caractères"
-                ],
                 "password"=>[
                     "label"=>"Votre mot de passe",
                     "type"=>"password",
