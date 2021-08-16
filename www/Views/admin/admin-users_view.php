@@ -47,8 +47,20 @@
             <!-- if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> -->
             <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié"; ?> <button type="button"><a href="/admin/valider-user?id=<?php echo $user['id'];?>">Validé</a></button> <?php } ?> </td>
             <td><input type="submit" value="Edit Rôle"></td></form>
-            <td><a href="/admin/users/delete?id=<?php echo $user['id'];?>">Supprimer</a></td>
+            <td><button onclick="myFunctionSupprimer()">Supprimer</button><a href="/admin/users/delete?id=<?php echo $user['id'];?>">Supprimer</a></td>
         </tr>
     <?php }} ?>
 </tbody>
+<script>
+function myFunctionSupprimer() {
+  var txt;
+  var r = confirm("voulez vous supprimer cette utilisateur?");
+  if (r == true) {
+    document.location.href='/admin/users/delete?id=<?php echo $user['id'];?>';
+  } else {
+    txt = "Suppresion annuler";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
 </table>

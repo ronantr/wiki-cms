@@ -98,7 +98,7 @@ class Post{
         $allCommentaire = $Commentaire->getCommentaires();
         //print_r($allPosts);
         
-        $view = new View("admin/post", "back");
+        $view = new View("admin/post", "front");
         $view->assign("title","Post");
         $view->assign("allPosts", $allPosts);
         $view->assign("allCommentaire", $allCommentaire);
