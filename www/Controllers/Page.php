@@ -1,11 +1,16 @@
 <?php 
 namespace App;
+use App\Core\Security as coreSecurity;
 use App\Core\View;
 use App\Models\Page as ModelsPage;
 use App\Models\Categorie;
 class Page{
 
     public function defaultAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $pages = new ModelsPage;
         $view = new View('admin/liste-page','back');
         $view->assign('pages',$pages->getUris());
@@ -16,6 +21,10 @@ class Page{
 
 
     public function addpageAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $categorie = new Categorie;
         $view = new view('admin/add-page','back');
         $view->assign('categories',$categorie->getCategories());
@@ -23,8 +32,12 @@ class Page{
     }
 
     public function createAction(){
+        
         if(isset($_POST)){
-            
+            $security = new coreSecurity(); 
+            if(!$security->isConnected()){
+                header('Location: /');
+            }
             $pages = new ModelsPage;
             $verification = $pages->getallpage();
             foreach($verification as $page){
@@ -51,6 +64,10 @@ class Page{
     }
 
     public function deleteAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $id_page = $_GET['id'];
         $pages = new ModelsPage;
         $pages->pagedelete($id_page);
@@ -58,6 +75,10 @@ class Page{
     }
 
     public function editpageAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $id_page =$_GET['id']; 
         $pages = new ModelsPage;
         $page = $pages->getpage($id_page);
@@ -72,6 +93,10 @@ class Page{
     }
 
     public function editerAction(){
+        		$security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $page = new ModelsPage;
         $page->setId($_POST['id']);
         if(!empty($_POST['url'])){

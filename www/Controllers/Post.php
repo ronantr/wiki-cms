@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Core\Security as coreSecurity;
 use App\Models\Post as ModelPost;
 use App\Models\User;
 use App\Core\Database;

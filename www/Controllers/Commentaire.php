@@ -2,7 +2,7 @@
 
 namespace App;
 
-
+use App\Core\Security as coreSecurity;
 use App\Models\Commentaire as ModelCommentaire;
 use App\Core\Database;
 use App\Models\Post;
@@ -12,6 +12,10 @@ use App\Core\Form;
 class Commentaire{
 
     public function defaultAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $Commentaire = new ModelCommentaire();
         $allCommentaire = $Commentaire->getCommentaires();
         $view = new View("admin/admin-listecommentaire", "back");
@@ -46,6 +50,10 @@ class Commentaire{
         }
         public function commentaireeditAction(){
             //Affiche moi la vue Commentaire;
+            $security = new coreSecurity(); 
+            if(!$security->isConnected()){
+                header('Location: /');
+            }
             $Commentaire = new ModelCommentaire();
             $view = new View("edit-commentaire", "back");
             $view->assign("title","Admin Edit Commentaire");
@@ -78,6 +86,10 @@ class Commentaire{
             
         }
         public function commentairedeleteAction(){
+            $security = new coreSecurity(); 
+            if(!$security->isConnected()){
+                header('Location: /');
+            }
             $id=$_GET['id'];
             $Commentaire = new ModelCommentaire();
             if (!empty($_GET['id'])) {

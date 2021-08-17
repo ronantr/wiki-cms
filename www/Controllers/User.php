@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use App\Core\Security as coreSecurity;
 use App\Models\User as ModelsUser;
 use App\Core\View;
 
@@ -22,6 +23,10 @@ class User{
     // return $users;
     // }
     public function defaultAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $users = new ModelsUser;
         $view = new View("admin/admin-users","back");
         $view->assign("users",$users->getUsers());
@@ -59,6 +64,10 @@ class User{
     }
 
     public function corbeilleAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $users = new ModelsUser;
         $view = new View("admin/admin-users-deleted","back");
         $view->assign("users",$users->getUsers());
@@ -74,6 +83,10 @@ class User{
         header('Location: /admin/users/liste-utilisateurs?message=3');
     }
     public function userAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $user_username = $_SESSION['username'];
         if (!empty($user_username)) {
         $user = new ModelsUser();
@@ -85,6 +98,10 @@ class User{
     }
    
     public function valideruserAction(){
+        $security = new coreSecurity(); 
+		if(!$security->isConnected()){
+			header('Location: /');
+		}
         $id = $_GET['id'];
         $user = new ModelsUser();
         $user->validerUser($id);
