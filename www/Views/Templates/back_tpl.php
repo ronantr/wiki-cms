@@ -3,7 +3,24 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo $title ?></title>
-		<meta name="description" content="ceci est la page de template">
+		<script src="https://cdn.tiny.cloud/1/eo59fq7w6j1puvdqjeu1rpwttfb7zmw1xt5pz6cxsykca6l9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+
+		<script>
+			tinymce.init({
+			selector: 'textarea',
+			required: 'required',
+			width: 800,
+			height: 500,
+			menubar: '  ',
+			toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent',
+			toolbar_mode: 'floating',
+			tinycomments_mode: 'embedded',
+			tinycomments_author: 'Author name',
+		});
+		</script>
+		<meta name="description" content="Back">
 		<link rel=stylesheet href=<?php echo App\Core\View::lookupfile('main.css'); ?> >
 		<script type="text/javascript" src=<?php echo App\Core\View::lookupfile('main.js'); ?>></script>
 		<link rel="icon" href=<?php echo App\Core\View::lookupfile('Logo.png'); ?> sizes="32x32">

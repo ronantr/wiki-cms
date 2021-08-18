@@ -270,9 +270,9 @@ class Database
         return $pages;
 	}
 
-	public function savePages($url,$slug){
+	public function savePages($url,$slug,$content,$status){
 		$this->table = DBPREFIX."page";
-		$query = $this->pdo->prepare("INSERT INTO $this->table (url,slug,status) VALUES('$url','$slug',0);");
+		$query = $this->pdo->prepare("INSERT INTO $this->table (url,slug,content,status) VALUES('$url','$slug','$content',$status);");
 		$query->execute();
 
 	}

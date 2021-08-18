@@ -6,6 +6,7 @@ class Page extends Database
 	protected $id;
 	protected $url;
 	protected $slug;
+	protected $content;
 	protected $status = 0;
 
 
@@ -40,6 +41,10 @@ class Page extends Database
 
 	public function setStatus($status){
 		$this->status = $status;
+	}
+
+	public function setContent($content){
+		$this->content = $content;
 	}
 	
 }

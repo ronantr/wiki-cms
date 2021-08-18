@@ -8,6 +8,9 @@
     <input type="text" name="slug" placeholder=<?php echo $page[0]['slug'];?>  >
     <label>Url</label>
     <input type="text" name="url" placeholder=<?php echo $page[0]['url'];?> >
+    <label>Content</label>
+    <textarea id="content" class="" name="content" type="mytextarea" style="visibility: hidden;" aria-hidden="true" defaultValue=<?php echo htmlspecialchars_decode($page[0]['content']);?>  </textarea>
+    
     <?php $comt =0;
     foreach ($categories as $categorie){
         $comt++;

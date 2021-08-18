@@ -14,6 +14,11 @@ class Page{
         
     }
 
+    public function mainAction(){
+        $view = new View("page", "front");
+    
+    }
+
 
     public function addpageAction(){
         $categorie = new Categorie;
@@ -33,7 +38,7 @@ class Page{
                     exit;
                 }
             }
-            $pages->savePages(htmlspecialchars($_POST['url']),htmlspecialchars($_POST['slug']));
+            $pages->savePages(htmlspecialchars($_POST['url']),htmlspecialchars($_POST['slug']),htmlspecialchars($_POST['content']),$_POST['status']);
             $lastepage = $pages->getlastedpage();
             $pages->setId($lastepage[0]['id']);
             if(!empty($_POST['pagecat'])){
@@ -80,6 +85,7 @@ class Page{
         if(!empty($_POST['slug'])){
             $page->setSlug(htmlspecialchars($_POST['slug']));
         }
+        $page->setContent($_POST['content']);
         $page->setStatus($_POST['status']);
         $same=array();
         $page->save();
