@@ -27,7 +27,6 @@ $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
 //  /ajout-d-un-utilisateur
 $uri = $uriExploded[0];
 $uriex = explode("/",$uri);
-print_r($uriex);
 $security = new Security;
 $security->isAutorized($uriex);
 
