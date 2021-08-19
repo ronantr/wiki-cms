@@ -4,13 +4,12 @@
 		<meta charset="UTF-8">
 		<title><?php echo $title ?></title>
 		<script src="https://cdn.tiny.cloud/1/eo59fq7w6j1puvdqjeu1rpwttfb7zmw1xt5pz6cxsykca6l9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
+		
 
 
 		<script>
 			tinymce.init({
 			selector: 'textarea',
-			required: 'required',
 			width: 800,
 			height: 500,
 			menubar: '  ',

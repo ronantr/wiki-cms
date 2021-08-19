@@ -16,6 +16,13 @@ class Page{
 
     public function mainAction(){
         $view = new View("page", "front");
+        $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
+        $uri = $uriExploded[0];
+        $uriex = explode("/",$uri);
+        $pages = new ModelsPage;
+        $page = $pages->getPageArticles($uriex[1]);
+        $view->assign('page',$page);
+        $view->assign("title",$page['title']);
     
     }
 
