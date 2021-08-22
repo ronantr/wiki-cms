@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Core\Database;
+use App\Core\Helpers;
 
 class User extends Database
 {
@@ -12,6 +13,7 @@ class User extends Database
 	//protected $status = 0;
 	protected $role =2;
 	protected $isDeleted = 0;
+	protected $token;
 	protected $emailVerified =0;
 
 	public function __construct(){
@@ -45,6 +47,20 @@ class User extends Database
 	public function getEmailVerified(){
 		return $this->emailVerified;
 	}
+	/**
+     * @param $token
+     */
+    public function setToken($token){
+        $this->token = $token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
     /**
     * @param $username
     */
@@ -129,6 +145,10 @@ class User extends Database
 					"class"=>"form_register"
 				],
 				"input"=>[
+					"csrf"=>[
+						"type"=>"hidden",
+						"defaultValue"=>Helpers::generateCsrfToken()
+					],
 					"username"=>[
 									"type"=>"text",
 									"class"=>"form_input",
@@ -181,6 +201,10 @@ class User extends Database
                 "id"=>"form_login"
             ],
             "input"=>[
+				"csrf"=>[
+                    "type"=>"hidden",
+                    "defaultValue"=>Helpers::generateCsrfToken()
+                ],
                 "email"=>[
                     "type"=>"email",
                     "placeholder"=>"Votre email",
@@ -204,40 +228,39 @@ class User extends Database
 
         ];
     }
-	public function buildFormRecuperation(){
-		return [
+	/**
+     * @return array
+     */
+    public function buildFormResetPassword(){
 
+        return [
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-                "class"=>"form_Recuperation",
-				"Submit"=>"Recuperation",
-                "id"=>"form_Recuperatio"
+				"class"=>"form_password",
+                "Submit"=>"Envoyer",
+				"id"=>"form_password"
             ],
             "input"=>[
+                "csrf"=>[
+                    "type"=>"hidden",
+                    "defaultValue"=>Helpers::generateCsrfToken()
+                ],
                 "email"=>[
+                    "class"=>"requiredLabel",
+                    "id"=>"email",
                     "type"=>"email",
-                    "placeholder"=>"Votre email",
-                    "label"=>"Votre Email",
+                    "label"=>"Adresse Mail",
+                    "lengthMin"=>"8",
+                    "lengthMax"=>"320",
                     "required"=>true,
-                    "class"=>"form_input",
-                    "minLength"=>8,
-                    "maxLength"=>320,
-                    "error"=>"Votre email doit faire entre 8 et 320 caractères"
-				],
-
-				"password"=>[
-					"label"=>"Votre mot de passe",
-					"type"=>"password",
-					"lengthMin"=>"8",
-					"required"=>true,
-					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
-					"placeholder"=>"Votre mot de passe"
-                ]
-            ]
-
+                    "error"=>"Votre email doit faire entre 8 et 320 caractères",
+                    "placeholder"=>"Votre email"
+                ],
+            ],
         ];
-	}
+    }
+
 
 }
 

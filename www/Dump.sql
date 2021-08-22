@@ -4,7 +4,7 @@ USE `wiki`;*/
 
 
 CREATE TABLE `article` (
-  `id` int(10) NOT NULL,
+  `id` int(255) NOT NULL,
   `id_categorie` int(255) DEFAULT NULL,
   `title` varchar(1024) COLLATE utf8_bin NOT NULL,
   `content` text COLLATE utf8_bin NOT NULL,
@@ -22,22 +22,23 @@ CREATE TABLE `categorie` (
 
 
 CREATE TABLE `commentaire` (
-  `id` int(11) NOT NULL,
+  `id` int(255) NOT NULL,
   `content` text NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_article` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_article` int(255) NOT NULL,
+  `id_user` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
 CREATE TABLE `editor` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(255) UNSIGNED NOT NULL,
   `username` varchar(120) COLLATE utf8_bin NOT NULL,
   `email` varchar(320) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
   `role` tinyint(4) NOT NULL DEFAULT '1',
   `emailVerified` tinyint(4) DEFAULT '0',
+  `tokenemail` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime DEFAULT NULL
@@ -61,7 +62,7 @@ CREATE TABLE `page_categorie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `static` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int(255) UNSIGNED NOT NULL,
   `title` varchar(1024) COLLATE utf8_bin NOT NULL,
   `content` text COLLATE utf8_bin NOT NULL,
   `status` tinyint(4) NOT NULL,
@@ -97,23 +98,23 @@ ALTER TABLE `page_categorie`
 
 
 ALTER TABLE `article`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 
 ALTER TABLE `categorie`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 
 ALTER TABLE `commentaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 
 ALTER TABLE `editor`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 
 ALTER TABLE `page`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 
 ALTER TABLE `page_categorie`
