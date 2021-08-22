@@ -3,6 +3,8 @@ body{
     margin:0;
 }
 
+
+
 header{
 	background-color: #E9FBFE;
 	padding: 10px 0;
@@ -54,6 +56,10 @@ header nav li a:not([href]){
 .container{
 	max-width: 1170px;
 	margin: auto;
+}
+
+.containermargin{
+	margin-top: 4em;
 }
 
 .nav_gauche{
@@ -123,4 +129,16 @@ header nav li a:not([href]){
 
 .login h1{
 	font-size: 2em;
+}
+
+.center{
+	text-align: center;
+}
+
+footer{
+	background-color: grey;
+	width: 100%;
+	height: 100px;
+	bottom: 0;
+	position: absolute;
 }

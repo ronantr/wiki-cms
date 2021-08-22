@@ -8,7 +8,7 @@
 		<script type="text/javascript" src=<?php echo App\Core\View::lookupfile('main.js'); ?>></script>
 	</head>
 	<body>
-		<header>
+		<header style="position:relative;">
 			<div class="container">
 				<nav id="main-nav">
 					<ul>
@@ -24,12 +24,14 @@
 				</nav>
 			</div>
 		</header>	
-		<main>
-			<section class="main">
-				<div class="containermain">
-					<?php include $this->view ?>
-				</div>
-			</section>
+		<main class="container">
+			<div class = "containermargin">
+	
+			
+				<?php include $this->view ?>
+			</div>
+
 		</main>
+		<?php include 'footer_tpl.php'; ?>
 	</body>
 </html>

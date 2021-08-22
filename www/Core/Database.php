@@ -355,10 +355,19 @@ class Database
 		$page = DBPREFIX."page";
 		$page_cat = DBPREFIX."page_categorie";
 		$article = DBPREFIX."article";
-		$query = $this->pdo->prepare("SELECT * FROM $page as p , $page_cat as pc , $article as a WHERE p.id = pc.id_page and pc.id_categorie = a.id_categorie and p.url = $url ; ");
+		$query = $this->pdo->prepare("SELECT p.slug, p.content , a.title , a.content FROM $page as p , $page_cat as pc , $article as a WHERE p.id = pc.id_page and pc.id_categorie = a.id_categorie and p.url = '$url' and a.status = 1 ; ");
 		$query->execute();
 		$pagearticle = $query->fetchall();
 		return $pagearticle;
+	}
+
+	public function getPageByUrl($url){
+		$page = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table WHERE url = '$url' ; ");
+		$query->execute();
+		$page = $query->fetch();
+		return $page;
+
 	}
 
 	

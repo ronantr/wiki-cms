@@ -20,9 +20,9 @@ class Page{
         $uri = $uriExploded[0];
         $uriex = explode("/",$uri);
         $pages = new ModelsPage;
-        $page = $pages->getPageArticles($uriex[1]);
+        $page = $pages->getPageByUrl($uriex[1]);
         $view->assign('page',$page);
-        $view->assign("title",$page['title']);
+        $view->assign("title",$page['slug']);
     
     }
 
