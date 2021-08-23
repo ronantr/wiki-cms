@@ -16,7 +16,8 @@ class Categorie{
     public function addAction(){
         $name = htmlspecialchars($_POST['name']);
         $categories = new ModelsCategorie;
-        $categories->createCat($name);
+        $categories->setname($name);
+        $categories->save();
         header('Location: /admin/liste-categorie');
     }
 

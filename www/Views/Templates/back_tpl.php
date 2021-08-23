@@ -58,6 +58,10 @@
 		<main>
 			<section class="main">
 				<div class="containermain">
+					<?php if(isset($erreur)){ ?>
+						<h1 class = "erreur"><?php echo $erreur ?></h1>
+
+					<?php }?>
 					<?php include $this->view; ?>
 				</div>
 			</section>

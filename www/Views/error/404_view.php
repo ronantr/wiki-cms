@@ -1,0 +1,1 @@
+<div class="center"><h1>Pages Erreur 404</h1></div>

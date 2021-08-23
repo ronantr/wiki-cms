@@ -140,5 +140,20 @@ footer{
 	width: 100%;
 	height: 100px;
 	bottom: 0;
-	position: absolute;
+	position: relative;
+}
+
+.article{
+	border-radius: 20px;
+	border: thick double #32a1ce;
+	padding: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.erreur{
+	width: 100%;
+	border: #AA2D2D solid;
+	border-radius: 20px;
+	padding: 20px;
 }

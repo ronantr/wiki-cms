@@ -15,14 +15,23 @@ class Page{
     }
 
     public function mainAction(){
-        $view = new View("page", "front");
         $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
         $uri = $uriExploded[0];
         $uriex = explode("/",$uri);
         $pages = new ModelsPage;
         $page = $pages->getPageByUrl($uriex[1]);
-        $view->assign('page',$page);
-        $view->assign("title",$page['slug']);
+        $articles = $pages->getArticleByIdPage($page["id"]);
+        if ($page['status'] == 0 ){
+            $view = new View("page", "front");
+            $view->assign('page',$page);
+            $view->assign('articles',$articles);
+            $view->assign("title",$page['slug']);
+        }
+        else{
+            $view = new View("error/404", "front");
+            $view->assign("title","Erreur 404");
+        }
+        
     
     }
 
@@ -45,7 +54,11 @@ class Page{
                     exit;
                 }
             }
-            $pages->savePages(htmlspecialchars($_POST['url']),htmlspecialchars($_POST['slug']),htmlspecialchars($_POST['content']),$_POST['status']);
+            // $pages->savePages(htmlspecialchars($_POST['url']),htmlspecialchars($_POST['slug']),htmlspecialchars($_POST['content']),$_POST['status']);
+            $pages->setUrl(htmlspecialchars($_POST['url']));
+            $pages->setSlug(htmlspecialchars($_POST['slug']));
+            $pages->setContent(htmlspecialchars($_POST['content']));
+            $pages->save();
             $lastepage = $pages->getlastedpage();
             $pages->setId($lastepage[0]['id']);
             if(!empty($_POST['pagecat'])){

@@ -67,6 +67,10 @@
 /admin/edit-cat-post:
   controller: Post
   action: UpdatePostCat
+/single-post:
+  controller: Post
+  action: public_single_post
+  
 
 ###################
 ### COMMENTAIRE ###

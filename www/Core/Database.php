@@ -73,7 +73,6 @@ class Database
 		}elseif(is_null($this->getId())){
 			//INSERT
 
-            var_dump(array_keys($data));
 			
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
@@ -144,7 +143,14 @@ class Database
         $query->execute();
         $posts = $query->fetchall();
         return $posts;
-    }
+	}
+	public function getpostbyid($id){
+		$this->table = DBPREFIX."article";
+        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id and status = 1 and isDeleted = 0; ");
+        $query->execute();
+        $posts = $query->fetchall();
+        return $posts;
+	}
 	public function deletePost($id){
 		$this->table = DBPREFIX."article";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
@@ -368,6 +374,15 @@ class Database
 		$page = $query->fetch();
 		return $page;
 
+	}
+
+	public function getArticleByIdPage($id){
+		$page_cat = DBPREFIX."page_categorie";
+		$article = DBPREFIX."article";
+		$query = $this->pdo->prepare("SELECT a.id, a.title , a.content FROM $page_cat as pc, $article as a WHERE pc.id_categorie = a.id_categorie and pc.id_page = $id and a.status = 1 and a.isDeleted = 0 ; ");
+		$query->execute();
+		$pagearticle = $query->fetchall();
+		return $pagearticle;
 	}
 
 	

@@ -3,7 +3,7 @@ namespace App\Models;
 use App\Core\Database;
 class Page extends Database
 {
-	protected $id;
+	protected $id=null;
 	protected $url;
 	protected $slug;
 	protected $content;
