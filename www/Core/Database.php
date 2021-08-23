@@ -385,7 +385,18 @@ class Database
 		return $pagearticle;
 	}
 
-	
+	public function existebd($valeur,$table,$columns){
+		$table = DBPREFIX.$table;
+		$query = $this->pdo->prepare("SELECT $columns FROM $table ; ");
+		$query->execute();
+		$db = $query->fetchall();
+		foreach($db as $one){
+			if($valeur == htmlspecialchars_decode($one[$columns])){
+				return true;
+			}
+		}
+		return false;
+	}
 
 
 
