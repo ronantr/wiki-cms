@@ -61,7 +61,7 @@ class Database
 				$this->table = DBPREFIX."commentaire";
 				break;
         }
-		echo $this->getId();
+
 
 		if ($this->table == DBPREFIX."commentaire"){
 			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
@@ -104,7 +104,6 @@ class Database
 
 		if(is_null($this->getId()))
 			$this->setId($this->pdo->lastInsertId()) ;
-		echo $this->getId();
 		$_SESSION['id'] = $this->pdo->lastInsertId();
 
 	}

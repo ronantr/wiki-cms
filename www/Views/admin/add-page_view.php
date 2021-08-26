@@ -3,9 +3,9 @@
 
 <form action="/admin/add-page-send" method="post">
     <label>Nom de la page</label>
-    <input type="text" name="slug" required><br>
+    <input type="text" name="slug" minlength="4" maxlength="25" required><br>
     <label>Url</label>
-    <input type="text" name="url" placeholder="votreurl" required><br>
+    <input type="text" name="url" placeholder="votreurl" minlength="4" maxlength="50" required><br>
     <label>Content</label>
     
     <textarea id="content" class="" name="content" type="mytextarea" placeholder="Contenue" style="visibility: hidden;" aria-hidden="true" ></textarea>
