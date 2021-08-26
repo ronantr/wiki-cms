@@ -15,6 +15,7 @@ class Routing{
 
 
 	public function __construct($uri){
+		if(!Installer::checkEnvExist() && $uri != "/installer" && $uri != "/make-install") $this->redirectToInstaller();
 		//Faut vérifier que le fichier existe
 		$this->routes = yaml_parse_file($this->routesPath);
 		//Faut vérifier qu'il y a un controller pour cette route
@@ -55,7 +56,10 @@ class Routing{
 	public function getActionPage(){
 		return $this->actionPage;
 	}
-
+    public function redirectToInstaller() {
+        header('location: /installer');
+        exit(0);
+    }
 	public function getControllerWithNamespace(){
 		return APP_NAMESPACE.$this->controller;
 	}
@@ -64,6 +68,9 @@ class Routing{
 		return APP_NAMESPACE.$this->controllerPage;
 	}
 
+    public static function getListOfRoutes() {
+        return yaml_parse_file($this->routesPath);
+    }
 
 	/*
 		/list-des-utilisateurs:
@@ -89,8 +96,49 @@ class Routing{
 			}
 		}
 	}
+	public function getBaseUrl() {
+	return $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
+}
+
+    static function writeUrlSitemap($loca) {
+        return '<url>
+                    <loc>'.$loca.'</loc>
+                    <lastmod>'.date('c',time()).'</lastmod>
+                </url>';
+    }
 
 
+    static function getBaseRouteSitemap($routes, $routes_exclude): string
+    {
+        $sitemap = "";
+
+        foreach ($routes as $key => $route) {
+            if(!in_array($key, $routes_exclude) && !strpos($key, 'admin')) {
+                $loca = self::getBaseUrl() . $key;
+                $sitemap .= self::writeUrlSitemap($loca);
+            }
+        }
+        return $sitemap;
+    }
+    static function getDynamicSitemap(): string
+    {
+        $sitemap = "";
+
+        $post = new \App\Models\Post();
+        $page = new \App\Models\Page();
+		$all_postes = $post->getPosts();
+        $all_pages = $page->getallpage();
+
+        foreach($all_postes as $post) {
+            $loc = self::getBaseUrl() . $post['url'];
+            $sitemap .= self::writeUrlSitemap($loc);
+        }
+        foreach($all_pages as $page) {
+            $loc = self::getBaseUrl() . $page['url'];
+            $sitemap .= self::writeUrlSitemap($loc);
+        }
+        return $sitemap;
+    }
 }
 /*
 if(file_exists("routes.yml")){

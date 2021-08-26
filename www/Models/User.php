@@ -13,7 +13,7 @@ class User extends Database
 	//protected $status = 0;
 	protected $role =2;
 	protected $isDeleted = 0;
-	protected $token;
+	protected $tokenemail;
 	protected $emailVerified =0;
 
 	public function __construct(){
@@ -48,10 +48,10 @@ class User extends Database
 		return $this->emailVerified;
 	}
 	/**
-     * @param $token
+     * @param $tokenemail
      */
-    public function setToken($token){
-        $this->token = $token;
+    public function setToken($tokenemail){
+        $this->tokenemail = $tokenemail;
     }
 
     /**
@@ -59,7 +59,7 @@ class User extends Database
      */
     public function getToken()
     {
-        return $this->token;
+        return $this->tokenemail;
     }
     /**
     * @param $username
@@ -145,7 +145,7 @@ class User extends Database
 					"class"=>"form_register"
 				],
 				"input"=>[
-					"csrf"=>[
+					"tokenemail"=>[
 						"type"=>"hidden",
 						"defaultValue"=>Helpers::generateCsrfToken()
 					],
@@ -201,7 +201,7 @@ class User extends Database
                 "id"=>"form_login"
             ],
             "input"=>[
-				"csrf"=>[
+				"tokenemail"=>[
                     "type"=>"hidden",
                     "defaultValue"=>Helpers::generateCsrfToken()
                 ],
@@ -242,7 +242,7 @@ class User extends Database
 				"id"=>"form_password"
             ],
             "input"=>[
-                "csrf"=>[
+                "tokenemail"=>[
                     "type"=>"hidden",
                     "defaultValue"=>Helpers::generateCsrfToken()
                 ],

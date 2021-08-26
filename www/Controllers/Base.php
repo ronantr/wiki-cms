@@ -44,5 +44,26 @@ class Base{
 		
 	}
 
+	public function sitemapAction() {
+        header('Content-Type: text/xml; charset=UTF-8');
+        $routes = Routing::getListOfRoutes();
+        // $routes_exclude = [
+        //     "/sitemap.xml",
+        //     "/resgister",
+        //     "/s-inscrire",
+        //     "/login",
+        //     "/logout",
+        //     "/recuperationmdp",
+        //     "/liste-des-utilisateurs",
+        //     "/installer",
+        //     "/make-install"
+        // ];
+        $sitemap = "";
+        $sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
+        $sitemap .= Routing::getBaseRouteSitemap($routes, $routes_exclude);
+        $sitemap .= Routing::getDynamicSitemap();
+        $sitemap .= '</urlset>';
 
+        echo $sitemap;
+	}
 }

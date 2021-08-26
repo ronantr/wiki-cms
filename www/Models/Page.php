@@ -33,11 +33,15 @@ class Page extends Database
 	public function setUrl($url){
 		$this->url = $url;
 	}
-
+	public function getUrl(){
+		return $this->url;
+	}
 	public function setSlug($slug){
 		$this->slug = $slug;
 	}
-
+	public function getSlug(){
+		return $this->slug;
+	}
 	public function setStatus($status){
 		$this->status = $status;
 	}

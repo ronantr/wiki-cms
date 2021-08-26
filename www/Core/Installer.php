@@ -4,6 +4,7 @@ namespace App\Core;
 use App\Core\Database;
 use App\Models\User;
 use App\Core\ConstantManager;
+use App\Core\Helpers;
 
 class Installer 
 {
@@ -103,6 +104,8 @@ class Installer
         $userf->setEmail($user['Email']);
         $userf->setPwd($Password);
         $userf->setRole("1");
+        $userf->setToken("");
+        $userf->setEmailVerified("1");
         //$userf->setIsDeleted(0);
         var_dump($userf);
         $userf->save();

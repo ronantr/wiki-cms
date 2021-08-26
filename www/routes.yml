@@ -1,3 +1,10 @@
+###############
+### SITEMAP ###
+###############
+/sitemap.xml:
+  controller: Base
+  action: sitemap
+
 ############
 ### BASE ###
 ############
@@ -24,11 +31,6 @@
 /login:
   controller: Security
   action: login
-
-/se-connecter:
-  controller: Security
-  action: login
-
 
 /logout:
   controller: Security
