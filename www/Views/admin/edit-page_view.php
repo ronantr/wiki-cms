@@ -5,9 +5,9 @@
         <option value = <?php echo $page[0]['id'] ;?>><?php echo $page[0]['id'] ;?></option>
     </select>
     <label>Nom de la page</label>
-    <input type="text" name="slug" placeholder=<?php echo $page[0]['slug'];?>  >
+    <input type="text" name="slug" placeholder=<?php echo $page[0]['slug'];?> minlength="4" maxlength="25" >
     <label>Url</label>
-    <input type="text" name="url" placeholder=<?php echo $page[0]['url'];?> >
+    <input type="text" name="url" placeholder=<?php echo $page[0]['url'];?> minlength="4" maxlength="50">
     <label>Content</label>
     <textarea id="content" class="" name="content" type="mytextarea" style="visibility: hidden;" aria-hidden="true" defaultValue=<?php echo htmlspecialchars_decode($page[0]['content']);?>  </textarea>
     
