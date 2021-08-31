@@ -4,6 +4,7 @@ use App\Core\Security as coreSecurity;
 use App\Core\View;
 use App\Models\Page as ModelsPage;
 use App\Models\Categorie;
+use App\Models\Page_categorie;
 class Page{
 
     public function defaultAction(){
@@ -17,6 +18,39 @@ class Page{
         $view->assign("title","Admin Liste Pages");
 
         
+    }
+
+    public function notifAction($erreur){
+        $pages = new ModelsPage;
+        $view = new View('admin/liste-page','back');
+        $view->assign('pages',$pages->getUris());
+        $view->assign("title","Admin Liste Pages");
+        $view->assign("erreur",$erreur);
+        
+    }
+
+
+    
+
+    public function mainAction(){
+        $uriExploded = explode("?", $_SERVER["REQUEST_URI"]);
+        $uri = $uriExploded[0];
+        $uriex = explode("/",$uri);
+        $pages = new ModelsPage;
+        $page = $pages->getPageByUrl($uriex[1]);
+        $articles = $pages->getArticleByIdPage($page["id"]);
+        if ($page['status'] == 0 ){
+            $view = new View("page", "front");
+            $view->assign('page',$page);
+            $view->assign('articles',$articles);
+            $view->assign("title",$page['slug']);
+        }
+        else{
+            $view = new View("error/404", "front");
+            $view->assign("title","Erreur 404");
+        }
+        
+    
     }
 
 
@@ -42,19 +76,34 @@ class Page{
             $verification = $pages->getallpage();
             foreach($verification as $page){
                 if($page['url'] == $_POST['url'] ){
-                    header('Location: /admin/liste-Pages?message=4');
+                    $this->notifAction("Url Existant");
                     exit;
                 }
             }
-            $pages->savePages(htmlspecialchars($_POST['url']),htmlspecialchars($_POST['slug']));
-            $lastepage = $pages->getlastedpage();
-            $pages->setId($lastepage[0]['id']);
-            if(!empty($_POST['pagecat'])){
-                foreach($_POST['pagecat'] as $cat){
-                    $pages->savepagecat($pages->getId(),$cat);
+
+            if (count($_POST) == 4 ||  5){
+                $pages->setUrl(htmlspecialchars($_POST['url']));
+                $pages->setSlug(htmlspecialchars($_POST['slug']));
+                $pages->setContent(htmlspecialchars($_POST['content']));
+                $pages->save();
+                $lastepage = $pages->getlastedpage();
+                $pages->setId($lastepage[0]['id']);
+                if(!empty($_POST['pagecat'])){
+                    foreach($_POST['pagecat'] as $cat){
+                        $page_cate = new Page_categorie;
+                        $page_cate->setId_page($pages->getId());
+                        $page_cate->setId_categorie($cat);
+                        $page_cate->save();
+                        // $pages->savepagecat($pages->getId(),$cat);
+                    }
                 }
+                $this->notifAction("Votre Page a été créér");
             }
-            header('Location: /admin/liste-Pages?message=1');
+            else{
+                $this->notifAction("Erreur Lors de la création (Tentative de Hack FAILLE XSS)");
+            }
+            // $pages->savePages(htmlspecialchars($_POST['url']),htmlspecialchars($_POST['slug']),htmlspecialchars($_POST['content']),$_POST['status']);
+            
         }
         else{
             header('Location: /admin/tableau-de-bord');
@@ -64,14 +113,19 @@ class Page{
     }
 
     public function deleteAction(){
-        $security = new coreSecurity(); 
-		if(!$security->isConnected()){
-			header('Location: /');
-		}
-        $id_page = $_GET['id'];
-        $pages = new ModelsPage;
-        $pages->pagedelete($id_page);
-        header('Location: /admin/liste-Pages?message=3');
+
+        if(isset($_GET['id'])){
+            $id_page = $_GET['id'];
+            $pages = new ModelsPage;
+            $pages->pagedelete($id_page);
+            $this->notifAction("La Page a été Supprimer");
+            exit;
+        }
+        else{
+            $this->notifAction("Erreur URL");
+            exit;
+        }
+        
     }
 
     public function editpageAction(){
@@ -93,30 +147,39 @@ class Page{
     }
 
     public function editerAction(){
-        		$security = new coreSecurity(); 
-		if(!$security->isConnected()){
-			header('Location: /');
-		}
-        $page = new ModelsPage;
-        $page->setId($_POST['id']);
-        if(!empty($_POST['url'])){
-            $page->setUrl(htmlspecialchars($_POST['url']));
-        }
-        if(!empty($_POST['slug'])){
-            $page->setSlug(htmlspecialchars($_POST['slug']));
-        }
-        $page->setStatus($_POST['status']);
-        $same=array();
-        $page->save();
-        $id_categories = $page->getCategoriesById($_POST['id']);
-        $page->delatepagecat($_POST['id']);
-        if(!empty($_POST['pagecat'])){
-            foreach($_POST['pagecat'] as $cat){
-                $page->savepagecat($_POST['id'],$cat);
-            }
-        }
+        if(!empty($_POST['id'])){
+            $page = new ModelsPage;
+            $page->setId($_POST['id']);
+            if(!empty($_POST['url'])){
+                $page->setUrl(htmlspecialchars($_POST['url']));
 
-        header('location: /admin/liste-Pages?message=2');
+            }
+            if(!empty($_POST['slug'])){
+                $page->setSlug(htmlspecialchars($_POST['slug']));
+            }
+            $page->setContent($_POST['content']);
+            $page->setStatus($_POST['status']);
+            $same=array();
+            $page->save();
+            $id_categories = $page->getCategoriesById($_POST['id']);
+            $page->delatepagecat($_POST['id']);
+            if(!empty($_POST['pagecat'])){
+                foreach($_POST['pagecat'] as $cat){
+                    $page_cate = new Page_categorie;
+                    $page_cate->setId_page($_POST['id']);
+                    $page_cate->setId_categorie($cat);
+                    $page_cate->save();
+                    // $page->savepagecat($_POST['id'],$cat);
+
+                }
+            }
+            $this->notifAction("Votre Page a été modifiée");
+        }
+        else{
+            header('Location: /admin/tableau-de-bord');
+        }
+        
+        // header('location: /admin/liste-Pages?message=2');
         // foreach($_POST['pagecat'] as $cat){
         //     foreach($id_categories as $id){
         //         if($cat == $id['id_categorie']){

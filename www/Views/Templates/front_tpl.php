@@ -8,10 +8,14 @@
 		<script type="text/javascript" src=<?php echo App\Core\View::lookupfile('main.js'); ?>></script>
 	</head>
 	<body>
-		<header>
+		<header style="position:relative;">
 			<div class="container">
 				<nav id="main-nav">
 					<ul>
+						<li><a href="/">Accueil</a></li>
+						<?php foreach($menu as $li){ ?>
+						<li><a href="/<?php echo $li['url']; ?>"><?php echo ucfirst($li['slug']); ?></a></li> <?php } ?>
+						<li><a href="#">|</a></li>
 						<?php if ( !App\Core\Security::isConnected()) { ?> <li><a href="/login">Login</a></li>
 						<li><a href="/s-inscrire">Register</a></li>	
 							<?php }else{ ?> 
@@ -24,43 +28,14 @@
 				</nav>
 			</div>
 		</header>	
-		<main>
-			<div class="nav_gauche_front" style="width:20%;padding-top: 50px;">
-				
-				<div class="row">
-					<div class="nav_height_front">
-						<h1 style="vertical-align:center;">Pages</h1>
-						 <?php $pages = new App\Models\Page;
-						 		$allpage= $pages->getallpage();
-						 	foreach($allpage as $page){
-								 ?> <h4><a href="/<?php echo htmlspecialchars_decode($page['url']); ?>"><?php echo htmlspecialchars_decode($page['slug']); ?></a></h4>
-							 <?php }
-						 ?>
-						<h1 style="vertical-align:center;">Catégories</h1>
-							<?php $cat = new App\Models\Categorie;
-									$categories= $cat->getCategories();
-								foreach($categories as $categorie){
-									?> <h4><a href="/categorie?id=<?php echo ($categorie['id']); ?>"><?php echo htmlspecialchars_decode($categorie['name']); ?></a></h4>
-								<?php }
-							?>
-						<h1 style="vertical-align:center;">Tous les Article</h1>
-						<?php $article = new App\Models\Post;
-									$posts= $article->getPosts();
-								foreach($posts as $post){
-									?> <h4><a href="/post?id=<?php echo ($post['id']); ?>"><?php echo htmlspecialchars_decode($post['title']); ?></a></h4>
-								<?php }
-							?>
-					</div>
-					
-				</div>
+		<main class="container">
+			<div class = "containermargin">
+	
+			
+				<?php include $this->view ?>
 			</div>
-		
-		
-			<section class="main">
-				<div class="containermain">
-					<?php include $this->view ?>
-				</div>
-			</section>
+
 		</main>
+		<?php include 'footer_tpl.php'; ?>
 	</body>
 </html>

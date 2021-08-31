@@ -3,9 +3,10 @@ namespace App\Models;
 use App\Core\Database;
 class Page extends Database
 {
-	protected $id;
+	protected $id=null;
 	protected $url;
 	protected $slug;
+	protected $content;
 	protected $status = 0;
 
 
@@ -44,6 +45,10 @@ class Page extends Database
 	}
 	public function setStatus($status){
 		$this->status = $status;
+	}
+
+	public function setContent($content){
+		$this->content = $content;
 	}
 	
 }

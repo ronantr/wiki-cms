@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Core\Form;
+use App\Models\Page;
 
 class View
 {
@@ -61,10 +62,16 @@ class View
 		}
 	}
 
+	public function pagemenu(){
+		$page = new Page;
+		return $page->getpagemenu();
+	}
+
 
 
 	public function __destruct(){
 		// $this->data = ["pseudo"=>"Prof"];  ----> $pseudo = "Prof";
+		$this->assign('menu',$this->pagemenu());
 		extract($this->data);
 		include $this->template;
 	}

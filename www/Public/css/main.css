@@ -3,6 +3,8 @@ body{
     margin:0;
 }
 
+
+
 header{
 	background-color: #E9FBFE;
 	padding: 10px 0;
@@ -56,6 +58,10 @@ header nav li a:not([href]){
 	margin: auto;
 }
 
+.containermargin{
+	margin-top: 4em;
+}
+
 .nav_gauche{
 	width: 20%;
 	position:fixed;
@@ -96,7 +102,7 @@ header nav li a:not([href]){
 }
 
 .containermain{
-	max-width: 1050px;
+	max-width: 1350px;
 	margin: 0 auto;
 	width: 100%;
 }
@@ -123,4 +129,97 @@ header nav li a:not([href]){
 
 .login h1{
 	font-size: 2em;
+}
+
+.center{
+	text-align: center;
+}
+
+footer{
+	background-color: grey;
+	width: 100%;
+	height: 100px;
+	bottom: 0;
+	position: relative;
+}
+
+.article{
+	border-radius: 20px;
+	border: thick double #32a1ce;
+	padding: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.erreur{
+	width: 100%;
+	border: #AA2D2D solid;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.demi{
+	width: 45%;
+	margin: 0 auto;
+	border-radius: 20px;
+	border: grey solid;
+	background-color: rgb(240, 240, 240);
+}
+
+.demi thead{
+	font-size: 25px;
+}
+
+.demi table{
+	width: 90%;
+	margin: 20px auto;
+	caption-side: bottom;
+	border-collapse: collapse; 
+}
+
+.demi table td{
+	width: 40%;
+	padding: 15px;
+	border-bottom: solid white;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.demi tr{
+	background-color: #dadada;
+	margin-bottom: 5px;
+}
+
+
+
+.section_menu{
+	display: flex;
+	flex-wrap: wrap;
+	
+	
+}
+
+.button-valide{
+	color: #0071a1;
+    border-color: #0071a1;
+	background: #f3f5f6;
+	display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 2.15384615;
+    min-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+	box-sizing: border-box;
+	float: right;
+}
+
+.button-valide a{
+	text-decoration: none;
 }

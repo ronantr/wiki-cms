@@ -59,7 +59,7 @@ class Database
 				$this->table = DBPREFIX."commentaire";
 				break;
         }
-		echo $this->getId();
+
 
 		if ($this->table == DBPREFIX."commentaire"){
 			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
@@ -71,7 +71,6 @@ class Database
 		}elseif(is_null($this->getId())){
 			//INSERT
 
-            var_dump(array_keys($data));
 			
             $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
                                             ".implode(",", $columns)."
@@ -103,7 +102,6 @@ class Database
 
 		if(is_null($this->getId()))
 			$this->setId($this->pdo->lastInsertId()) ;
-		echo $this->getId();
 		$_SESSION['id'] = $this->pdo->lastInsertId();
 
 	}
@@ -142,7 +140,14 @@ class Database
         $query->execute();
         $posts = $query->fetchall();
         return $posts;
-    }
+	}
+	public function getpostbyid($id){
+		$this->table = DBPREFIX."article";
+        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id and status = 1 and isDeleted = 0; ");
+        $query->execute();
+        $posts = $query->fetchall();
+        return $posts;
+	}
 	public function deletePost($id){
 		$this->table = DBPREFIX."article";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
@@ -277,9 +282,9 @@ class Database
         return $pages;
 	}
 
-	public function savePages($url,$slug){
+	public function savePages($url,$slug,$content,$status){
 		$this->table = DBPREFIX."page";
-		$query = $this->pdo->prepare("INSERT INTO $this->table (url,slug,status) VALUES('$url','$slug',0);");
+		$query = $this->pdo->prepare("INSERT INTO $this->table (url,slug,content,status) VALUES('$url','$slug','$content',$status);");
 		$query->execute();
 
 	}
@@ -356,6 +361,92 @@ class Database
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = $id;");
 		$query->execute();
 
+	}
+
+	public function getPageArticles($url){
+		$page = DBPREFIX."page";
+		$page_cat = DBPREFIX."page_categorie";
+		$article = DBPREFIX."article";
+		$query = $this->pdo->prepare("SELECT p.slug, p.content , a.title , a.content FROM $page as p , $page_cat as pc , $article as a WHERE p.id = pc.id_page and pc.id_categorie = a.id_categorie and p.url = '$url' and a.status = 1 ; ");
+		$query->execute();
+		$pagearticle = $query->fetchall();
+		return $pagearticle;
+	}
+
+	public function getPageByUrl($url){
+		$page = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table WHERE url = '$url' ; ");
+		$query->execute();
+		$page = $query->fetch();
+		return $page;
+
+	}
+
+	public function getArticleByIdPage($id){
+		$page_cat = DBPREFIX."page_categorie";
+		$article = DBPREFIX."article";
+		$query = $this->pdo->prepare("SELECT a.id, a.title , a.content FROM $page_cat as pc, $article as a WHERE pc.id_categorie = a.id_categorie and pc.id_page = $id and a.status = 1 and a.isDeleted = 0 ; ");
+		$query->execute();
+		$pagearticle = $query->fetchall();
+		return $pagearticle;
+	}
+
+	public function existebd($valeur,$table,$columns){
+		$table = DBPREFIX.$table;
+		$query = $this->pdo->prepare("SELECT $columns FROM $table ; ");
+		$query->execute();
+		$db = $query->fetchall();
+		foreach($db as $one){
+			if($valeur == htmlspecialchars_decode($one[$columns])){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public function getallPageActif(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $table WHERE status = 0 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function removemenu($id){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 0 WHERE id = $id ;");
+		$query->execute();
+		
+	}
+
+	public function addmenu($id){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 1 WHERE id = $id ;");
+		$query->execute();
+	}
+
+	public function maxmenu(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare(" SELECT SUM(isMenu) AS nb_menu FROM $table ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function getpagemenu(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE isMenu = 1 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function getpageaccueil(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE isAccueil = 1 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
 	}
 
 

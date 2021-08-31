@@ -153,10 +153,10 @@ class User extends Database
 									"type"=>"text",
 									"class"=>"form_input",
 									"label"=>"Nom Prénom",
-									"lengthMax"=>"120",
+									"lengthMax"=>"50",
 									"lengthMin"=>"2",
 									"required"=>true,
-									"error"=>"Votre prénom doit faire entre 2 et 120 caractères",
+									"error"=>"Votre prénom doit faire entre 2 et 50 caractères",
 									"placeholder"=>"Votre prénom"
 									],
                     "email"=>[
