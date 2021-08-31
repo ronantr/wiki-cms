@@ -180,3 +180,23 @@
 /admin/cat-delete:
   controller: Categorie
   action: delete
+
+###############
+#####Menu######
+###############
+
+/admin/menu:
+  controller: Menu
+  action: default
+
+/admin/menu/add:
+  controller: Menu
+  action: add
+
+/admin/menu/remove:
+  controller: Menu
+  action: remove
+
+  /admin/menu/is_accueil:
+    controller: Menu
+    action: addaccueil

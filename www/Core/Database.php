@@ -397,6 +397,51 @@ class Database
 		return false;
 	}
 
+	public function getallPageActif(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $table WHERE status = 0 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function removemenu($id){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 0 WHERE id = $id ;");
+		$query->execute();
+		
+	}
+
+	public function addmenu($id){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 1 WHERE id = $id ;");
+		$query->execute();
+	}
+
+	public function maxmenu(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare(" SELECT SUM(isMenu) AS nb_menu FROM $table ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function getpagemenu(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE isMenu = 1 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function getpageaccueil(){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE isAccueil = 1 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
 
 
 

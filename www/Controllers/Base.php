@@ -5,6 +5,7 @@ namespace App;
 use App\Core\Security;
 use App\Core\View;
 use App\Core\Installer;
+use App\Models\Page;
 
 
 class Base{
@@ -16,11 +17,22 @@ class Base{
 		$pseudo = "Test";
 
 		//Affiche moi la vue home;
-		$view = new View();
-		$view->assign("title","Votre site");
-		$view->assign("pseudo", $pseudo);
-		$view->assign("age", 21);
-		$view->assign("genre", "h");
+		
+		$page = new Page();
+		$acceuil = $page->getpageaccueil();
+		if(!empty($acceuil)){
+			$view = new View("page", "front");
+			$view->assign("page",$acceuil[0]);
+			$articles = $page->getArticleByIdPage($acceuil[0]["id"]);
+			$view->assign('articles',$articles);
+			$view->assign("title",$acceuil[0]['slug']);
+		}
+		else{
+			$view = new View();
+			$view->assign("title","Votre site");
+		}
+		
+		
 		// $installer = new installer;
 		// if(!$installer->checkInstall() xor file_exists('.env.prod')){
 		// 	header('location: /installer');

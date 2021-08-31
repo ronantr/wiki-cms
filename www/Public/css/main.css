@@ -102,7 +102,7 @@ header nav li a:not([href]){
 }
 
 .containermain{
-	max-width: 1050px;
+	max-width: 1350px;
 	margin: 0 auto;
 	width: 100%;
 }
@@ -156,4 +156,70 @@ footer{
 	border: #AA2D2D solid;
 	border-radius: 20px;
 	padding: 20px;
+}
+
+.demi{
+	width: 45%;
+	margin: 0 auto;
+	border-radius: 20px;
+	border: grey solid;
+	background-color: rgb(240, 240, 240);
+}
+
+.demi thead{
+	font-size: 25px;
+}
+
+.demi table{
+	width: 90%;
+	margin: 20px auto;
+	caption-side: bottom;
+	border-collapse: collapse; 
+}
+
+.demi table td{
+	width: 40%;
+	padding: 15px;
+	border-bottom: solid white;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.demi tr{
+	background-color: #dadada;
+	margin-bottom: 5px;
+}
+
+
+
+.section_menu{
+	display: flex;
+	flex-wrap: wrap;
+	
+	
+}
+
+.button-valide{
+	color: #0071a1;
+    border-color: #0071a1;
+	background: #f3f5f6;
+	display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 2.15384615;
+    min-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+	box-sizing: border-box;
+	float: right;
+}
+
+.button-valide a{
+	text-decoration: none;
 }

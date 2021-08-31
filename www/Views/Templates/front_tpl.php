@@ -12,6 +12,10 @@
 			<div class="container">
 				<nav id="main-nav">
 					<ul>
+						<li><a href="/">Accueil</a></li>
+						<?php foreach($menu as $li){ ?>
+						<li><a href="/<?php echo $li['url']; ?>"><?php echo ucfirst($li['slug']); ?></a></li> <?php } ?>
+						<li><a href="#">|</a></li>
 						<?php if ( !App\Core\Security::isConnected()) { ?> <li><a href="/login">Login</a></li>
 						<li><a href="/s-inscrire">Register</a></li>	
 							<?php }else{ ?> 
