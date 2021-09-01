@@ -199,6 +199,6 @@
   controller: Menu
   action: remove
 
-  /admin/menu/is_accueil:
-    controller: Menu
-    action: addaccueil
+/admin/menu/is_accueil:
+  controller: Menu
+  action: addaccueil

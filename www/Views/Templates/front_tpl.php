@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<header style="position:relative;">
-			<div class="container">
+			<div class="containernav">
 				<nav id="main-nav">
 					<ul>
 						<li><a href="/">Accueil</a></li>

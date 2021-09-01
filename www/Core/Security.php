@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+use App\Models\User;
 
 class Security
 {
@@ -26,5 +27,20 @@ class Security
 				header('Location: / ');
 			}
 		}
+	}
+
+	public function verifAccount(){
+		if(!empty($_SESSION['login'])){
+			if($_SESSION['login'] == true){
+				$user  = new User; 
+				$userselect = $user->getuserbyemail($_SESSION['email']);
+				if(empty($userselect)){
+					header('Location: /logout ');
+				}
+
+			}
+			
+		}
+		
 	}
 }
