@@ -167,6 +167,10 @@
   controller : Page
   action: editer
 
+/admin/single-page:
+  controller : Page
+  action: single-page
+
 ###############
 ###Catégorie###
 ###############

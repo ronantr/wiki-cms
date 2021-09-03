@@ -44,12 +44,21 @@ class User{
     }
 
     public function userdeleteAction(){
-        $user_id = $_GET['id'];
-        $user = new ModelsUser();
-        if (!empty($user_id)) {
-                $user->CorbeilleUser($user_id);
+        if(!empty($_GET['id'])){
+            $user = new ModelsUser();
+            if($user->isAdmin($_GET['id'])){
+                if($user->lastAdmin()){
+                    header('Location: /admin/users/liste-utilisateurs?message=4');
+                    exit;
+                }
+            }
+            $user->CorbeilleUser($_GET['id']);
+            header('Location: /admin/users/liste-utilisateurs?message=1');
         }
-        header('Location: /admin/users/liste-utilisateurs?message=1');
+        else{
+            header('Location: /admin/users/liste-utilisateurs');
+        }
+        
 
     }
 

@@ -405,7 +405,7 @@ class Database
 		$query->execute();
 		$db = $query->fetchall();
 		foreach($db as $one){
-			if($valeur == htmlspecialchars_decode($one[$columns])){
+			if(strtoupper($valeur) == strtoupper(htmlspecialchars_decode($one[$columns]))){
 				return true;
 			}
 		}
@@ -467,6 +467,34 @@ class Database
 		$query->execute();
 		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 0 WHERE isAccueil = 1 ;");
 		$query->execute();
+	}
+
+	public function isAdmin($id){
+		$table = DBPREFIX."editor";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE id = $id and role = 1 ;");
+		$query->execute();
+		$user = $query->fetch();
+		if(!empty($user)){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
+
+	public function lastAdmin(){
+		$table = DBPREFIX."editor";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE role = 1 and isDeleted =0;");
+		$query->execute();
+		$users = $query->fetchall();
+		$nb_user = count($users);
+		if($nb_user <= 1){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 

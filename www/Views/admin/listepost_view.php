@@ -45,7 +45,7 @@
                     ?>
                     </select></td>
                     <td><button class="button-valide"><a href="\post?id=<?php echo $id;?>">affichier</a></button></td>
-                    <td><button class="button-valide"><a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a></button></td>
+                    <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
                     <td><button class="button-valide"><a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a></button></td>
                     <td><button type="submit" class="button-valide">Change Catégorie</button></form></td>
                 </tr>
@@ -54,3 +54,15 @@
             ?>
         </tbody>
 </div>
+<script>
+function myFunctionSupprimer(id) {
+  var txt;
+  var r = confirm("Voulez vous supprimer cette article ?");
+  if (r == true) {
+    document.location.href="/admin/delete-post?id="+id;
+  } else {
+    txt = "Suppresion annuler";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>

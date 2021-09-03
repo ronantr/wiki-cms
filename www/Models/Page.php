@@ -7,6 +7,8 @@ class Page extends Database
 	protected $url;
 	protected $slug;
 	protected $content;
+	protected $isMenu;
+	protected $isAccueil;
 	protected $status = 0;
 
 
@@ -49,6 +51,14 @@ class Page extends Database
 
 	public function setContent($content){
 		$this->content = $content;
+	}
+
+	public function setisMenu($menu){
+		$this->isMenu = $menu;
+	}
+
+	public function setisAccueil($accueil){
+		$this->isAccueil = $accueil;
 	}
 	
 }

@@ -85,6 +85,8 @@ class Page{
                 $pages->setUrl(htmlspecialchars($_POST['url']));
                 $pages->setSlug(htmlspecialchars($_POST['slug']));
                 $pages->setContent(htmlspecialchars($_POST['content']));
+                $pages->setisMenu(0);
+                $pages->setisAccueil(0);
                 $pages->save();
                 $lastepage = $pages->getlastedpage();
                 $pages->setId($lastepage[0]['id']);

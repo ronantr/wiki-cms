@@ -1,14 +1,16 @@
 <?php if (isset($_GET['message'])){
     switch ($_GET['message']){
     case 1:
-        echo'<h1>User placer dans la corbeille</h1>';
+        echo'<h1 class = "erreur">User placer dans la corbeille</h1>';
         break;
     case 2:
-        echo'<h1>User a été modifier</h1>';
+        echo'<h1 class = "erreur">User a été modifier</h1>';
         break;
     case 3:
-        echo'<h1>User a été Restaurer</h1>';
+        echo'<h1 class = "erreur">User a été Restaurer</h1>';
         break;
+    case 4;
+        echo'<h1 class = "erreur">Vous ne pouvez pas supprimer le dernier Administrateur</h1>';
 }
 }
 
@@ -47,17 +49,17 @@
             <!-- if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> -->
             <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié"; ?> <button class="button-valide" type="button"><a href="/admin/valider-user?id=<?php echo $user['id'];?>">Validé</a></button> <?php } ?> </td>
             <td><input type="submit" class="button-valide" value="Edit Rôle"></td></form>
-            <td><button class="button-valide" onclick="myFunctionSupprimer()">Corbeille</button>
+            <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $user['id'];?>)">Corbeille</button>
             <!--<a href="/admin/users/delete?id=<?php //echo $user['id'];?>">Supprimer</a>--></td>
         </tr>
     <?php }} ?>
 </tbody>
 <script>
-function myFunctionSupprimer() {
+function myFunctionSupprimer(id) {
   var txt;
   var r = confirm("Voulez vous supprimer cette utilisateur?");
   if (r == true) {
-    document.location.href='/admin/users/delete?id=<?php echo $user['id'];?>';
+    document.location.href="/admin/users/delete?id="+id;
   } else {
     txt = "Suppresion annuler";
   }

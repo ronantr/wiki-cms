@@ -20,9 +20,21 @@
             <td><?php echo $cat['id']; ?></td>
             <td><?php echo htmlspecialchars_decode($cat['name']); ?></td>
             <td><?php echo $cat['creatAt']; ?></td>
-            <td><button class="button-valide"><a href="/admin/cat-delete?id=<?php echo $cat['id'];?>">Supprimer</a></button></td>
+            <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $cat['id'];?>)">Supprimer</button></td>
         
         </tr>
         <?php } ?>
     </tbody>
 </table>
+<script>
+function myFunctionSupprimer(id) {
+  var txt;
+  var r = confirm("Voulez vous supprimer cette catégorie ?");
+  if (r == true) {
+    document.location.href="/admin/cat-delete?id="+id;
+  } else {
+    txt = "Suppresion annuler";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
