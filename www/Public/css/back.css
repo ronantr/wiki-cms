@@ -319,3 +319,7 @@ tbody tr{
 	margin: auto;
 	width: 95%;
 }
+
+a{
+	text-decoration: none;
+}

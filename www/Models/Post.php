@@ -126,7 +126,7 @@ class Post extends Database
 									"required"=>true,
 									"error"=>"Votre Titre doit faire entre 2 et 120 caractères",
 									"placeholder"=>"Titre",
-									"defaultValue"=>$this->getTitle()
+									"defaultValue"=>htmlspecialchars_decode($this->getTitle())
 									],
 					"content"=>[
 									"type"=>"mytextarea",
@@ -135,7 +135,7 @@ class Post extends Database
 									"label"=>"content :",
 									"error"=>"Votre Contenue doit faire entre 2 et 32500 caractères",
 									"placeholder"=>"Contenue",
-									"defaultValue"=>$this->getContent()
+									"defaultValue"=>htmlspecialchars_decode($this->getContent())
 									]
 						]
 				];

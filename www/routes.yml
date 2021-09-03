@@ -169,7 +169,7 @@
 
 /admin/single-page:
   controller : Page
-  action: single-page
+  action: single_page
 
 ###############
 ###Catégorie###

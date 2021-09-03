@@ -220,6 +220,18 @@ class Page{
 
     }
 
+    public function single_pageAction(){
+        $page = new ModelsPage();
+		$lapage = $page->getpage($_GET['id']);
+		if(!empty($lapage)){
+			$view = new View("page", "front");
+			$view->assign("page",$lapage[0]);
+			$articles = $page->getArticleByIdPage($lapage[0]["id"]);
+			$view->assign('articles',$articles);
+			$view->assign("title","single page ".$lapage[0]['slug']);
+		}
+    }
+
 
 
 }

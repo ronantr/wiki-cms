@@ -20,7 +20,6 @@ class Post{
         $view->assign("allPosts", $allPosts);
         $view->assign("categories",$allCat);
         $view->assign("title","Admin Liste Post");
-        echo "controller post action default";
         }
 
     public function postajouteAction(){
@@ -58,8 +57,8 @@ class Post{
             if($post["id"]==$_GET["id"]){
             
                 $Post->setId($post["id"]);
-                $Post->setPost_title(htmlspecialchars($post["title"]));
-                $Post->setPost_content(htmlspecialchars($post["content"]));
+                $Post->setPost_title($post["title"]);
+                $Post->setPost_content($post["content"]);
             }
         }
 
