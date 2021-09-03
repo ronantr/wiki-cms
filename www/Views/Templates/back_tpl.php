@@ -22,7 +22,7 @@
 		<meta name="description" content="Back">
 		<link rel=stylesheet href=<?php echo App\Core\View::lookupfile('back.css'); ?> >
 		<script type="text/javascript" src=<?php echo App\Core\View::lookupfile('main.js'); ?>></script>
-		<link rel="icon" href=<?php echo App\Core\View::lookupfile('Logo.png'); ?> sizes="32x32">
+		<link rel="icon" href=<?php echo App\Core\View::lookupfile('icon.png'); ?> sizes="32x32">
 
 	</head>
 	<body>
@@ -33,9 +33,10 @@
 				</a>
 				<nav id="main-nav">
 					<ul>
-						<li><a href="/admin/user?nom=<?php echo $_SESSION['username'] ?>"> <?php echo $_SESSION['username'] ?> </a></li>
+						<li><a href="/admin/user?nom=<?php echo $_SESSION['username'] ?>"> <?php echo strtoupper($_SESSION['username']); ?> </a></li>
 						<li><a href="/admin/add-page">Create Page</a></li>
 						<li><a href="/admin/add-post">Create Post</a></li>
+						<li><a href="/">Mon Site</a></li>
 						<li><a>|</a></li>
 						<li><a href="/logout">Déconnexion</a></li>
 					</ul>
@@ -44,7 +45,7 @@
 			<div class="nav_gauche">
 				<div class="row">
 					<a href="/admin/tableau-de-bord">Dashboard </a>
-					<a href="/">Home</a>
+					<a href="/admin/menu">Gestion de menu</a>
 					<a href="/admin/liste-Pages">Pages</a>
 					<a href="/admin/liste-categorie">Catégories</a>
 					<a href="/admin/liste-post">Posts</a>
@@ -58,11 +59,13 @@
 		<main>
 			<section class="main">
 				<div class="containermain">
-					<?php if(isset($erreur)){ ?>
-						<h1 class = "erreur"><?php echo $erreur ?></h1>
+					<div class="intercontainer">
+						<?php if(isset($erreur)){ ?>
+							<h1 class = "erreur"><?php echo $erreur ?></h1>
 
-					<?php }?>
-					<?php include $this->view; ?>
+						<?php }?>
+						<?php include $this->view; ?>
+					</div>
 				</div>
 			</section>
 		</main>

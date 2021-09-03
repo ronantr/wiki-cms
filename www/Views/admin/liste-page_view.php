@@ -15,6 +15,7 @@
 }
 }
 ?>
+<h1 class="titleh1">Page</h1>
 <table id='tab'>
     <thead>
         <tr>
@@ -48,9 +49,22 @@
                             echo "<td>Deleted</td>";
                             break;
                 } ?>
-                <td><a href="/admin/page-edit?id=<?php echo $id;?>">Modifier</a></td>
-                <td><a href="/admin/page-delete?id=<?php echo $id;?>">Supprimer</a></td>
+                <td><button class="button-valide"><a href="/admin/page-edit?id=<?php echo $id;?>">Modifier</a></button></td>
+                <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
+                
             </tr>
             <?php } ?>
     </tbody>
 </table>
+<script>
+    function myFunctionSupprimer(id) {
+    var txt;
+    var r = confirm("Voulez vous supprimer cette page ? ");
+    if (r == true) {
+        document.location.href="/admin/page-delete?id="+id;
+    } else {
+        txt = "Suppresion annuler";
+    }
+    document.getElementById("demo").innerHTML = txt;
+    }
+</script>

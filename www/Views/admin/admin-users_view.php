@@ -16,7 +16,7 @@
         echo '<h1>User a été Restaurer</h1>';
     }
 ?>
-<button type="button"><a href="/admin/users/liste-utilisateurs-deleted">Corbeille</a></button>
+<button class="button-valide" type="button" style="font-size:20px;"><a href="/admin/users/liste-utilisateurs-deleted">Corbeille</a></button>
 <table>
 <thead>
     <tr>
@@ -26,7 +26,7 @@
         <th>Rôle</th>
         <th>Compte Validé</th>
         <th>Edit </th>
-        <th>Supprimer</th>
+        <th>Placer au corbeille</th>
 
     </tr>
 </thead>
@@ -45,9 +45,9 @@
                 </select> 
             </td>
             <!-- if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> -->
-            <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié"; ?> <button type="button"><a href="/admin/valider-user?id=<?php echo $user['id'];?>">Validé</a></button> <?php } ?> </td>
-            <td><input type="submit" value="Edit Rôle"></td></form>
-            <td><button onclick="myFunctionSupprimer()">Supprimer</button>
+            <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié"; ?> <button class="button-valide" type="button"><a href="/admin/valider-user?id=<?php echo $user['id'];?>">Validé</a></button> <?php } ?> </td>
+            <td><input type="submit" class="button-valide" value="Edit Rôle"></td></form>
+            <td><button class="button-valide" onclick="myFunctionSupprimer()">Corbeille</button>
             <!--<a href="/admin/users/delete?id=<?php //echo $user['id'];?>">Supprimer</a>--></td>
         </tr>
     <?php }} ?>

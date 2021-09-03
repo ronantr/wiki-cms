@@ -33,8 +33,20 @@
             <td><?php if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> </td>
             <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié";} ?> </td>
             <td><a href="/admin/users/restaurer?id=<?php echo $user['id'];?>">Restaurer</a></td>
-            <td><a href="/admin/users/delete-def?id=<?php echo $user['id'];?>">Supprimer</a></td>
+            <td><button " onclick="myFunctionSupprimer()">Supprimer</button></td>
         </tr>
     <?php }} ?>
 </tbody>
+<script>
+function myFunctionSupprimer() {
+  var txt;
+  var r = confirm("Voulez vous supprimer DEFINITIVEMENT cette utilisateur?");
+  if (r == true) {
+    document.location.href='/admin/users/delete?id=<?php echo $user['id'];?>';
+  } else {
+    txt = "Suppresion annuler";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
 </table>

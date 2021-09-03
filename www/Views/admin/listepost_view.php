@@ -12,12 +12,12 @@
 }
 }
 ?><div>
+    <h1 class="titleh1">Posts</h1>
     <table id='tab'>
         <thead>
             <tr>
                 <td>id</td>
                 <td>Titre</td>
-                <td>content</td>
                 <td>Catégorie</td>
                 <td>Affichage</td>
                 <td>Delete</td>
@@ -33,8 +33,7 @@
                 <tr>
                     <td><?php echo $id;?></td>
                     <td><?php echo($value["title"]);?></td>
-                    <td><?php echo(htmlspecialchars_decode($value["content"]));?></td>
-                    <td><form action="\admin\edit-cat-post?id=<?php echo $id;?>" method="post"><select name="categorie">
+                    <td><form action="\admin\edit-cat-post?id=<?php echo $id;?>" method="post"><select name="categorie" style="padding:10px;">
                             <option value="">...</option>
                     <?php 
                         foreach($categories as $categorie){
@@ -45,10 +44,10 @@
                         }
                     ?>
                     </select></td>
-                    <td><a href="\post?id=<?php echo $id;?>">affichier</a></td>
-                    <td><a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a></td>
-                    <td><a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a></td>
-                    <td><button type="submit">Change Catégorie</button></form></td>
+                    <td><button class="button-valide"><a href="\post?id=<?php echo $id;?>">affichier</a></button></td>
+                    <td><button class="button-valide"><a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a></button></td>
+                    <td><button class="button-valide"><a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a></button></td>
+                    <td><button type="submit" class="button-valide">Change Catégorie</button></form></td>
                 </tr>
                 <?php 
             }
