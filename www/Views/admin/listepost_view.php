@@ -44,9 +44,9 @@
                         }
                     ?>
                     </select></td>
-                    <td><button class="button-valide"><a href="\post?id=<?php echo $id;?>">affichier</a></button></td>
+                    <td><a class="button-valide" href="\post?id=<?php echo $id;?>">Affichier</a></td>
                     <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
-                    <td><button class="button-valide"><a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a></button></td>
+                    <td><a class="button-valide" href="\admin\edit-post?id=<?php echo $id;?>"> Editer<a></td>
                     <td><button type="submit" class="button-valide">Change Catégorie</button></form></td>
                 </tr>
                 <?php 

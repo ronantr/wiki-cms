@@ -50,8 +50,8 @@
                             echo "<td>Deleted</td>";
                             break;
                 } ?>
-                <td><button class="button-valide"><a href="/admin/page-edit?id=<?php echo $id;?>">Modifier</a></button></td>
-                <td><button class="button-valide"><a href="/admin/single-page?id=<?php echo $id;?>">Visualiser</a></button></td>
+                <td><a class="button-valide" href="/admin/page-edit?id=<?php echo $id;?>">Modifier</a></td>
+                <td><a class="button-valide" href="/admin/single-page?id=<?php echo $id;?>">Visualiser</a></td>
                 <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
                 
             </tr>
