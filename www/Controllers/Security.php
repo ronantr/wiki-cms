@@ -104,6 +104,8 @@ class Security{
 	}
 
 	public function logoutAction(){
+		$_SESSION['role'] ="";
+		$_SESSION['username']="";
 		$_SESSION['login'] = false;
 		header('Location: \ ');
 	}

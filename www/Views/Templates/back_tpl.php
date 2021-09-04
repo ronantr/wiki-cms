@@ -3,7 +3,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo $title ?></title>
-		<meta name="description" content="ceci est la page de template">
+		<script src="https://cdn.tiny.cloud/1/eo59fq7w6j1puvdqjeu1rpwttfb7zmw1xt5pz6cxsykca6l9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		
+
+
+		<script>
+			tinymce.init({
+			selector: 'textarea',
+			height: 500,
+		    plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+			menubar: 'file edit view insert format tools table help',
+		    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+			toolbar_mode: 'floating',
+			tinycomments_mode: 'embedded',
+			tinycomments_author: 'Author name',
+		});
+		</script>
+		<meta name="description" content="Back">
 		<link rel=stylesheet href=<?php echo App\Core\View::lookupfile('main.css'); ?> >
 		<script type="text/javascript" src=<?php echo App\Core\View::lookupfile('main.js'); ?>></script>
 		<link rel="icon" href=<?php echo App\Core\View::lookupfile('Logo.png'); ?> sizes="32x32">
@@ -42,6 +58,10 @@
 		<main>
 			<section class="main">
 				<div class="containermain">
+					<?php if(isset($erreur)){ ?>
+						<h1 class = "erreur"><?php echo $erreur ?></h1>
+
+					<?php }?>
 					<?php include $this->view; ?>
 				</div>
 			</section>

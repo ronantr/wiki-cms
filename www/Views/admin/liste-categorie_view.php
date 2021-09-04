@@ -1,6 +1,6 @@
 <form action="/admin/add-categorie" method="post">
     <label>New Catégorie</label>
-    <input name="name" type="text">
+    <input name="name" type="text" minlength="4" maxlength="25" required>
     <button type ="submit">Add Catégorie</button>
 </form>
 <table id='tab'>
