@@ -10,7 +10,7 @@ class Commentaire extends Database
 	private $id=null;
 	protected $content;
     protected $id_article;
-    protected $id_user;
+	protected $id_user;
 
 	public function __construct(){
 		parent::__construct();
@@ -80,7 +80,11 @@ class Commentaire extends Database
     public function getId_user()
     {
         return $this->id_user;
-    }    
+	}    
+	
+	public function setid_user($id_user){
+		$this->id_user = $id_user;
+	}
 
     public function buildFormCommentaire(){ 
 		return [
@@ -110,7 +114,7 @@ class Commentaire extends Database
                     "id_user"=>[
                         "type"=>"hidden",
                         "required"=>true,
-                        "defaultValue"=>"1"
+                        "defaultValue"=>getId_user()
                     ]
 						]
 				];

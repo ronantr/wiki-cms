@@ -17,8 +17,8 @@
         <thead>
             <tr>
                 <td>id</td>
-                <td>id_User</td>
                 <td>id_Post</td>
+                <td>id_User</td>
                 <td>Content</td>
                 <td>Action</td>
             </tr>

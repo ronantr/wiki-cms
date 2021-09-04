@@ -159,8 +159,10 @@ class Post{
             $id_post = $_GET['id'];
             $posts = new ModelPost;
             $post = $posts->getpostbyid($id_post);
+            $commentaires = $posts->getCommentairesuser($id_post);
             $view = new View('public/single-post','front');
             $view->assign('post', $post);
+            $view->assign('commentaires',$commentaires);
             $view->assign("title","Admin ".$post[0]['title']);
         }
         else{
