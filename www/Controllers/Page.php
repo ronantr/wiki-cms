@@ -161,6 +161,10 @@ class Page{
             }
             $page->setContent($_POST['content']);
             $page->setStatus($_POST['status']);
+            if($_POST['status'] == 1){
+                $page->setisMenu(0);
+                $page->setisAccueil(0);
+            }
             $same=array();
             $page->save();
             $id_categories = $page->getCategoriesById($_POST['id']);

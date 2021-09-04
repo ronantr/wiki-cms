@@ -18,7 +18,8 @@
         echo '<h1>User a été Restaurer</h1>';
     }
 ?>
-<button class="button-valide" type="button" style="font-size:20px;"><a href="/admin/users/liste-utilisateurs-deleted">Corbeille</a></button>
+<h1 class="titleh1">Utilisateur</h1>
+<a class="button-valide" style="font-size:20px;" href="/admin/users/liste-utilisateurs-deleted">Corbeille</a>
 <table>
 <thead>
     <tr>

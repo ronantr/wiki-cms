@@ -9,7 +9,7 @@
 }
 }
 ?>
-
+<h1 class="titleh1">Corbeille Utilisateur</h1>
 <table>
 <thead>
     <tr>
@@ -32,8 +32,8 @@
             <td><?php echo htmlspecialchars_decode($user['email']); ?> </td>
             <td><?php if($user['role'] == 1){ echo "Administrateur";}else{ echo "Utilisateur";} ?> </td>
             <td><?php if($user['emailVerified'] == 1){ echo "Verifié";}else{ echo "Non Verifié";} ?> </td>
-            <td><a href="/admin/users/restaurer?id=<?php echo $user['id'];?>">Restaurer</a></td>
-            <td><button " onclick="myFunctionSupprimer()">Supprimer</button></td>
+            <td><a class="button-valide" href="/admin/users/restaurer?id=<?php echo $user['id'];?>">Restaurer</a></td>
+            <td><button class="button-valide" onclick="myFunctionSupprimer()">Supprimer</button></td>
         </tr>
     <?php }} ?>
 </tbody>
