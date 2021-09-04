@@ -65,6 +65,7 @@
 
 						<?php }?>
 						<?php include $this->view; ?>
+						<div class="separateur"></div>
 					</div>
 				</div>
 			</section>
