@@ -1,13 +1,13 @@
 <?php if (isset($_GET['message'])){
     switch ($_GET['message']){
     case 1:
-        echo'<h1>Le Post a été supprimé</h1>';
+        echo'<h1 class="erreur">Le Post a été supprimé</h1>';
         break;
     case 2:
-        echo'<h1>Le Post a été ajouté</h1>';
+        echo'<h1 class="erreur">Le Post a été ajouté</h1>';
         break;
     case 3:
-        echo'<h1>Le Post a été modifié</h1>';
+        echo'<h1 class="erreur">Le Post a été modifié</h1>';
         break;
 }
 }
@@ -44,7 +44,7 @@
                         }
                     ?>
                     </select></td>
-                    <td><a class="button-valide" href="\post?id=<?php echo $id;?>">Affichier</a></td>
+                    <td><a class="button-valide" href="\admin\single-post?id=<?php echo $id;?>">Affichier</a></td>
                     <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
                     <td><a class="button-valide" href="\admin\edit-post?id=<?php echo $id;?>"> Editer<a></td>
                     <td><button type="submit" class="button-valide">Change Catégorie</button></form></td>

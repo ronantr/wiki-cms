@@ -115,7 +115,7 @@ class Form
 
 	}
 
-        $html .= "</br><input type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'></form>";
+        $html .= "</br><button type='submit' value='".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."'>".( self::cleanWord($form["config"]["Submit"]) ?? "Valider" )."</button></form>";
 
 
         echo $html;

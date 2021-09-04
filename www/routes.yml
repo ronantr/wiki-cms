@@ -72,6 +72,9 @@
 /single-post:
   controller: Post
   action: public_single_post
+/admin/single-post:
+  controller : Post
+  action: single_post
   
 
 ###################

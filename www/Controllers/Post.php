@@ -141,11 +141,30 @@ class Post{
     }
 
     public function public_single_postAction(){
-        $id_post = $_GET['id'];
-        $posts = new ModelPost;
-        $post = $posts->getpostbyid($id_post);
-        $view = new View('public/single-post','front');
-        $view->assign('post', $post);
-        $view->assign("title",$post[0]['title']);
+        if(!empty($_GET['id'])){
+            $id_post = $_GET['id'];
+            $posts = new ModelPost;
+            $post = $posts->getpostbyid($id_post);
+            $view = new View('public/single-post','front');
+            $view->assign('post', $post);
+            $view->assign("title",$post[0]['title']);
+        }
+        else{
+            header('Location: /');
+        }
+    }
+
+    public function single_postAction(){
+        if(!empty($_GET['id'])){
+            $id_post = $_GET['id'];
+            $posts = new ModelPost;
+            $post = $posts->getpostbyid($id_post);
+            $view = new View('public/single-post','front');
+            $view->assign('post', $post);
+            $view->assign("title","Admin ".$post[0]['title']);
+        }
+        else{
+            header('Location: /admin/liste-post');
+        }
     }
 }
