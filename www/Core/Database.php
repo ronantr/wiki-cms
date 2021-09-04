@@ -251,15 +251,14 @@ class Database
         return true;
 	}
 	
-	public function renameDatabase(){
-		$DBPREFIX = DBPREFIX;
-		$DBPREFIX_article = $DBPREFIX."article";
-		$DBPREFIX_categorie = $DBPREFIX."categorie";
-		$DBPREFIX_commentaire = $DBPREFIX."commentaire";
-		$DBPREFIX_editor = $DBPREFIX."editor";
-		$DBPREFIX_static = $DBPREFIX."static";
-		$DBPREFIX_page_categorie = $DBPREFIX."page_categorie";
-		$DBPREFIX_page = $DBPREFIX."page";
+	public function renameDatabase($DBPREFIXe){
+		$DBPREFIX_article = $DBPREFIXe."article";
+		$DBPREFIX_categorie = $DBPREFIXe."categorie";
+		$DBPREFIX_commentaire = $DBPREFIXe."commentaire";
+		$DBPREFIX_editor = $DBPREFIXe."editor";
+		$DBPREFIX_static = $DBPREFIXe."static";
+		$DBPREFIX_page_categorie = $DBPREFIXe."page_categorie";
+		$DBPREFIX_page = $DBPREFIXe."page";
 		$query = $this->pdo->prepare("alter table article rename  TO $DBPREFIX_article ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table commentaire rename  TO $DBPREFIX_commentaire ;");

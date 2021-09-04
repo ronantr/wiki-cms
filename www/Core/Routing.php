@@ -16,8 +16,6 @@ class Routing{
 
 
 	public function __construct($uri){
-
-		if(!Installer::checkEnvExist() && $uri != "/installer" && $uri != "/make-install") $this->redirectToInstaller();
 		//Faut vérifier que le fichier existe
 		$this->routes = yaml_parse_file($this->routesPath);
 		//Faut vérifier qu'il y a un controller pour cette route
