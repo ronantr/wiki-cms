@@ -1,27 +1,39 @@
 
 
 
-<form action="/admin/add-page-send" method="post">
-    <label>Nom de la page</label>
-    <input type="text" name="slug" minlength="4" maxlength="25" required><br>
-    <label>Url</label>
-    <input type="text" name="url" placeholder="votreurl" minlength="4" maxlength="50" required><br>
-    <label>Content</label>
+<form action="/admin/add-page-send" method="post" class="form-box">
+    <h1 class="titleh1">Creation Page</h1>
+    <div class="label-input-group">
+        <label for="slug" class="label-form">Nom de la page*</label>
+        <input class="input-form" type="text" id="slug" name="slug" minlength="4" maxlength="25" required><br>
+    </div>
+    <div class="label-input-group">
+        <label for="url" class="label-form">Url*</label>
+        <input type="text" id="url" class="input-form" name="url" placeholder="votreurl" minlength="4" maxlength="50" required><br>
+    </div>
+    
+    <label class="label-form">Content</label>
     
     <textarea id="content" class="" name="content" type="mytextarea" placeholder="Contenue" style="visibility: hidden;" aria-hidden="true" ></textarea>
-    <label>Les Catégories :</label><br>
+    <label class="label-form">Les Catégories :</label><br>
+    <div class="checkbox-form">
     <?php $comt =0;
+    
     foreach ($categories as $categorie){
         $comt++;
-        ?> <input type="checkbox" id=<?php echo htmlspecialchars_decode($categorie['name']); ?> name="pagecat[]" value=<?php echo $categorie['id']; ?>>
-            <label for=<?php echo htmlspecialchars_decode($categorie['name']); ?>><?php echo htmlspecialchars_decode($categorie['name']); ?></label>
-    <?php } ?><br>
-    <label>Status</label>
-    <select name = "status">
-        <option value = 0 >Publié</option>
-        <option value = 1>Brouillon</option>
-    </select><br>
+        ?> <div class="checkbox-option-form"><input type="checkbox" id=<?php echo htmlspecialchars_decode($categorie['name']); ?> name="pagecat[]" value=<?php echo $categorie['id']; ?>>
+            <label class="label-form-checkbox" for=<?php echo htmlspecialchars_decode($categorie['name']); ?>><?php echo htmlspecialchars_decode($categorie['name']); ?></label></div>
+    <?php } ?></div><br>
+    <div class="label-input-group">
+        <label class="label-form">Status</label>
+        <select name = "status" class="select-form">
+            <option value = 0 >Publié</option>
+            <option value = 1>Brouillon</option>
+        </select>
+    </div>
+    
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="button-form">Submit</button>
     
 </form>
+<div class="separateur"></div>

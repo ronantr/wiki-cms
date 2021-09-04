@@ -132,6 +132,14 @@ class Database
 	    $result = $query->fetch(\PDO::FETCH_ASSOC);
 	    return $result['role'];
 	}
+
+	public function getuserbyemail($email){
+		$this->table = DBPREFIX."editor";
+	    $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE email = '$email';");
+	    $query->execute();
+	    $result = $query->fetch(\PDO::FETCH_ASSOC);
+	    return $result;
+	}
 	
 
     public function getPosts(){
@@ -400,7 +408,7 @@ class Database
 		$query->execute();
 		$db = $query->fetchall();
 		foreach($db as $one){
-			if($valeur == htmlspecialchars_decode($one[$columns])){
+			if(strtoupper($valeur) == strtoupper(htmlspecialchars_decode($one[$columns]))){
 				return true;
 			}
 		}
@@ -417,7 +425,7 @@ class Database
 
 	public function removemenu($id){
 		$table = DBPREFIX."page";
-		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 0 WHERE id = $id ;");
+		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 0 , isAccueil = 0 WHERE id = $id ;");
 		$query->execute();
 		
 	}
@@ -450,6 +458,46 @@ class Database
 		$query->execute();
 		$page = $query->fetchall();
 		return $page;
+	}
+
+	public function addaccueil($id){
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 1 WHERE isAccueil = 1 ;");
+		$query->execute();
+		$query = $this->pdo->prepare("UPDATE $table SET isAccueil = 0 ;");
+		$query->execute();
+		$query = $this->pdo->prepare("UPDATE $table SET isAccueil = 1 WHERE id = $id ;");
+		$query->execute();
+		$query = $this->pdo->prepare("UPDATE $table SET isMenu = 0 WHERE isAccueil = 1 ;");
+		$query->execute();
+	}
+
+	public function isAdmin($id){
+		$table = DBPREFIX."editor";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE id = $id and role = 1 ;");
+		$query->execute();
+		$user = $query->fetch();
+		if(!empty($user)){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
+
+	public function lastAdmin(){
+		$table = DBPREFIX."editor";
+		$query = $this->pdo->prepare(" SELECT * FROM $table WHERE role = 1 and isDeleted =0;");
+		$query->execute();
+		$users = $query->fetchall();
+		$nb_user = count($users);
+		if($nb_user <= 1){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 

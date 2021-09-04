@@ -62,6 +62,18 @@ class Menu{
             header('Location: /admin/menu');
         }
     }
+
+    public function addaccueilAction(){
+        if(!empty($_POST['id'])){
+            $ModelsPage = new Page;
+            $ModelsPage->addaccueil($_POST['id']);
+            header('Location: /admin/menu');
+            exit;
+        }
+        else{
+            header('Location: /admin/menu');
+        }
+    }
 }
 
 ?>

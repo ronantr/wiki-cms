@@ -12,6 +12,7 @@
 }
 }
 ?><div>
+    <h1 class="titleh1">Commentaires</h1>
     <table id='tab'>
         <thead>
             <tr>
@@ -33,7 +34,7 @@
                     <td><?php echo($Commentaire["id_article"]);?></td>
                     <td><?php echo($Commentaire["id_user"]);?></td>
                     <td><?php echo(htmlspecialchars_decode($Commentaire["content"]));?></td>
-                    <td><a href="\admin\post?id=<?php echo $Commentaire["id_article"];?>">affichier</a> <a href="\admin\delete-commentaire?id=<?php echo $Commentaire["id"];?>">supprimer</a> <a href="\admin\edit-commentaire?id=<?php echo $Commentaire["id"];?>"> editer<a>
+                    <td><a class="button-valide" href="\admin\post?id=<?php echo $Commentaire["id_article"];?>">Affichier</a> <a class="button-valide" href="\admin\delete-commentaire?id=<?php echo $Commentaire["id"];?>">Supprimer</a> <a class="button-valide" href="\admin\edit-commentaire?id=<?php echo $Commentaire["id"];?>"> Editer<a>
                 </tr>
                 <?php 
             }

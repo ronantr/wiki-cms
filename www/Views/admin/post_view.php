@@ -39,7 +39,7 @@
                 <tr>
                     <td><?php echo $post["id"]?></td>
                     <td><?php echo($post["title"]);?></td>
-                    <td><?php echo($post["content"]);?></td>
+                    <td><?php echo(htmlspecialchars_decode($post["content"]));?></td>
                 </tr>
         </tbody>
         <?php }} ?>

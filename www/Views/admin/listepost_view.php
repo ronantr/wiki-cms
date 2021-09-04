@@ -12,12 +12,12 @@
 }
 }
 ?><div>
+    <h1 class="titleh1">Posts</h1>
     <table id='tab'>
         <thead>
             <tr>
                 <td>id</td>
                 <td>Titre</td>
-                <td>content</td>
                 <td>Catégorie</td>
                 <td>Affichage</td>
                 <td>Delete</td>
@@ -33,8 +33,7 @@
                 <tr>
                     <td><?php echo $id;?></td>
                     <td><?php echo($value["title"]);?></td>
-                    <td><?php echo(htmlspecialchars_decode($value["content"]));?></td>
-                    <td><form action="\admin\edit-cat-post?id=<?php echo $id;?>" method="post"><select name="categorie">
+                    <td><form action="\admin\edit-cat-post?id=<?php echo $id;?>" method="post"><select name="categorie" style="padding:10px;">
                             <option value="">...</option>
                     <?php 
                         foreach($categories as $categorie){
@@ -45,13 +44,25 @@
                         }
                     ?>
                     </select></td>
-                    <td><a href="\post?id=<?php echo $id;?>">affichier</a></td>
-                    <td><a href="\admin\delete-post?id=<?php echo $id;?>">supprimer</a></td>
-                    <td><a href="\admin\edit-post?id=<?php echo $id;?>"> editer<a></td>
-                    <td><button type="submit">Change Catégorie</button></form></td>
+                    <td><a class="button-valide" href="\post?id=<?php echo $id;?>">Affichier</a></td>
+                    <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
+                    <td><a class="button-valide" href="\admin\edit-post?id=<?php echo $id;?>"> Editer<a></td>
+                    <td><button type="submit" class="button-valide">Change Catégorie</button></form></td>
                 </tr>
                 <?php 
             }
             ?>
         </tbody>
 </div>
+<script>
+function myFunctionSupprimer(id) {
+  var txt;
+  var r = confirm("Voulez vous supprimer cette article ?");
+  if (r == true) {
+    document.location.href="/admin/delete-post?id="+id;
+  } else {
+    txt = "Suppresion annuler";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>

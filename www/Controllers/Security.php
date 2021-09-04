@@ -80,11 +80,12 @@ class Security{
 				$password = htmlspecialchars($_POST["password"]);
 				if($email != "" && $password != "" && $user->getPwd($email,$password)){
 					session_start();
+					$_SESSION['email'] = $email;
 					$_SESSION['username']= $user->getUsernamedb($email);
 					$_SESSION['role'] = $user->getRoledb($email);
 					$_SESSION['login']=true;
 					// $view->assign("form", $form);
-					echo $user->getRoledb($email);
+					
 					if ($_SESSION['role'] == 1 || $_SESSION['role'] == 3 ){
 						header('Location: \admin\tableau-de-bord');
 					}
@@ -104,6 +105,7 @@ class Security{
 	}
 
 	public function logoutAction(){
+		$_SESSION['email'] = "";
 		$_SESSION['role'] ="";
 		$_SESSION['username']="";
 		$_SESSION['login'] = false;

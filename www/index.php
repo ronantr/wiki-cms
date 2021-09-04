@@ -29,6 +29,7 @@ $uri = $uriExploded[0];
 $uriex = explode("/",$uri);
 $security = new Security;
 $security->isAutorized($uriex);
+$security->verifAccount();
 
 
 $route = new Routing($uri);

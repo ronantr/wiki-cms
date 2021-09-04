@@ -171,6 +171,10 @@
   controller : Page
   action: editer
 
+/admin/single-page:
+  controller : Page
+  action: single_page
+
 ###############
 ###Catégorie###
 ###############
@@ -203,6 +207,6 @@
   controller: Menu
   action: remove
 
-  /admin/menu/is_accueil:
-    controller: Menu
-    action: addaccueil
+/admin/menu/is_accueil:
+  controller: Menu
+  action: addaccueil
