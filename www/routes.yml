@@ -21,7 +21,7 @@
 ### SECURITY ###
 ################
 
-/resgister:
+/register:
   controller: Security
   action: register
 /s-inscrire:
@@ -43,7 +43,9 @@
 /liste-des-utilisateurs:
   controller: Security
   action: listofusers
-
+/admin/MailVerif:
+  controller: Security
+  action: MailVerif
 ############ 
 ### POST ###
 ############
@@ -117,7 +119,9 @@
 /admin/user:
   controller: User
   action: User
-
+/admin/verifi-user:
+  controller: User
+  action: verifi_user
 
 /admin/valider-user:
   controller: User

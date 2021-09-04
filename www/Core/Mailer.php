@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 use App\Models\User;
+use App\Core\Helpers;
 
 require 'PHPMailer/PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer/PHPMailer.php';
@@ -13,21 +14,11 @@ require 'PHPMailer/PHPMailer/SMTP.php';
 
 class Mailer
 {
-    public function sendMail($email,$password){
+    public function sendMailVerif($email,$token){
         
-        
-        
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@$%&';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < 20; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
         $mail = new PHPMailer();
         $email = $_POST['email'];
-        // randomly generated string
-        $password = uniqid(mt_rand(), true);
-        $cle = password_hash(($randomString), PASSWORD_BCRYPT);
+        //$cle = password_hash(($token), PASSWORD_BCRYPT);
 
     //smtp settings
     $mail->isSMTP();
@@ -47,8 +38,9 @@ class Mailer
     $subject = 'Mot de passe CMS';
     $body = "Bienvenue sur cms,</br>";
     $body .= "</br>";
+    $body .= "Le lien ci-dessous verifi";
+    $body .= "<a href ='". $_SERVER['REQUEST_URI'];echo('admin/verifi-user?token=');echo($token);echo('&email=');echo($email);".'";
     $body .= "Le mot de passe de votre compte a bien &eacute;t&eacute; modifi&eacute;. Votre mot de passe est ci-dessous </br>";
-    $body .= "Votre nouveau mot de passe : ". $password ; 
     $body .='</br>'; 
     $body .='</br>             ';
     $body .="-------------------- </br>";
@@ -58,7 +50,7 @@ class Mailer
 
     if($mail->send()){
         $user=new User;
-        $user->ModificationUser($email,$cle);
+        $user->CreateUserToken($email,$token);
         $user->VerifUser($email);
         echo('test');
         return true;

@@ -107,6 +107,18 @@ class User{
         $user->validerUser($id);
         header('Location: /admin/users/liste-utilisateurs');
     }
-
+    public function verifi_userAction(){
+        $email = $_GET['email'];
+        $token = $_GET['token'];
+        $user = new ModelsUser();
+        $valide=$user->VerifUserToken($token,$email);
+        if (count($valide)){
+            $user->setId($valide);
+            $user->setEmailVerified('1');
+            $user->setToken("");
+            $user->save();
+            header('location: /');
+        }
+    }
 }
 

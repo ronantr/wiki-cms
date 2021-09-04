@@ -7,5 +7,5 @@ Id User : <?php echo $user['id']; ?>
     </br>Compte Validé : <?php echo $user['emailVerified']; ?>
     </br></br>
     <?php var_dump($_SESSION);?>
-    <button> verfication email </button>
+    <button><a href='/admin/MailVerif'class='button-valide'> verfication email </a></button>
 <?php } } ?>
