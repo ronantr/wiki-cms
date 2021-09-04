@@ -237,3 +237,98 @@ footer{
 .button-valide a{
 	text-decoration: none;
 }
+
+.section-commentaire{
+	background-color: #E9FBFE;
+	border-radius: 20px;
+	padding: 50px;
+	margin-top: 8rem;
+}
+
+.section-commentaire table{
+	caption-side: bottom;
+	border-collapse: collapse; 
+	width: 100%;
+}
+
+.section-commentaire table thead{
+	font-weight: 700;
+	font-size: 30px;
+	text-align: center;
+	padding: 20px;
+}
+
+.section-commentaire table thead td{
+	padding: 2rem;
+}
+
+.section-commentaire table tbody tr{
+	background-color: rgb(223, 223, 223);
+	margin-bottom: 5px;
+	border-bottom: 1rem solid #E9FBFE;
+	border-radius: 20px;
+
+}
+
+.section-commentaire table tbody tr td{
+	padding: 1rem;
+}
+
+.titleh1{
+
+	font-size: 3rem;
+	margin-bottom: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+	color: #485785;
+	text-align: center;
+	
+}
+
+.section-commenter{
+	margin-top: 5rem;
+	background-color: white;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.section-commenter form{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.section-commenter button{
+	position: relative;
+	cursor: pointer;
+	color: #7b8ab8;
+	margin-top: 10px;
+	border-radius: 50rem;
+	padding: 1rem 1.5rem;
+	font-size: 1rem;
+    background-color: #d9e3f1;
+    border: none;
+    box-shadow: 5px 5px 10px rgb(55 94 148 / 20%), -5px -5px 10px rgb(255 255 255 / 40%);
+    transition: background-color .15s ease-in-out, border .15s ease-in-out, box-shadow .15s ease-in-out, color .15s ease-in-out;
+}
+
+.input-form{
+	display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #7b8ab8;
+    background-color: #f0f5fa;
+    background-clip: padding-box;
+    border: 0 solid #bed1e6;
+    appearance: none;
+    border-radius: 0.25rem;
+    box-shadow: inset 2px 2px 8px rgb(55 94 148 / 30%), inset -3px -2px 5px rgb(255 255 255 / 80%);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

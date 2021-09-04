@@ -27,6 +27,7 @@ class Commentaire{
     public function commentaireajouteAction(){
             //Affiche moi la vue post;
             $Commentaire = new ModelCommentaire();
+            $commentaire->setCommentaire_id_user(2);
             $view = new View("add-commentaire", "back");
             $view->assign("title","Admin Création Commentaire");
             $form = $Commentaire->buildFormCommentaire();
@@ -39,7 +40,6 @@ class Commentaire{
                     $view->assign("formErrors", $errors);
                     $Commentaire->setCommentaire_content(htmlspecialchars($_POST["content"]));
                     $id_user = $commentaire->getiduserbymail($_SESSION['email']);
-                    $commentaire->setid_user($id_user['id']);
                     $Commentaire->save();
                     header('Location: \liste-commentaire?message=2');
                 }else{

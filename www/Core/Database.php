@@ -176,7 +176,7 @@ class Database
 	public function getCommentairesuser($id_article){
 		$this->table = DBPREFIX."commentaire";
 		$user = DBPREFIX."editor";
-	    $query = $this->pdo->prepare("SELECT comment.id, comment.createdAt , comment.content, u.username  FROM $this->table as comment, $user as u where u.id = comment.id_user and comment.id_article = $id_article order by comment.createdAt  ; ");
+	    $query = $this->pdo->prepare("SELECT comment.id, comment.createdAt , comment.content, comment.id_article, u.username  FROM $this->table as comment, $user as u where u.id = comment.id_user and comment.id_article = $id_article order by comment.createdAt  ; ");
         $query->execute();
         $commentaires = $query->fetchall();
         return $commentaires;
@@ -514,7 +514,7 @@ class Database
 
 	public function getiduserbymail($email){
 		$table = DBPREFIX."editor";
-		$query = $this->pdo->prepare(" SELECT id FROM $table WHERE email = $email ;");
+		$query = $this->pdo->prepare("SELECT id FROM $table WHERE email = '$email' ;");
 		$query->execute();
 		$user = $query->fetchall();
 		return $user;
