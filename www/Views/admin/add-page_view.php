@@ -15,6 +15,7 @@
     <label class="label-form">Content</label>
     
     <textarea id="content" class="" name="content" type="mytextarea" placeholder="Contenue" style="visibility: hidden;" aria-hidden="true" ></textarea>
+    <div class="separateur"></div>
     <label class="label-form">Les Catégories :</label><br>
     <div class="checkbox-form">
     <?php $comt =0;
@@ -23,7 +24,9 @@
         $comt++;
         ?> <div class="checkbox-option-form"><input type="checkbox" id=<?php echo htmlspecialchars_decode($categorie['name']); ?> name="pagecat[]" value=<?php echo $categorie['id']; ?>>
             <label class="label-form-checkbox" for=<?php echo htmlspecialchars_decode($categorie['name']); ?>><?php echo htmlspecialchars_decode($categorie['name']); ?></label></div>
-    <?php } ?></div><br>
+    <?php } ?>
+       </div> <small>Les articles des catégories seront affichiés en bas de la page . </small></br>
+    <div class="separateur"></div>
     <div class="label-input-group">
         <label class="label-form">Status</label>
         <select name = "status" class="select-form">
@@ -31,8 +34,8 @@
             <option value = 1>Brouillon</option>
         </select>
     </div>
-    
-
+    <small>Les Pages qui ont status brouillon ne seront pas accessible par URL </small>
+    <div class="separateur"></div>
     <button type="submit" class="button-form">Submit</button>
     
 </form>

@@ -71,17 +71,18 @@ class Post extends Database
 					"method"=>"POST",
 					"Action"=>"",
 					"Submit"=>"Post",
-					"class"=>"form_register"
+					"class"=>"form-box post-tp",
 				],
 				"input"=>[
 					"id"=>[
+						"class"=>"input-form",
                         "type"=>"hidden",
                         "required"=>true,
                         "defaultValue"=>$this->getId()
                     ],
 					"title"=>[
 									"type"=>"text",
-									"class"=>"form_input",
+									"class"=>"input-form",
 									"label"=>"titre :",
 									"lengthMax"=>"120",
 									"lengthMin"=>"2",
@@ -98,9 +99,10 @@ class Post extends Database
 									"error"=>"Votre Contenue doit faire entre 2 et 32500 caractères",
 									"placeholder"=>"Contenue",
 									"defaultValue"=>$this->getContent()
-									]
-						]
-				];
+								]
+					],
+			
+			];
 	}
 	public function buildFormEdit(){ 
 		return [

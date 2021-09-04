@@ -38,6 +38,8 @@ class Commentaire{
                 if(empty($errors)){
                     $view->assign("formErrors", $errors);
                     $Commentaire->setCommentaire_content(htmlspecialchars($_POST["content"]));
+                    $id_user = $commentaire->getiduserbymail($_SESSION['email']);
+                    $commentaire->setid_user($id_user['id']);
                     $Commentaire->save();
                     header('Location: \liste-commentaire?message=2');
                 }else{

@@ -131,20 +131,26 @@ class Page{
     }
 
     public function editpageAction(){
-        $security = new coreSecurity(); 
-		if(!$security->isConnected()){
-			header('Location: /');
-		}
-        $id_page =$_GET['id']; 
-        $pages = new ModelsPage;
-        $page = $pages->getpage($id_page);
-        $id_categories = $pages->getCategoriesById($id_page);
-        $categories = $pages->getCategories();
-        $view = new View('admin/edit-page','back');
-        $view->assign("title","Editeur de page");
-        $view->assign('page',$page);
-        $view->assign('id_categories',$id_categories);
-        $view->assign('categories',$categories);
+        if(!empty($_GET['id'])){
+            $security = new coreSecurity(); 
+            if(!$security->isConnected()){
+                header('Location: /');
+            }
+
+            $id_page =$_GET['id']; 
+            $pages = new ModelsPage;
+            $page = $pages->getpage($id_page);
+            $id_categories = $pages->getCategoriesById($id_page);
+            $categories = $pages->getCategories();
+            $view = new View('admin/edit-page','back');
+            $view->assign("title","Editeur de page");
+            $view->assign('page',$page);
+            $view->assign('id_categories',$id_categories);
+            $view->assign('categories',$categories);
+        }
+        else{
+            header('Location: /admin/liste-Pages');
+        }
 
     }
 
@@ -154,6 +160,19 @@ class Page{
             $page->setId($_POST['id']);
             if(!empty($_POST['url'])){
                 $page->setUrl(htmlspecialchars($_POST['url']));
+                $verification = $page->getallpage();
+                foreach($verification as $spage){
+                    if($spage['url'] == $_POST['url'] ){
+                        if($spage['id']==$_POST['id']){
+
+                        }
+                        else{
+                            $this->notifAction("Url Existant");
+                            exit;
+                        }
+                            
+                    }
+                }
 
             }
             if(!empty($_POST['slug'])){

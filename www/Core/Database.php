@@ -158,13 +158,25 @@ class Database
 	}
 	public function deletePost($id){
 		$this->table = DBPREFIX."article";
+		$commentaires = DBPREFIX."commentaire";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
+		$query->execute();
+		$query = $this->pdo->prepare("DELETE FROM $commentaires WHERE id_article = '$id';");
 		$query->execute();
 	}
 
 	public function getCommentaires(){
 		$this->table = DBPREFIX."commentaire";
 	    $query = $this->pdo->prepare("SELECT * FROM ".$this->table." ; ");
+        $query->execute();
+        $commentaires = $query->fetchall();
+        return $commentaires;
+	}
+
+	public function getCommentairesuser($id_article){
+		$this->table = DBPREFIX."commentaire";
+		$user = DBPREFIX."editor";
+	    $query = $this->pdo->prepare("SELECT comment.id, comment.createdAt , comment.content, u.username  FROM $this->table as comment, $user as u where u.id = comment.id_user and comment.id_article = $id_article order by comment.createdAt  ; ");
         $query->execute();
         $commentaires = $query->fetchall();
         return $commentaires;
@@ -192,7 +204,10 @@ class Database
 
 	public function userdelete($id){
 		$this->table = DBPREFIX."editor";
+		$commentaires= DBPREFIX."commentaire";
 		$query = $this->pdo->prepare("DELETE FROM $this->table WHERE id = '$id';");
+		$query->execute();
+		$query = $this->pdo->prepare("DELETE FROM $commentaires WHERE id_user = '$id';");
 		$query->execute();
 	}
 
@@ -497,6 +512,14 @@ class Database
 		else{
 			return false;
 		}
+	}
+
+	public function getiduserbymail($email){
+		$table = DBPREFIX."editor";
+		$query = $this->pdo->prepare(" SELECT id FROM $table WHERE email = $email ;");
+		$query->execute();
+		$user = $query->fetchall();
+		return $user;
 	}
 
 
