@@ -2,6 +2,7 @@
 
 namespace App\Core;
 use App\Models\Page;
+use App\Core\Installer;
 
 class Routing{
 
@@ -15,6 +16,7 @@ class Routing{
 
 
 	public function __construct($uri){
+
 		if(!Installer::checkEnvExist() && $uri != "/installer" && $uri != "/make-install") $this->redirectToInstaller();
 		//Faut vérifier que le fichier existe
 		$this->routes = yaml_parse_file($this->routesPath);

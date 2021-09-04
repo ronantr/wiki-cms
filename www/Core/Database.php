@@ -268,11 +268,11 @@ class Database
 		$query->execute();
 		$query = $this->pdo->prepare("alter table categorie rename  TO $DBPREFIX_categorie ;");
 		$query->execute();
-		$query = $this->pdo->prepare("alter table page_categorie rename  TO $DBPREFIX_page_categorie ;");
-		$query->execute();
 		$query = $this->pdo->prepare("alter table static rename  TO $DBPREFIX_static ;");
 		$query->execute();
 		$query = $this->pdo->prepare("alter table page rename  TO $DBPREFIX_page ;");
+		$query->execute();
+		$query = $this->pdo->prepare("alter table page_categorie rename  TO $DBPREFIX_page_categorie ;");
 		$query->execute();
 		return true;
 

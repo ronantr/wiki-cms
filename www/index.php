@@ -33,19 +33,17 @@ $security->verifAccount();
 
 
 $route = new Routing($uri);
-// $installer = new Installer();
 
 $c = $route->getController();
 $a = $route->getAction();
 $cWithNamespace = $route->getControllerWithNamespace();
 
-
-if($route->dbexiste($uri)){
+if(file_exists('.env.prod')){
+	if($route->dbexiste($uri)){
 	$c = $route->getControllerPage();
 	$a = $route->getActionPage();
 	$cWithNamespace = $route->getControllerWithNamespacePage();
-}
-
+}}
 
 /*
 //echo $route->getUri("Security", "listofusers");
@@ -75,9 +73,7 @@ if( file_exists("./Controllers/".$c.".php")){
 		
 		if(method_exists($cObject, $a)){
 			//$a = loginAction // defaultAction
-			$cObject->$a();
-
-
+			$cObject->$a();	
 		}else{
 			die("L'action ".$a." n'existe pas");
 		}

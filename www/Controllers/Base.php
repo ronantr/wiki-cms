@@ -17,7 +17,10 @@ class Base{
 		$pseudo = "Test";
 
 		//Affiche moi la vue home;
-		
+		$installer = new installer;
+		if(!$installer->checkInstall() xor file_exists('.env.prod')){
+			header('location: /installer');
+		}else{
 		$page = new Page();
 		$acceuil = $page->getpageaccueil();
 		if(!empty($acceuil)){
@@ -32,11 +35,8 @@ class Base{
 			$view->assign("title","Votre site");
 		}
 		
-		
-		// $installer = new installer;
-		// if(!$installer->checkInstall() xor file_exists('.env.prod')){
-		// 	header('location: /installer');
-		// }
+	}
+
 		//envoyer le pseudo à la vue
 	}
 

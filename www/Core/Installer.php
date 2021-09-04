@@ -21,7 +21,6 @@ class Installer
     }
     
     public function install(){
-        echo'test';
         $this->editEnvFiles($_POST['data'],$_POST );
         $install = $this->makeDatabase();
 
@@ -53,7 +52,7 @@ class Installer
     
 
     public function checkEnvExist() {
-        if( file_exists('.env') || file_exists('.env.prod')) {
+        if(file_exists('.env.prod')) {
             return true;
         }
         return false;

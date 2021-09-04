@@ -71,7 +71,8 @@ class View
 
 	public function __destruct(){
 		// $this->data = ["pseudo"=>"Prof"];  ----> $pseudo = "Prof";
-		$this->assign('menu',$this->pagemenu());
+		if(file_exists('.env.prod'))
+			{$this->assign('menu',$this->pagemenu());}
 		extract($this->data);
 		include $this->template;
 	}
