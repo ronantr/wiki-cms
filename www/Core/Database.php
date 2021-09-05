@@ -151,7 +151,7 @@ class Database
 	}
 	public function getpostbyid($id){
 		$this->table = DBPREFIX."article";
-        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id and status = 1 and isDeleted = 0; ");
+        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id and status = 1 ; ");
         $query->execute();
         $posts = $query->fetchall();
         return $posts;

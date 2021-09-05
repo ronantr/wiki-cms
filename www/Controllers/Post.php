@@ -162,6 +162,7 @@ class Post{
 
     public function public_single_postAction(){
         if(!empty($_GET['id'])){
+            
             $id_post = $_GET['id'];
             $posts = new ModelPost;
             $post = $posts->getpostbyid($id_post);
@@ -170,6 +171,10 @@ class Post{
             $post = $posts->getpostbyid($id_post);
             $commentaires = $posts->getCommentairesuser($id_post);
             $view = new View('public/single-post','front');
+            if($_SESSION['login']){
+                $user= $posts->getuserbyemail($_SESSION['email']);
+                $view->assign('user', $user);
+            }
             $view->assign('post', $post);
             $view->assign("title",$post[0]['title']);
             $view->assign('commentaires',$commentaires);
@@ -187,7 +192,7 @@ class Post{
                         $commentaire->setCommentaire_id_user($_POST["id_user"]);
                         $commentaire->setCommentaire_content(htmlspecialchars($_POST["content"]));
                         $commentaire->save();
-                        header("Location: /admin/single-post?id=$id_post");
+                        header("Location: /single-post?id=$id_post");
                     }else{
                         $view->assign("formErrors", $errors);
                     }

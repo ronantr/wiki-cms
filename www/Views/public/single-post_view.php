@@ -33,7 +33,10 @@ foreach($commentaires as $commentaire){
     <section class="section-commenter">
         <h1 class="titleh1" style="font-size:2rem;">Ecrire une commentaire</h1>
         <?php if(App\Core\Security::isConnected()){
-            App\Core\Form::showForm($form);
+            if($user['role'] == 2 && $user['emailVerified'] == 0){
+                ?> <div style="width:100%;"><a href="/moncompte" class="button-valide">Verifier votre Email</a></div> <?php
+            }
+            else{App\Core\Form::showForm($form);}
         }
         else{
             ?> <div style="width:100%;"><a href="/login" class="button-valide">Login pour commenter</a></div> <?php
