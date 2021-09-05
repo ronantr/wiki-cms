@@ -419,7 +419,7 @@ class Database
 	public function getArticleByIdPage($id){
 		$page_cat = DBPREFIX."page_categorie";
 		$article = DBPREFIX."article";
-		$query = $this->pdo->prepare("SELECT a.id, a.title , a.content FROM $page_cat as pc, $article as a WHERE pc.id_categorie = a.id_categorie and pc.id_page = $id and a.status = 1 and a.isDeleted = 0 ; ");
+		$query = $this->pdo->prepare("SELECT a.id, a.title , a.content FROM $page_cat as pc, $article as a WHERE pc.id_categorie = a.id_categorie and pc.id_page = $id and a.status = 1 ; ");
 		$query->execute();
 		$pagearticle = $query->fetchall();
 		return $pagearticle;

@@ -1,5 +1,5 @@
 <?php foreach($users as $user){ 
-    if ($user['username'] == $_GET['nom']){?>
+    if ($user['username'] == $_SESSION['username']){?>
 Id User : <?php echo $user['id']; ?>
     </br>Username : <?php echo $user['username']; ?>
     </br>Email : <?php echo $user['email']; ?>
