@@ -179,6 +179,12 @@
 /admin/single-page:
   controller : Page
   action: single_page
+/admin/theme:
+  controller : Page
+  action: theme
+/admin/theme/edit:
+  controller : page
+  action: themeedit
 
 ###############
 ###Catégorie###

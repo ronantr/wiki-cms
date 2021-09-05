@@ -14,7 +14,7 @@ services:
      - database
 
   database:
-    image: mysql:5.7
+    image: mariadb
     container_name: mysql-mvc
     ports :
       - "3306:3306"

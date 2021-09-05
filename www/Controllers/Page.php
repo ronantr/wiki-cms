@@ -99,7 +99,7 @@ class Page{
                         // $pages->savepagecat($pages->getId(),$cat);
                     }
                 }
-                $this->notifAction("Votre Page a été créér");
+                $this->notifAction("Votre Page a été créé");
             }
             else{
                 $this->notifAction("Erreur Lors de la création (Tentative de Hack FAILLE XSS)");
@@ -254,7 +254,21 @@ class Page{
 			$view->assign("title","single page ".$lapage[0]['slug']);
 		}
     }
-
+    public function themeAction(){
+        $page = new ModelsPage();
+        $themes = $page->getthemes();
+        $view = new View("admin/theme", "back");
+        print_r($themes);
+        $view->assign("themes",$themes);
+    }
+    public function themeeditAction(){
+        $page = new ModelsPage();
+        $theme_id = $_POST['templates'];
+        if (!empty($theme_id)) {
+            $page->settheme($theme_id);
+            header('Location: /admin/theme');
+        }
+    }
 
 
 }

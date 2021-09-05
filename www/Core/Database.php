@@ -224,10 +224,11 @@ class Database
 	}
 	public function VerifUserToken($token,$email){
 		$this->table = DBPREFIX."editor";
-		$query = $this->pdo->prepare("SELECT id FROM $this->table WHERE  email = '$email' and tokenemail = '$token'  ");
-		return $query->execute();
+		$query = $this->pdo->prepare("SELECT id FROM $this->table WHERE  email = '$email' and tokenemail = '$token';");
+		$query->execute();
+		$id = $query->fetch();
+		return $id;
 
-		
 	}
 	public function CreateUserToken($email,$token){
 		$this->table = DBPREFIX."editor";
@@ -520,6 +521,21 @@ class Database
 		$query->execute();
 		$user = $query->fetchall();
 		return $user;
+	}
+	public function getthemes(){
+		$table = DBPREFIX."static";
+		$query = $this->pdo->prepare("SELECT * FROM $table ; ");
+        $query->execute();
+        $themes = $query->fetchall();
+        return $themes;
+	}
+	public function settheme($theme_id){
+		$table = DBPREFIX."static";
+		
+		$query = $this->pdo->prepare("UPDATE $table SET actif = 0 ;");
+		$query->execute();
+		$query = $this->pdo->prepare("UPDATE $table SET actif = 1 WHERE id = $theme_id;");
+		$query->execute();
 	}
 
 

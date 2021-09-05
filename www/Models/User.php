@@ -276,6 +276,10 @@ class User extends Database
                     "type"=>"hidden",
                     "defaultValue"=>$_GET['email']
                 ],
+				"token"=>[
+                    "type"=>"hidden",
+                    "defaultValue"=>$_GET['token']
+                ],
                 "password"=>[
 					"label"=>"Password",
 					"type"=>"password",
