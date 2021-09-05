@@ -260,6 +260,14 @@ class Database
         $categories = $query->fetchall();
         return $categories;
 	}
+
+	public function getCategoriesid($id){
+		$this->table = DBPREFIX."categorie";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table where id =$id; ");
+		$query->execute();
+        $categories = $query->fetch();
+        return $categories;
+	}
 	
 	public function createDatabase($query) {
         
