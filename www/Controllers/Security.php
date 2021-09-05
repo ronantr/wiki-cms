@@ -53,6 +53,9 @@ class Security{
 				$user->setUsername($_POST["username"]);
 				$user->setEmail(htmlspecialchars($_POST["email"]));
 				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+				$user->setRole(2);
+				$user->setIsDeleted(0);
+				$user->setEmailVerified(0);
 				$user->save();
 				header("Location: /login");
                 //var_dump($user);

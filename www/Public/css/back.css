@@ -433,3 +433,28 @@ a{
 small{
 	color:#adb6d3;
 }
+
+.statistique{
+	width: 100%;
+	box-shadow: 0 0 2em black;
+	display: flex;
+	justify-content: space-around;
+	padding: 20px;
+	flex-wrap: wrap;
+}
+
+.block{
+	width: 25%;
+	box-shadow: 0 0 2em black;
+	margin: 20px auto;
+	text-align: center;
+
+}
+
+.block-recent{
+	width: 30%;
+}
+
+.block-recent tbody tr td{
+	padding: 10px;
+}

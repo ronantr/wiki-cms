@@ -1,7 +1,7 @@
 
 <body>
 
-<h2>Nouveau POST</h2>
+<h1 class="titleh1">Création Article</h1>
 
 <?php if(!empty($formErrors)):?>
 	<?php foreach($formErrors as $error):?>

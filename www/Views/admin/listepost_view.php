@@ -19,10 +19,12 @@
                 <td>id</td>
                 <td>Titre</td>
                 <td>Catégorie</td>
+                <td>Edit Catégorie</td>
+                <td>Status</td>
                 <td>Affichage</td>
                 <td>Delete</td>
                 <td>Modification</td>
-                <td>Edit Catégorie</td>
+                
             </tr>
         </thead>
         <tbody>
@@ -44,10 +46,12 @@
                         }
                     ?>
                     </select></td>
+                    <td><button type="submit" class="button-valide">Change Catégorie</button></form></td>
+                    <td><?php if($value['status'] == 0){ echo 'Brouillon'; ?> <form action="" method="POST"><input name="status" type="hidden" value=1><input name="id" type="hidden" value=<?php echo($value["id"]);?> ><button class="button-valide" type="submit">Publié</button></form> <?php }else{ echo 'Publié'; ?> <form action="" method="POST"><input name="status" type="hidden" value=0><input name="id" type="hidden" value=<?php echo($value["id"]);?>><button class="button-valide" type="submit">Brouillon</button></form><?php } ?></td>
                     <td><a class="button-valide" href="\admin\single-post?id=<?php echo $id;?>">Affichier</a></td>
                     <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
                     <td><a class="button-valide" href="\admin\edit-post?id=<?php echo $id;?>"> Editer<a></td>
-                    <td><button type="submit" class="button-valide">Change Catégorie</button></form></td>
+        
                 </tr>
                 <?php 
             }

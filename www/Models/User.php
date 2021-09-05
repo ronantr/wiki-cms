@@ -11,10 +11,10 @@ class User extends Database
 	protected $email;
 	protected $password;
 	//protected $status = 0;
-	protected $role =2;
-	protected $isDeleted = 0;
+	protected $role ;
+	protected $isDeleted ;
 	protected $tokenemail;
-	protected $emailVerified =0;
+	protected $emailVerified;
 
 	public function __construct(){
 		parent::__construct();

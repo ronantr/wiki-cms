@@ -10,7 +10,7 @@ class Commentaire extends Database
 	private $id=null;
 	protected $content;
     protected $id_article;
-	protected $id_user;
+	protected $id_user =null;
 
 	public function __construct(){
 		parent::__construct();
@@ -66,7 +66,7 @@ class Commentaire extends Database
     }
 
     /**
-    * @param $id_article
+    * @param $id_user
     */
 
 	public function setCommentaire_id_user($id_user){
@@ -82,9 +82,6 @@ class Commentaire extends Database
         return $this->id_user;
 	}    
 	
-	public function setid_user($id_user){
-		$this->id_user = $id_user;
-	}
 
     public function buildFormCommentaire(){ 
 		return [
@@ -93,17 +90,17 @@ class Commentaire extends Database
 					"method"=>"POST",
 					"Action"=>"",
 					"Submit"=>"commenter",
-					"class"=>"form_register"
+					"class"=>""
 				],
 				"input"=>[
 
 					"content"=>[
-									"type"=>"mytextarea",
-									"lengthMax"=>"32500",
+									"type"=>"input",
+									"class"=>"input-form",
+									"lengthMax"=>"200",
 									"lengthMin"=>"2",
-									"label"=>"content :",
-									"error"=>"Votre Contenue doit faire entre 2 et 32500 caractères",
-									"placeholder"=>"Contenue",
+									"error"=>"Votre Contenue doit faire entre 2 et 200 caractères",
+									"placeholder"=>"Maximun 200 caractères",
 									"defaultValue"=>$this->getContent()
                     ],
                     "id_article"=>[
@@ -114,7 +111,7 @@ class Commentaire extends Database
                     "id_user"=>[
                         "type"=>"hidden",
                         "required"=>true,
-                        "defaultValue"=>getId_user()
+                        "defaultValue"=>$this->getId_user()
                     ]
 						]
 				];
