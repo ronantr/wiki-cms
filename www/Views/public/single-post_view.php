@@ -32,7 +32,14 @@ foreach($commentaires as $commentaire){
     </table>
     <section class="section-commenter">
         <h1 class="titleh1" style="font-size:2rem;">Ecrire une commentaire</h1>
-        <?php  App\Core\Form::showForm($form); ?>
+        <?php if(App\Core\Security::isConnected()){
+            App\Core\Form::showForm($form);
+        }
+        else{
+            ?> <div style="width:100%;"><a href="/login" class="button-valide">Login pour commenter</a></div> <?php
+        }
+        ?>
+       
         <!-- <h1 class="titleh1" style="font-size:2rem;">Ecrire une commentaire</h1>
         <input name="content" class="input-form" placeholder="Maximun 200 Caractère"> -->
     </section>
