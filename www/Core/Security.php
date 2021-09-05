@@ -7,7 +7,7 @@ class Security
 {
 	
 
-	public function isConnected(){
+	public static function isConnected(){
 		if (empty($_SESSION['login'])){
 			$_SESSION['login'] = false;
 		}

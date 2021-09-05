@@ -22,6 +22,9 @@
 						<li><a href="admin/user?nom=<?php echo $_SESSION['username'] ?>"> <?php echo $_SESSION['username'] ?> </a></li>
 						<li><a href="/logout">Déconnexion</a></li><?php
 						} ?>
+						<?php if($_SESSION['role'] == 1){ 
+							?><li><a href="/admin/tableau-de-bord">Admin</a></li><?php
+						}?>
 						
 						
 					</ul>

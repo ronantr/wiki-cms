@@ -79,7 +79,10 @@
 /admin/single-post:
   controller : Post
   action: single_post
-  
+
+/admin/post/modifstatus:
+  controller: Post
+  action: modifstatus
 
 ###################
 ### COMMENTAIRE ###
