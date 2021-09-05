@@ -49,10 +49,16 @@ class Base{
 			die("Error not authorized");
 		}
 
-
+		$pages= new Page();
+		$page = $pages->getpagedatemoins30j();
+		$article = $pages->getpostdatemoins30j();
+		$commentaires = $pages->getcommentairedatemoins30j();
 		//Affiche moi la vue dashboard;
 		$view = new View("dashboard", "back");
 		$view->assign("title","Dashboard Admin");
+		$view->assign("page",$page);
+		$view->assign("article",$article);
+		$view->assign("commentaire",$commentaires);
 		
 	}
 

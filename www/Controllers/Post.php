@@ -147,9 +147,35 @@ class Post{
             $id_post = $_GET['id'];
             $posts = new ModelPost;
             $post = $posts->getpostbyid($id_post);
+            $commentaire = new ModelCommentaire;
+            $commentaire->setCommentaire_id_article($_GET["id"]);
+            $post = $posts->getpostbyid($id_post);
+            $commentaires = $posts->getCommentairesuser($id_post);
             $view = new View('public/single-post','front');
             $view->assign('post', $post);
             $view->assign("title",$post[0]['title']);
+            $view->assign('commentaires',$commentaires);
+            if(coreSecurity::isConnected()){
+                $form = $commentaire->buildFormCommentaire();
+                $id_user = $commentaire->getiduserbymail($_SESSION['email']);
+                $commentaire->setCommentaire_id_user($id_user[0]['id']); 
+                $view->assign("form", $form);
+                if(!empty($_POST)){
+                    $errors = Form::validator($_POST, $form);
+        
+                    if(empty($errors)){
+                        $view->assign("formErrors", $errors);
+                        $commentaire->setCommentaire_id_article($_POST["id_article"]);
+                        $commentaire->setCommentaire_id_user($_POST["id_user"]);
+                        $commentaire->setCommentaire_content(htmlspecialchars($_POST["content"]));
+                        $commentaire->save();
+                        header("Location: /admin/single-post?id=$id_post");
+                    }else{
+                        $view->assign("formErrors", $errors);
+                    }
+                }
+            }
+            
         }
         else{
             header('Location: /');

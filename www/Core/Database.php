@@ -520,6 +520,33 @@ class Database
 		return $user;
 	}
 
+	public function getpagedatemoins30j()
+	{
+		$table = DBPREFIX."page";
+		$query = $this->pdo->prepare("SELECT * FROM $table WHERE dayofyear(NOW()) - dayofyear(createdAt) < 30 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function getpostdatemoins30j()
+	{
+		$table = DBPREFIX."article";
+		$query = $this->pdo->prepare("SELECT * FROM $table WHERE dayofyear(NOW()) - dayofyear(createdAt) < 30 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
+	public function getcommentairedatemoins30j()
+	{
+		$table = DBPREFIX."commentaire";
+		$query = $this->pdo->prepare("SELECT * FROM $table WHERE dayofyear(NOW()) - dayofyear(createdAt) < 30 ;");
+		$query->execute();
+		$page = $query->fetchall();
+		return $page;
+	}
+
 
 
 
