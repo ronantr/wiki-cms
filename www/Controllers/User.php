@@ -130,5 +130,16 @@ class User{
         }
     }
 
+    public function moncompteAction(){
+        if($_SESSION['login']){
+            $user = new ModelsUser;
+            $view = new View("admin/admin-user","front");
+            $view->assign("users",$user->getUsers());
+        }
+        else{
+            header('Location: /login ');
+        }
+    }
+
 }
 

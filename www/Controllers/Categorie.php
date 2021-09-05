@@ -2,6 +2,7 @@
 namespace App;
 use App\Core\Security as coreSecurity;
 use App\Core\View;
+use App\Core\Form;
 use App\Models\Categorie as ModelsCategorie;
 
 class Categorie{
@@ -65,4 +66,39 @@ class Categorie{
         $view->assign('categories',$cats);
         $view->assign('erreur',$erreur);
     }
+
+    public function editAction(){
+        if(!empty($_GET['id'])){
+            $categories = new ModelsCategorie;
+            $cat = $categories->getCategoriesid($_GET['id']);
+            $categories->setname($cat['name']);
+            $categories->setId($cat['id']);
+            $form = $categories->buildFormcategorie();
+            $view= new View("admin/edit-categorie","back");
+            $view->assign("form", $form);
+            if(!empty($_POST)){
+                $errors = Form::validator($_POST, $form);
+                if(empty($errors)){
+                    if(count($_POST) ==1){
+                        
+                        $categories->setId($_GET['id']);
+                        $categories->setname(htmlspecialchars($_POST['name']));
+                        $categories->save();
+                        header('Location: /admin/liste-categorie');
+                    }
+                    else{
+                        echo "Tentative Hack XSS";
+                    }
+                }
+                else{
+                    $view->assign("formErrors", $errors);
+                }
+                
+            }
+        }
+        else{
+            header('Location: /admin/liste-categorie');
+        }
+        
+}
 }

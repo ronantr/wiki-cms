@@ -151,7 +151,7 @@ class Database
 	}
 	public function getpostbyid($id){
 		$this->table = DBPREFIX."article";
-        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id and status = 1 and isDeleted = 0; ");
+        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id and status = 1 ; ");
         $query->execute();
         $posts = $query->fetchall();
         return $posts;
@@ -258,6 +258,14 @@ class Database
 		$query = $this->pdo->prepare("SELECT * FROM $this->table ; ");
 		$query->execute();
         $categories = $query->fetchall();
+        return $categories;
+	}
+
+	public function getCategoriesid($id){
+		$this->table = DBPREFIX."categorie";
+		$query = $this->pdo->prepare("SELECT * FROM $this->table where id =$id; ");
+		$query->execute();
+        $categories = $query->fetch();
         return $categories;
 	}
 	
@@ -411,7 +419,7 @@ class Database
 	public function getArticleByIdPage($id){
 		$page_cat = DBPREFIX."page_categorie";
 		$article = DBPREFIX."article";
-		$query = $this->pdo->prepare("SELECT a.id, a.title , a.content FROM $page_cat as pc, $article as a WHERE pc.id_categorie = a.id_categorie and pc.id_page = $id and a.status = 1 and a.isDeleted = 0 ; ");
+		$query = $this->pdo->prepare("SELECT a.id, a.title , a.content FROM $page_cat as pc, $article as a WHERE pc.id_categorie = a.id_categorie and pc.id_page = $id and a.status = 1 ; ");
 		$query->execute();
 		$pagearticle = $query->fetchall();
 		return $pagearticle;

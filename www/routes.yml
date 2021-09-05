@@ -139,6 +139,9 @@
   controller: User
   action: valideruser
 
+/moncompte:
+  controller: User
+  action: moncompte
 ###############
 ###installer###
 ###############
@@ -204,6 +207,10 @@
 /admin/cat-delete:
   controller: Categorie
   action: delete
+
+/admin/edit-categorie:
+  controller: Categorie
+  action: edit 
 
 ###############
 #####Menu######
