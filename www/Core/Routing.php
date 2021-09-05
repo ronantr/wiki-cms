@@ -96,9 +96,9 @@ class Routing{
 			}
 		}
 	}
-	public function getBaseUrl() {
+	static public function getBaseUrl() {
 	return $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
-}
+	}
 
     static function writeUrlSitemap($loca) {
         return '<url>
@@ -124,15 +124,8 @@ class Routing{
     {
         $sitemap = "";
 
-        $post = new \App\Models\Post();
-        $page = new \App\Models\Page();
-		$all_postes = $post->getPosts();
+        $page = new Page();
         $all_pages = $page->getallpage();
-
-        foreach($all_postes as $post) {
-            $loc = self::getBaseUrl() . $post['url'];
-            $sitemap .= self::writeUrlSitemap($loc);
-        }
         foreach($all_pages as $page) {
             $loc = self::getBaseUrl() . $page['url'];
             $sitemap .= self::writeUrlSitemap($loc);

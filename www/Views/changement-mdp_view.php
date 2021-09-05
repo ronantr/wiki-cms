@@ -14,6 +14,10 @@
     <meta name="viewport">
 </head>
 <body>
+<div class='containermargin'>
+    <div class="login">
     <h1>Récuperation de PASSWORD</h1>
 <?php  App\Core\Form::showForm($form); ?>
+    </div>
+</div>
 </body>

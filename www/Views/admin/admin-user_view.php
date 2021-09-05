@@ -7,5 +7,5 @@ Id User : <?php echo $user['id']; ?>
     </br>Compte Validé : <?php echo($user['emailVerified'] != '1' ) ? 'Non Verifier' : 'Verifier' ;?>
     </br></br>
     <?php if($user['emailVerified'] != '1' ) {?>
-    <button><a href='/admin/MailVerif'class='button-valide'> verfication email </a></button>
+    <button><a href='/MailVerif'class='button-valide'> verfication email </a></button>
 <?php } }} ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : database
--- Généré le : sam. 04 sep. 2021 à 12:21
+-- Généré le : Dim 05 sep. 2021 à 21:55
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.11
 
@@ -33,7 +33,7 @@ CREATE TABLE `article` (
   `title` varchar(1024) COLLATE utf8_bin NOT NULL,
   `content` text COLLATE utf8_bin NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
-  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  `isCommentaire` tinyint(4) NOT NULL DEFAULT '0',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -100,6 +100,9 @@ CREATE TABLE `page` (
   `isAccueil` int(11) NOT NULL,
   `updateAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `page` (`id`, `url`, `slug`, `content`, `createdAt`, `status`, `isMenu`, `isAccueil`, `updateAt`) VALUES
+(1, 'accueil', 'accueil', '<h1 style=\"text-align: center;\">Bienvenue sur 42&nbsp;</h1>\r\n<p><img src=\"https://www.numerama.com//content/uploads/2015/09/codesourcelignes.jpg\" alt=\"\" width=\"1200\" height=\"600\" /></p>\r\n<p style=\"text-align: center;\">Nous avons cr&eacute;e un CMS From Scratch en tant que projet annuel de 3eme ann&eacute;es de bachlor a l\'ESGI</p>', '2021-09-05 22:08:03', 0, 0, 1, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -122,13 +125,20 @@ CREATE TABLE `page_categorie` (
 
 CREATE TABLE `static` (
   `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(1024) COLLATE utf8_bin NOT NULL,
-  `content` text COLLATE utf8_bin NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `title` varchar(1024) COLLATE utf8mb3_bin NOT NULL,
+  `content` text COLLATE utf8mb3_bin NOT NULL,
+  `actif` tinyint(4) NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedAt` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+
+--
+-- Déchargement des données de la table `static`
+--
+
+INSERT INTO `static` (`id`, `title`, `content`, `actif`,`createdAt`, `updatedAt` ) VALUES
+(1, 'white', 'main.css', 1,'2021-09-05 19:27:44', '2021-09-05 19:27:13'),
+(2, 'Black', 'blackmain.css',0, '2021-09-05 19:28:11', '2021-09-05 19:27:52');
 
 --
 -- Index pour les tables déchargées
@@ -151,14 +161,14 @@ ALTER TABLE `categorie`
 -- Index pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_commentaire_article` (`id_article`);
 
 --
 -- Index pour la table `editor`
 --
 ALTER TABLE `editor`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `page`
@@ -203,13 +213,13 @@ ALTER TABLE `editor`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table ` page`
+-- AUTO_INCREMENT pour la table `page`
 --
 ALTER TABLE `page`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table ` page_categorie`
+-- AUTO_INCREMENT pour la table `page_categorie`
 --
 ALTER TABLE `page_categorie`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
@@ -219,7 +229,7 @@ ALTER TABLE `page_categorie`
 --
 
 --
--- Contraintes pour la table ` article`
+-- Contraintes pour la table `article`
 --
 ALTER TABLE `article`
   ADD CONSTRAINT `FK_article_cat` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`);

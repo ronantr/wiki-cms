@@ -45,6 +45,15 @@ class View
 
 		switch ($extension){
 			case "css" :
+				if($file != 'back.css'){
+				$page = new Page;
+				$themes = $page->getthemes();
+				foreach($themes as $theme){
+					if($theme['actif'] == 1){
+					return '/public/css/'.$theme['content'];
+					break;
+				}}}
+				
 				return '/public/css/'.$file;
 				break;
 			case "js" :

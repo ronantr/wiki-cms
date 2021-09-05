@@ -45,7 +45,7 @@
 /liste-des-utilisateurs:
   controller: Security
   action: listofusers
-/admin/MailVerif:
+/MailVerif:
   controller: Security
   action: MailVerif
 ############ 
