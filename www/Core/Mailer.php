@@ -294,7 +294,7 @@ $mail->setFrom("mvccmswiki@gmail.com");
 $mail->addAddress($email);
 //$url = $_SERVER['REQUEST_URI'];
 $url = $_SERVER['SERVER_NAME'];
-$url .= '/admin/verifi-user?token=';
+$url .= '/changemdp?token=';
 $url .= $token;
 $url .= '&email=';
 $url .= $email;
@@ -520,7 +520,7 @@ $mail->Body = $body;
 if($mail->send()){
     $user=new User;
     $user->CreateUserToken($email,$token);
-    $user->VerifUser($email);
+    //$user->VerifUser($email);
     //echo($url);
     header('Location: /login ');
     return true;

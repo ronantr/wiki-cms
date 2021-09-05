@@ -231,7 +231,7 @@ class User extends Database
 	/**
      * @return array
      */
-    public function buildFormResetPassword(){
+    public function buildFormResetPasswordEmail(){
 
         return [
             "config"=>[
@@ -259,8 +259,42 @@ class User extends Database
                 ],
             ],
         ];
+		
     }
+	public function buildFormResetPassword(){
 
+        return [
+            "config"=>[
+                "method"=>"POST",
+                "action"=>"",
+				"class"=>"form_password",
+                "Submit"=>"Envoyer",
+				"id"=>"form_password"
+            ],
+            "input"=>[
+				"email"=>[
+                    "type"=>"hidden",
+                    "defaultValue"=>$_GET['email']
+                ],
+                "password"=>[
+					"label"=>"Password",
+					"type"=>"password",
+					"lengthMin"=>"8",
+					"required"=>true,
+					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
+					"placeholder"=>"Votre mot de passe"
+					],
+				"pwdConfirm"=>[
+					"label"=>"Confirmation Password",
+					"type"=>"password",
+					"confirm"=>"pwd",
+					"required"=>true,
+					"error"=>"Votre mot de passe de confirmation est incorrect",
+					"placeholder"=>"Confirmation"
+					]
+            ]
+        ];
+	}
 
 }
 

@@ -115,10 +115,10 @@ class Security{
         $user = new User();
 		$view = new View("changement-mdp");
 		$mailer = new Mailer();
-		$form = $user->buildFormRecuperation();
+		$form = $user->buildFormResetPasswordEmail();
 		$view->assign("form", $form);
 		if(!empty($_POST)){			
-            $mail = $mailer->sendMail($_POST['email'],$_POST['password']);
+            $mail = $mailer->sendMailForgetPassword($_POST['email'],$_POST['tokenemail']);
 			$errors = Form::validator($_POST, $form);
 			if(empty($errors && $mail === true)){ 
     
@@ -133,6 +133,28 @@ class Security{
 		$token = $_SESSION["csrf"];
 		$email = $_SESSION["email"];
 		$mailer->sendMailVerif($email,$token);
+	}
+	public function changemdpAction(){
+		$user = new User();
+        $email = $_GET['email'];
+        $token = $_GET['token'];
+		$view = new View("modif-mdp");
+        $valide=$user->VerifUserToken($token,$email);
+        $form = $user->buildFormResetPassword();
+		$view->assign("form", $form);
+        if(!empty($_POST)){
+			$errors = Form::validator($_POST, $form);
+			if(empty($errors)){
+				$user->setId($valide);
+				$user->setToken(" ");
+				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
+				$user->save();
+				//echo $valide;
+				//header("Location: /login");
+			}else{
+				$view->assign("formErrors", $errors);
+			}
+		}		
 	}
 	public function listofusersAction(){
 

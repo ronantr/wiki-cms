@@ -39,7 +39,9 @@
 /recuperationmdp:
   controller: Security
   action: recuperationmdp
-
+/changemdp:
+  controller: Security
+  action: changemdp
 /liste-des-utilisateurs:
   controller: Security
   action: listofusers

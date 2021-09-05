@@ -224,12 +224,12 @@ class Database
 	}
 	public function VerifUserToken($token,$email){
 		$this->table = DBPREFIX."editor";
-		$query = $this->pdo->prepare("SELECT id FROM $this->table WHERE tokenemail = '$token' AND email = '$email';");
-		$query->execute();
-		$users = $query->fetchall();
-		return $users;
+		$query = $this->pdo->prepare("SELECT id FROM $this->table WHERE  email = '$email' and tokenemail = '$token'  ");
+		return $query->execute();
+
+		
 	}
-	public function CreateUserToken($token,$email){
+	public function CreateUserToken($email,$token){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("UPDATE $this->table SET tokenemail = '$token' WHERE email = '$email';");
 		$query->execute();

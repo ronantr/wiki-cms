@@ -121,13 +121,14 @@ class User{
         $token = $_GET['token'];
         $user = new ModelsUser();
         $valide=$user->VerifUserToken($token,$email);
-        if (count($valide)){
+        if ($valide){
             $user->setId($valide);
             $user->setEmailVerified('1');
-            $user->setToken("");
+            $user->setToken(" ");
             $user->save();
             header('location: /login');
         }
     }
+
 }
 
