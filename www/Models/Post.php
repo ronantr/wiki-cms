@@ -111,7 +111,7 @@ class Post extends Database
 					"method"=>"POST",
 					"Action"=>"",
 					"Submit"=>"Post",
-					"class"=>"form_register"
+					"class"=>"form-box post-tp"
 				],
 				"input"=>[
 					"id"=>[
@@ -121,7 +121,7 @@ class Post extends Database
                     ],
 					"title"=>[
 									"type"=>"text",
-									"class"=>"form_input",
+									"class"=>"input-form",
 									"label"=>"titre :",
 									"lengthMax"=>"120",
 									"lengthMin"=>"2",

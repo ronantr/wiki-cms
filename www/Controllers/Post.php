@@ -20,6 +20,11 @@ class Post{
         $view->assign("allPosts", $allPosts);
         $view->assign("categories",$allCat);
         $view->assign("title","Admin Liste Post");
+        if(!empty($_POST)){
+            $Posts = new ModelPost;
+            $Posts->changestatuspost($_POST['status'],$_POST['id']);
+            header('Location: /admin/liste-post');
+        }
         }
 
     public function postajouteAction(){
@@ -82,6 +87,19 @@ class Post{
         
         
     }
+
+    public function modifstatusAction(){
+        if(!empty($_POST['status'])){
+            $Posts = new ModelPost;
+            $Posts->changestatuspost($_POST['status'],$_POST['id']);
+            header('Location: /admin/liste-post');
+        }
+        else
+        {
+            var_dump($_POST);
+        }
+    }
+
     public function postdeleteAction(){
         $id=$_GET['id'];
         $Post = new ModelPost();
@@ -156,9 +174,9 @@ class Post{
             $view->assign("title",$post[0]['title']);
             $view->assign('commentaires',$commentaires);
             if(coreSecurity::isConnected()){
-                $form = $commentaire->buildFormCommentaire();
                 $id_user = $commentaire->getiduserbymail($_SESSION['email']);
                 $commentaire->setCommentaire_id_user($id_user[0]['id']); 
+                $form = $commentaire->buildFormCommentaire();
                 $view->assign("form", $form);
                 if(!empty($_POST)){
                     $errors = Form::validator($_POST, $form);

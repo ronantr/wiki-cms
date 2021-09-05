@@ -545,8 +545,13 @@ class Database
 		$query->execute();
 		$page = $query->fetchall();
 		return $page;
-	}
+	}	
 
+	public function changestatuspost($status,$id){
+		$table = DBPREFIX."article"; 
+		$query = $this->pdo->prepare("UPDATE $table SET status = $status where id =$id");
+		$query->execute();
+	}
 
 
 
