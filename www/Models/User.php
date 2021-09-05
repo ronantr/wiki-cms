@@ -237,9 +237,9 @@ class User extends Database
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-				"class"=>"form_password",
+				"class"=>"form_login",
                 "Submit"=>"Envoyer",
-				"id"=>"form_password"
+				"id"=>"form_login"
             ],
             "input"=>[
                 "tokenemail"=>[
@@ -254,6 +254,7 @@ class User extends Database
                     "lengthMin"=>"8",
                     "lengthMax"=>"320",
                     "required"=>true,
+					"class"=>"form_input",
                     "error"=>"Votre email doit faire entre 8 et 320 caractères",
                     "placeholder"=>"Votre email"
                 ],
@@ -267,9 +268,9 @@ class User extends Database
             "config"=>[
                 "method"=>"POST",
                 "action"=>"",
-				"class"=>"form_password",
+				"class"=>"form_login",
                 "Submit"=>"Envoyer",
-				"id"=>"form_password"
+				"id"=>"form_login"
             ],
             "input"=>[
 				"email"=>[
@@ -285,6 +286,7 @@ class User extends Database
 					"type"=>"password",
 					"lengthMin"=>"8",
 					"required"=>true,
+					"class"=>"form_input",
 					"error"=>"Votre mot de passe doit faire plus de 8 caractères",
 					"placeholder"=>"Votre mot de passe"
 					],
@@ -293,6 +295,7 @@ class User extends Database
 					"type"=>"password",
 					"confirm"=>"pwd",
 					"required"=>true,
+					"class"=>"form_input",
 					"error"=>"Votre mot de passe de confirmation est incorrect",
 					"placeholder"=>"Confirmation"
 					]

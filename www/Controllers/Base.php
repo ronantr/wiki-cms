@@ -5,6 +5,7 @@ namespace App;
 use App\Core\Security;
 use App\Core\View;
 use App\Core\Installer;
+use App\Core\Routing;
 use App\Models\Page;
 
 
@@ -64,18 +65,18 @@ class Base{
 
 	public function sitemapAction() {
         header('Content-Type: text/xml; charset=UTF-8');
-        $routes = Routing::getListOfRoutes();
-        // $routes_exclude = [
-        //     "/sitemap.xml",
-        //     "/resgister",
-        //     "/s-inscrire",
-        //     "/login",
-        //     "/logout",
-        //     "/recuperationmdp",
-        //     "/liste-des-utilisateurs",
-        //     "/installer",
-        //     "/make-install"
-        // ];
+		$routes =  Routing::getListOfRoutes();
+         $routes_exclude = [
+            "/sitemap.xml",
+    	    "/resgister",
+            "/s-inscrire",
+            "/login",
+            "/logout",
+            "/recuperationmdp",
+            "/liste-des-utilisateurs",
+            "/installer",
+            "/make-install"
+         ];
         $sitemap = "";
         $sitemap .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
         $sitemap .= Routing::getBaseRouteSitemap($routes, $routes_exclude);
