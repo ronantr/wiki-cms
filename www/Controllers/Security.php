@@ -129,11 +129,10 @@ class Security{
 			}
 		}
 	public function mailVerifAction(){
-		$user = new User();
 		$mailer = new Mailer();
-		$mail = $_SESSION("email");
-		$token = $_SESSION("csrf");
-		$mail = $mailer->sendMailVerif($mail,$token);
+		$token = $_SESSION["csrf"];
+		$email = $_SESSION["email"];
+		$mailer->sendMailVerif($email,$token);
 	}
 	public function listofusersAction(){
 

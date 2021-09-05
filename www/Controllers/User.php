@@ -126,7 +126,7 @@ class User{
             $user->setEmailVerified('1');
             $user->setToken("");
             $user->save();
-            header('location: /');
+            header('location: /login');
         }
     }
 }

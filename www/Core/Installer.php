@@ -42,7 +42,7 @@ class Installer
         
         $install = $this->createDatabase($query);
         $install = $this->renameDatabase($_POST ['data']['DBPREFIX']);
-        echo'actualiser la page';
+        echo'<h1>actualiser la page</h1>';
         $this->creationUser($_POST['user']);
         return $install;
     }
