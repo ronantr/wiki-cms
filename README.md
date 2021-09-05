@@ -19,9 +19,13 @@ With the current docker-compose.yml, go to [http://localhost](http://localhost) 
 
 ## Database
 DBHOST : database
+
 DBNAME : wiki
+
 DBUSER : root
+
 DBPWD  : password
+
 DBPORT : 3306
 
 ## Contributors
