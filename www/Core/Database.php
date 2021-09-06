@@ -196,6 +196,14 @@ class Database
         return $users;
 	}
 
+	public function searchadmin(){
+		$table = DBPREFIX."editor";
+        $query = $this->pdo->prepare("SELECT * FROM $table where role=1; ");
+        $query->execute();
+        $users = $query->fetchall();
+        return $users;
+	}
+
 	public function validerUser($id){
 		$this->table = DBPREFIX."editor";
 		$query = $this->pdo->prepare("UPDATE $this->table SET emailVerified = 1 WHERE id =$id; ");

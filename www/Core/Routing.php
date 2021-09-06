@@ -61,7 +61,8 @@ class Routing{
         exit(0);
     }
 	public function getControllerWithNamespace(){
-		return APP_NAMESPACE.$this->controller;
+		
+		return "App\\".$this->controller;
 	}
 
 	public function getControllerWithNamespacePage(){

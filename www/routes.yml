@@ -152,7 +152,9 @@
 /make-install:
   controller: Installer
   action: makeInstall
-
+/make-admin:
+  controller: Installer
+  action: makeadmin
 
 ###############
 #####Pages#####
