@@ -9,7 +9,7 @@ class Page extends Database
 	protected $content;
 	protected $isMenu;
 	protected $isAccueil;
-	protected $status = 0;
+	protected $status ;
 
 
     public function __construct(){
