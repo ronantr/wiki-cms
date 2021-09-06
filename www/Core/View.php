@@ -60,6 +60,14 @@ class View
 				return '/public/js/'.$file;
 				break;
 			case "png" || "jpg" || "jpeg" || "svg":
+				if($file == 'icon.png'){
+					return 'https://chaochaozhou.com/'.$file;
+					break;
+					}
+					if($file == 'Logo.png'){
+						return 'https://chaochaozhou.com/'.$file;
+						break;
+						}	
 				return '/public/images/'.$file;
 				break;
 			case "sql":
