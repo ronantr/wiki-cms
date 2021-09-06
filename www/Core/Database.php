@@ -156,6 +156,14 @@ class Database
         $posts = $query->fetchall();
         return $posts;
 	}
+
+	public function getpostbyidadmin($id){
+		$this->table = DBPREFIX."article";
+        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id ; ");
+        $query->execute();
+        $posts = $query->fetchall();
+        return $posts;
+	} 
 	public function deletePost($id){
 		$this->table = DBPREFIX."article";
 		$commentaires = DBPREFIX."commentaire";

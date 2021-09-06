@@ -51,7 +51,7 @@
                             break;
                 } ?>
                 <td><a class="button-valide" href="/admin/page-edit?id=<?php echo $id;?>">Modifier</a></td>
-                <td><a class="button-valide" href="/admin/single-page?id=<?php echo $id;?>">Visualiser</a></td>
+                <td><a class="button-valide" href="/admin/single-page?id=<?php echo $id;?>" target="_blank">Visualiser</a></td>
                 <td><button class="button-valide" onclick="myFunctionSupprimer(<?php echo $id;?>)">Supprimer</button></td>
                 
             </tr>

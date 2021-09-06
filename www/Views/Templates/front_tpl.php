@@ -20,7 +20,7 @@
 						<li><a href="/s-inscrire">Register</a></li>	
 							<?php }else{ ?> 
 							<li><a <?php if($_SESSION['role'] == 1){ ?>
-								  href="admin/user?nom=<?php echo $_SESSION['username']; ?>" <?php } 
+								  href="/admin/user?nom=<?php echo $_SESSION['username']; ?>" <?php } 
 								  else{ ?> href="moncompte" <?php } ?> > <?php echo $_SESSION['username'] ?> </a></li>
 						<li><a href="/logout">Déconnexion</a></li><?php
 						} ?>
