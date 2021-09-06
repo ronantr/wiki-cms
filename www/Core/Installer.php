@@ -148,7 +148,7 @@ public function createDatabase($query) {
         $userf->setRole("1");
         $userf->setToken("");
         $userf->setEmailVerified("1");
-        //$userf->setIsDeleted(0);
+        $userf->setIsDeleted("0");
         var_dump($userf);
         $userf->save();
     }
