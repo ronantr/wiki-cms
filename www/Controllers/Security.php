@@ -158,6 +158,9 @@ class Security{
 		$view->assign("form", $form);
         if(!empty($_POST)){
 			$errors = Form::validator($_POST, $form);
+			if($_POST["password"] != $_POST["pwdConfirm"]){
+				$errors[1]="Confirmer Votre mdp";
+			}
 			if(empty($errors)){
 				$user->setId($valide['id']);
 				$user->setToken(" ");
