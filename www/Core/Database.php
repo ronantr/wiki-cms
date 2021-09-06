@@ -425,7 +425,7 @@ class Database
 
 	public function getPageByUrl($url){
 		$page = DBPREFIX."page";
-		$query = $this->pdo->prepare("SELECT * FROM $this->table WHERE url = '$url' ; ");
+		$query = $this->pdo->prepare("SELECT * FROM $page WHERE url = $url ; ");
 		$query->execute();
 		$page = $query->fetch();
 		return $page;

@@ -11,6 +11,7 @@
 	</head>
     <body>
     <main>
+		<h1 class="titleh1"> Installer</h1>
 			<section class="main">
 				<div class="containermain">
                     <?php include $this->view; ?>
