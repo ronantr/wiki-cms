@@ -13,7 +13,7 @@
     </div>
     <div class="label-input-group">
         <label class="label-form">Url</label>
-        <input class="input-form" type="text" name="url" placeholder=<?php echo $page[0]['url'];?> minlength="4" maxlength="50"><br>
+        <input class="input-form" type="text" value="<?php echo $page[0]['url'];?>" name="url" placeholder=<?php echo $page[0]['url'];?> minlength="4" maxlength="50"><br>
     </div>
 
     <label class="label-form">Content</label>
