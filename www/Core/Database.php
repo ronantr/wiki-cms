@@ -62,7 +62,7 @@ class Database
 
 
 		if ($this->table == DBPREFIX."commentaire"){
-			$query = $this->pdo->prepare("INSERT INTO ".$this->table." (
+			$query = $this->pdo->prepare("INSERT INTO ".strtolower($this->table)." (
 				".implode(",", $columns)."
 				) VALUES (:".implode(",:", $columns).");");
 				//echo '<br><br><br>';
@@ -72,7 +72,7 @@ class Database
 			//INSERT
 
 			
-            $query = $this->pdo->prepare("INSERT INTO ".$this->table." (
+            $query = $this->pdo->prepare("INSERT INTO ".strtolower($this->table)." (
                                             ".implode(",", $columns)."
                                             ) VALUES (:".implode(",:", $columns).");");
             //echo '<br><br><br>';
@@ -85,7 +85,7 @@ class Database
 			}
 		}
 
-		$sql = "UPDATE " . $this->table . " SET " . implode(",", $Update) . " WHERE id=" . $this->getId();
+		$sql = "UPDATE " . strtolower($this->table) . " SET " . implode(",", $Update) . " WHERE id=" . $this->getId();
 		$query = $this->pdo->prepare($sql);
 		//print_r($query);
 		foreach ($data as $key => $value) {
