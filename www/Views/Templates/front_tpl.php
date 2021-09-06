@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title><?php echo $title ?></title>
 		<meta name="description" content="page de front">
-		<link rel=stylesheet href=<?php echo App\Core\View::lookupfile('main.css'); ?> >
+		<link rel=stylesheet type="text/css" href=<?php echo App\Core\View::lookupfile('main.css'); ?> >
 		<script type="text/javascript" src=<?php echo App\Core\View::lookupfile('main.js'); ?>></script>
 	</head>
 	<body>

@@ -20,7 +20,7 @@
 		});
 		</script>
 		<meta name="description" content="Back">
-		<link rel=stylesheet href=<?php echo App\Core\View::lookupfile('back.css'); ?> >
+		<link rel=stylesheet type="text/css"  type="text/css" href=<?php echo App\Core\View::lookupfile('back.css'); ?> >
 		<script type="text/javascript" src=<?php echo App\Core\View::lookupfile('main.js'); ?>></script>
 		<link rel="icon" href=<?php echo App\Core\View::lookupfile('icon.png'); ?> sizes="32x32">
 
