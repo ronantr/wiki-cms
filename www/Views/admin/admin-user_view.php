@@ -9,7 +9,25 @@
     </br></br>
     <?php if($user['emailVerified'] != '1' ) {?>
 
-    <button><a href='/MailVerif'class='button-valide'> verfication email </a></button>
+    <?php if(isset($_GET['message'])){ ?>
+        <button><a href=''class='button-valide'> Mail envoyé </a></button> <?php } else { ?> <button><a href='/MailVerif'class='button-valide'> verfication email </a></button>  <?php } ?>
+
 <?php } }} ?>
+
+<?php if (isset($_GET['message'])){
+    switch ($_GET['message']){
+    case 1:
+        echo'<h1 class = "erreur">Un Mail a été envoyé dans votre boîte au mail ( PEUT ETRE DANS INDESIRABLE )</h1>';
+        break;
+    case 2:
+        echo'<h1 class = "</h1>';
+        break;
+    case 3:
+        echo'<h1 class = "erreur"></h1>';
+        break;
+    case 4;
+        echo'<h1 class = "erreur"></h1>';
+}
+} ?>
 </center>
 

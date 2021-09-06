@@ -34,13 +34,25 @@ class User{
     }
 
     public function usereditAction(){
-        $user_id = $_GET['id'];
-        $user = new ModelsUser();
-        $user_role = $_POST['role'];
-        if (!empty($user_id)) {
-            $user->setuserrole($user_id,$user_role);
+        if(!empty($_GET['id'])){
+            $user_id = $_GET['id'];
+            $user = new ModelsUser();
+            if($user->isAdmin($_GET['id'])){
+                if($user->lastAdmin()){
+                    header('Location: /admin/users/liste-utilisateurs?message=4');
+                    exit;
+                }
+            }
+            $user_role = $_POST['role'];
+            if (!empty($user_id)) {
+                $user->setuserrole($user_id,$user_role);
+            }
+            header('Location: /admin/users/liste-utilisateurs?message=2');
         }
-        header('Location: /admin/users/liste-utilisateurs?message=2');
+        else{
+            header('Location: /admin/users/liste-utilisateurs');
+        }
+        
     }
 
     public function userdeleteAction(){

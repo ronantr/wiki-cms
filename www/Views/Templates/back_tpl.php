@@ -45,12 +45,12 @@
 			<div class="nav_gauche">
 				<div class="row">
 					<a href="/admin/tableau-de-bord">Dashboard </a>
-					<a href="/admin/menu">Gestion de menu</a>
+					<?php if($_SESSION['role'] == 1){  ?> <a href="/admin/menu">Gestion de menu</a><?php } ?>
 					<a href="/admin/liste-Pages">Pages</a>
 					<a href="/admin/liste-categorie">Catégories</a>
 					<a href="/admin/liste-post">Posts</a>
 					<a href="/admin/liste-commentaire">Commentaires</a>
-					<a href="/admin/theme">Thèmes</a>
+					<?php if($_SESSION['role'] == 1){  ?> <a href="/admin/theme">Thèmes</a><?php } ?>
 					<?php if($_SESSION['role'] == 1){  ?> <a href="/admin/users/liste-utilisateurs">Utilisateurs</a> <?php } ?>
 						
 				</div>

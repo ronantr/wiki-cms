@@ -261,7 +261,7 @@ class Mailer
         $user=new User;
         $user->CreateUserToken($email,$token);
         //echo($url);
-        header('Location: /moncompte ');
+        header('Location: /moncompte?message=1 ');
         return true;
     }
     else

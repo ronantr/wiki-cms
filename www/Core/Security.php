@@ -17,15 +17,24 @@ class Security
 	public function isAutorized($uriex){
 		if($uriex[1] == "admin"){
 			if($_SESSION['role'] == 1 || $_SESSION['role'] == 3 ){
-				if($uriex['2'] == "users"){
+				if($uriex['2'] == "users" || $uriex['2'] == "menu" || $uriex['2'] == "theme" ){
 					if($_SESSION['role'] == 3){
-						header('Location: /admin/tableau-de-board');
+						header('Location: /admin/tableau-de-bord');
 					}
 				}
 			}
 			else{
 				header('Location: / ');
 			}
+		}
+	}
+
+	public function isAdmin(){
+		if(!empty($_SESSION['role'])){
+			if($_SESSION['role'] == 1){
+				return true;
+			}
+			else { return false;}
 		}
 	}
 
