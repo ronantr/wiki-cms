@@ -31,3 +31,11 @@ DBPORT : 3306
 ## Contributors
 * **Chaochao Zhou** - [Chaochao-z](https://github.com/Chaochao-z)
 * **Ronan Trouillard** - [ronantr](https://github.com/ronantr)
+
+## Utilisation
+
+Les doits :
+    -Utilisateur : Visualiser les pages , les articles publié ; Commenter les articles (Connecter et compte vérifier) .
+    -Editeur : Créer Editer Supprimer les Pages ; Catégorie ; Articles ; Commentaire ; Consuslter le Dashboard .
+    -Administrateur : Gestion des Users ; Gestion des menus ; Gestion des Templates .
+
