@@ -113,6 +113,7 @@ class User{
         $user = new ModelsUser();
         $view = new View("admin/admin-user","back");
         $view->assign("users",$user->getUsers());
+        $view->assign("title","Mes Informations");
         
             
         }

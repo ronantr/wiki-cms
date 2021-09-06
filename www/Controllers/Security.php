@@ -153,7 +153,7 @@ class Security{
 				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
 				$user->save();
 				//echo $valide;
-				//header("Location: /login");
+				header("Location: /login");
 			}else{
 				$view->assign("formErrors", $errors);
 			}
