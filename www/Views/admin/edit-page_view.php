@@ -17,7 +17,8 @@
     </div>
 
     <label class="label-form">Content</label>
-    <textarea id="content" class="" name="content" type="mytextarea" style="visibility: hidden;" aria-hidden="true" defaultValue=<?php echo htmlspecialchars_decode($page[0]['content']);?>  </textarea>
+    <textarea id="content" class="" name="content" type="mytextarea" style="visibility: hidden;" aria-hidden="true" defaultValue= <?php if(!empty($page[0]['content'])){echo htmlspecialchars_decode($page[0]['content']);}else{echo"(Vide)";} ?>  </textarea></textarea>
+    
     <div class="separateur"></div>
     <label class="label-form">Les Catégories :</label><br>
     <div class="checkbox-form">
