@@ -121,12 +121,12 @@ class User{
         $token = $_GET['token'];
         $user = new ModelsUser();
         $valide=$user->VerifUserToken($token,$email);
-        if ($valide){
-            $user->setId($valide);
+        if (!empty($valide)){
+            $user->setId($valide['id']);
             $user->setEmailVerified('1');
             $user->setToken(" ");
             $user->save();
-            header('location: /login');
+            header('location: /');
         }
     }
 
@@ -135,6 +135,7 @@ class User{
             $user = new ModelsUser;
             $view = new View("admin/admin-user","front");
             $view->assign("users",$user->getUsers());
+            $view->assign("title","Mon Compte");
         }
         else{
             header('Location: /login ');

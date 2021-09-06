@@ -169,6 +169,9 @@ class Post{
             $commentaire = new ModelCommentaire;
             $commentaire->setCommentaire_id_article($_GET["id"]);
             $post = $posts->getpostbyid($id_post);
+            if(empty($post)){
+                header('Location: / ');
+            }
             $commentaires = $posts->getCommentairesuser($id_post);
             $view = new View('public/single-post','front');
             if($_SESSION['login']){
@@ -213,9 +216,14 @@ class Post{
             $commentaire->setCommentaire_id_article($_GET["id"]);
             $id_user = $commentaire->getiduserbymail($_SESSION['email']);
             $commentaire->setCommentaire_id_user($id_user[0]['id']);
-            $post = $posts->getpostbyid($id_post);
+            $post = $posts->getpostbyidadmin($id_post);
+            if(empty($post)){
+                header('Location: /admin/liste-post ');
+            }
             $commentaires = $posts->getCommentairesuser($id_post);
             $view = new View('public/single-post','front');
+            $user= $posts->getuserbyemail($_SESSION['email']);
+            $view->assign('user', $user);
             $view->assign('post', $post);
             $view->assign('commentaires',$commentaires);
             $view->assign("title","Admin ".$post[0]['title']);

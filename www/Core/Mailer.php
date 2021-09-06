@@ -260,9 +260,8 @@ class Mailer
     if($mail->send()){
         $user=new User;
         $user->CreateUserToken($email,$token);
-        $user->VerifUser($email);
         //echo($url);
-        header('Location: /login ');
+        header('Location: /moncompte ');
         return true;
     }
     else

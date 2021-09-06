@@ -21,18 +21,22 @@ class Installer
     }
     
     public function install(){
-        $this->editEnvFiles($_POST['data'],$_POST );
-        $install = $this->makeDatabase();
+        if(!empty($_POST)){
+            $this->editEnvFiles($_POST['data'],$_POST );
+            $install = $this->makeDatabase();
 
-        if($install > 0){
-            session_write_close();
-            
-            header('location: /login');
-            
-        } else{
-            session_write_close();
-            header('location : /installer?message=2');
+            if($install == true){
+                header('location: /make-admin');
+                
+            } else{
+                session_write_close();
+                header('location : /installer?message=2');
+            }
         }
+        else{
+            header('Location: /');
+        }
+        
 
         
     }
@@ -42,8 +46,6 @@ class Installer
         
         $install = $this->createDatabase($query);
         $install = $this->renameDatabase($_POST ['data']['DBPREFIX']);
-        echo'<h1>actualiser la page</h1>    ';
-        $this->creationUser($_POST['user']);
         return $install;
     }
 
@@ -61,16 +63,16 @@ class Installer
     }
     public function checkDatabaseConnection() {
         try {
+            echo "<h1 class='titleh1'>Connexion à la base de données impossible RETOURNER /installer</h1>";
             $conn = new \PDO(
                 "mysql:dbname=".$_POST['data']['DBNAME']. ";host=" 
                 .$_POST ['data']['DBHOST'].";port=".$_POST['data']['DBPORT'],
                 $_POST ['data']['DBUSER'],
                 $_POST ['data']['DBPWD']);
-            return true;
-        }catch(Exception $e){
+        }catch(PDOException $e){
             return false;
-			die ("Erreur SQL ".$e->getMessage());
-		}
+        }
+        return true;
     }
     public function editEnvFiles($db) {
         $env = ".env";
@@ -94,6 +96,7 @@ class Installer
         $content_env = "APP_NAMESPACE=\App\ ".PHP_EOL;
         $content_env .= "ENV=prod". PHP_EOL;
         file_put_contents($env, $content_env);
+        // header('Location: / ');
     }
 public function createDatabase($query) {
         $conn = new \PDO(
@@ -102,7 +105,6 @@ public function createDatabase($query) {
             $_POST ['data']['DBUSER'],
             $_POST ['data']['DBPWD']);
         $query = $conn->exec($query);
-        return true;
 	}
 	
 	public function renameDatabase($DBPREFIXe){
@@ -134,13 +136,12 @@ public function createDatabase($query) {
 		$query->execute();
         $query = $conn->prepare("DROP TABLE `article`, `categorie`, `commentaire`, `editor`, `page`, `page_categorie`, `static`;");
         $query->execute();
-		return true;
+        return true;
 
 	}
     public function creationUser($user) {
         
         $userf = new User();
-        var_dump($user);
         $Password = password_hash(htmlspecialchars($user['Password']), PASSWORD_BCRYPT);
         $userf->setUsername($user['Username']);
         $userf->setEmail($user['Email']);
@@ -149,7 +150,6 @@ public function createDatabase($query) {
         $userf->setToken("");
         $userf->setEmailVerified("1");
         $userf->setIsDeleted("0");
-        var_dump($userf);
         $userf->save();
     }
 

@@ -156,6 +156,14 @@ class Database
         $posts = $query->fetchall();
         return $posts;
 	}
+
+	public function getpostbyidadmin($id){
+		$this->table = DBPREFIX."article";
+        $query = $this->pdo->prepare("SELECT * FROM $this->table WHERE id =$id ; ");
+        $query->execute();
+        $posts = $query->fetchall();
+        return $posts;
+	} 
 	public function deletePost($id){
 		$this->table = DBPREFIX."article";
 		$commentaires = DBPREFIX."commentaire";
@@ -191,6 +199,14 @@ class Database
 	public function getUsers(){
 		$table = DBPREFIX."editor";
         $query = $this->pdo->prepare("SELECT * FROM $table ; ");
+        $query->execute();
+        $users = $query->fetchall();
+        return $users;
+	}
+
+	public function searchadmin(){
+		$table = DBPREFIX."editor";
+        $query = $this->pdo->prepare("SELECT * FROM $table where role=1; ");
         $query->execute();
         $users = $query->fetchall();
         return $users;

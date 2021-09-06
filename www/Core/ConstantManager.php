@@ -48,20 +48,23 @@ class ConstantManager
 
 
 	public function parseFile($file){
-		$handle = fopen($file, "r");
-		if(!empty($handle)){
+		if(file_exists('.env.prod')){
+			$handle = fopen($file, "r");
+			if(!empty($handle)){
 
-			while (!feof($handle)) {
-				$line = trim(fgets($handle));
-				//  $line = "DBHOST=database #Voir le host de docker";
-				//  $data["DBHOST"]="database";
-				preg_match("/([^=]*)=([^#]*)/", $line, $results);
-				if(!empty($results[1]) && !empty($results[2])){
-					$this->data[$results[1]] = $results[2];
+				while (!feof($handle)) {
+					$line = trim(fgets($handle));
+					//  $line = "DBHOST=database #Voir le host de docker";
+					//  $data["DBHOST"]="database";
+					preg_match("/([^=]*)=([^#]*)/", $line, $results);
+					if(!empty($results[1]) && !empty($results[2])){
+						$this->data[$results[1]] = $results[2];
+					}
 				}
-			}
 
+			}
 		}
+		
 
 	}
 

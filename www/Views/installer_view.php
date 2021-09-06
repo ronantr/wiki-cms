@@ -17,30 +17,40 @@
 </head>
 <body>
     <div class='containermargin'>
-    <div class="login">
-<form action="/make-install" method="post" classe='form_login' id='form_login'>
-  <label for="DBHOST">DBHOST:</label><br>
-  <input type="text" id="DBHOST" classe='form_input'name="data[DBHOST]"><br>
-  <label for="DBNAME">DBNAME:</label><br>
-  <input type="text" id="DBNAME" classe='form_input'name="data[DBNAME]"><br>
-  <label for="DBPREFIX">DBPREFIX:</label><br>
-  <input type="text" id="DBPREFIX" classe='form_input'name="data[DBPREFIX]"><br>
-  <label for="DBUSER">DBUSER:</label><br>
-  <input type="text" id="DBUSER" classe='form_input'name="data[DBUSER]"><br>
-  <label for="DBPWD">DBPWD:</label><br>
-  <input type="password" id="DBPWD" classe='form_input'name="data[DBPWD]"><br>
-  <label for="DBPORT">DBPORT:</label><br>
-  <input type="text" id="DBPORT" classe='form_input'name="data[DBPORT]"><br>
-  <label for="Username">Username:</label><br>
-  <input type="text" id="Username" classe='form_input'name="user[Username]"><br>
-  <label for="Email">Email:</label><br>
-  <input type="email" id="Email" classe='form_input'name="user[Email]"><br>
-  <label for="Password">Password:</label><br>
-  <input type="password" id="Password" classe='form_input' name="user[Password]"><br>
-  <!-- <input type="hidden" id="IsDeleted" name="user[IsDeleted]" value="0"><br>
-  <input type="hidden" id="Role" name="user[Role]" value="1"><br> -->
-  <input type="submit" value="Submit">
+    
+<form action="/make-install" method="post" class='form-box' id='form_login' style="width:50%;">
+    <div class="label-input-group">
+        <label class="label-form" for="DBHOST">DBHOST:</label><br>
+        <input type="text" id="DBHOST" class='input-form' name="data[DBHOST]" required><br></div>
+    <div class="label-input-group">
+        <label class="label-form"   for="DBNAME">DBNAME:</label><br>
+        <input type="text" id="DBNAME" class='input-form' name="data[DBNAME]" required><br></div>
+    <div class="label-input-group">
+        <label class="label-form"   for="DBPREFIX">DBPREFIX:</label><br>
+        <input type="text" id="DBPREFIX" class='input-form' name="data[DBPREFIX]" required><br></div>
+    <div class="label-input-group">
+        <label class="label-form"   for="DBUSER">DBUSER:</label><br>
+        <input type="text" id="DBUSER" class='input-form' name="data[DBUSER]" required><br></div>
+    <div class="label-input-group">
+        <label class="label-form"   for="DBPWD">DBPWD:</label><br>
+        <input type="password" id="DBPWD" class='input-form' name="data[DBPWD]" required><br></div>
+    <div class="label-input-group">    
+        <label class="label-form"   for="DBPORT">DBPORT:</label><br>
+        <input type="text" id="DBPORT" class='input-form' name="data[DBPORT]" required><br></div>
+    <!-- <div class="label-input-group">
+        <label class="label-form"   for="Username">Username:</label><br>
+        <input type="text" id="Username" class='input-form' name="user[Username]" required><br></div>
+    <div class="label-input-group">
+        <label class="label-form"   for="Email">Email:</label><br>
+        <input type="email" id="Email" class='input-form' name="user[Email]" required><br></div>
+    <div class="label-input-group">
+        <label class="label-form"   for="Password">Password:</label><br>
+        <input type="password" id="Password" class='input-form' name="user[Password]" required><br></div>
+     -->
+    <!-- <input type="hidden" id="IsDeleted" name="user[IsDeleted]" value="0"><br>
+    <input type="hidden" id="Role" name="user[Role]" value="1"><br> -->
+    <input type="submit" value="Submit">
 </form>
-    </div>
+    
 </div>
 </body>

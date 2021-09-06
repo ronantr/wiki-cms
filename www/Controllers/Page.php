@@ -259,7 +259,7 @@ class Page{
         $page = new ModelsPage();
         $themes = $page->getthemes();
         $view = new View("admin/theme", "back");
-        print_r($themes);
+
         $view->assign("themes",$themes);
     }
     public function themeeditAction(){
