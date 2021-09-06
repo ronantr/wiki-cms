@@ -142,5 +142,38 @@ class User{
         }
     }
 
+    public function modifmdpAction(){
+        if($_SESSION['login'] == true){
+            $user = new ModelsUser;
+            $view = new View("admin/user-mdp","front");
+            $view->assign("title","Changement MDP");
+
+        }
+        
+    }
+
+    public function modif_sendAction(){
+        if(!empty($_POST)){
+            $user = new ModelsUser;
+            $id=$user->getuserbyemail($_SESSION['email']);
+            if($_POST['nouveaumdp'] == $_POST['confirm'] ){
+                if(password_verify($_POST['ancienmdp'],$id['password'])){
+                    $user->setId($id['id']);
+                    $user->setPwd(password_hash(htmlspecialchars($_POST["ancienmdp"]), PASSWORD_BCRYPT));
+                    $user->save();
+                    header('Location : / ');
+                }
+                else{header('Location : /modifmdp ');}
+            }
+            else{
+                header('Location : /modifmdp ');
+            }
+        }
+        else{
+            header('Location : /modifmdp ');
+        }
+    }
+
+
 }
 

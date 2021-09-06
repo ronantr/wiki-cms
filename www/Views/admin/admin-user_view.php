@@ -10,6 +10,7 @@
     <?php if($user['emailVerified'] != '1' ) {?>
 
     <button><a href='/MailVerif'class='button-valide'> verfication email </a></button>
+    <!-- <a href='/modifmdp' class='button-valide'> Changer le mot de passe </a> -->
 <?php } }} ?>
 </center>
 

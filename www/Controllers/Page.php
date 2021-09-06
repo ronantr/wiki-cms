@@ -185,7 +185,7 @@ class Page{
                 $page->setisMenu(0);
                 $page->setisAccueil(0);
             }
-            $same=array();
+            
             $page->save();
             $id_categories = $page->getCategoriesById($_POST['id']);
             $page->delatepagecat($_POST['id']);

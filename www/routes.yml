@@ -142,6 +142,14 @@
 /moncompte:
   controller: User
   action: moncompte
+
+/modifmdp:
+  controller: User
+  action: modifmdp
+
+/modif_send:
+  controller: User
+  action: modif_send
 ###############
 ###installer###
 ###############
