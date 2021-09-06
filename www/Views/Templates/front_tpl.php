@@ -19,12 +19,12 @@
 						<?php if ( !App\Core\Security::isConnected()) { ?> <li><a href="/login">Login</a></li>
 						<li><a href="/s-inscrire">Register</a></li>	
 							<?php }else{ ?> 
-							<li><a <?php if($_SESSION['role'] == 1){ ?>
+							<li><a <?php if($_SESSION['role'] == 1 || $_SESSION['role'] == 3 ){ ?>
 								  href="/admin/user?nom=<?php echo $_SESSION['username']; ?>" <?php } 
 								  else{ ?> href="moncompte" <?php } ?> > <?php echo $_SESSION['username'] ?> </a></li>
 						<li><a href="/logout">Déconnexion</a></li><?php
 						} ?>
-						<?php if(App\Core\Security::isConnected()){if($_SESSION['role'] == 1){ 
+						<?php if(App\Core\Security::isConnected()){if($_SESSION['role'] == 1 || $_SESSION['role'] == 3 ){ 
 							?><li><a href="/admin/tableau-de-bord">Admin</a></li><?php
 						}}?>
 						

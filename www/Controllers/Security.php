@@ -39,7 +39,7 @@ class Security{
 		$view = new View("register");
 		$view->assign("title","Register");
 		$form = $user->buildFormRegister();
-
+		$view->assign("form", $form);
 
 		
 
@@ -47,9 +47,16 @@ class Security{
 			$errors = Form::validator($_POST, $form);
             //var_dump($form);
             //print"<br>";
-            //var_dump($_POST);
+			//var_dump($_POST);
+			if($_POST["password"] != $_POST["pwdConfirm"]){
+				$errors[1]="Confirmer Votre mdp";
+			}
+			if($user->existebd($_POST["email"],"editor","email") == true){
+				$errors[0]="Mail exit";
+			}
 			if(empty($errors)){
-                //$view->assign("formErrors", $errors);
+				//$view->assign("formErrors", $errors);
+			
 				$user->setUsername($_POST["username"]);
 				$user->setEmail(htmlspecialchars($_POST["email"]));
 				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
@@ -58,12 +65,16 @@ class Security{
 				$user->setEmailVerified(0);
 				$user->save();
 				header("Location: /login");
-                //var_dump($user);
+				//var_dump($user);
+			
+				
 			}else{
 				$view->assign("formErrors", $errors);
 			}
+			
+			
 		}
-        $view->assign("form", $form);
+        
 	}
 
 	public function loginAction(){
@@ -147,13 +158,16 @@ class Security{
 		$view->assign("form", $form);
         if(!empty($_POST)){
 			$errors = Form::validator($_POST, $form);
+			if($_POST["password"] != $_POST["pwdConfirm"]){
+				$errors[1]="Confirmer Votre mdp";
+			}
 			if(empty($errors)){
 				$user->setId($valide['id']);
 				$user->setToken(" ");
 				$user->setPwd(password_hash(htmlspecialchars($_POST["password"]), PASSWORD_BCRYPT));
 				$user->save();
 				//echo $valide;
-				//header("Location: /login");
+				header("Location: /login");
 			}else{
 				$view->assign("formErrors", $errors);
 			}

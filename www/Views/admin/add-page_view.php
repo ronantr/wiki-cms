@@ -19,12 +19,16 @@
     <label class="label-form">Les Catégories :</label><br>
     <div class="checkbox-form">
     <?php $comt =0;
-    
-    foreach ($categories as $categorie){
+    if(!empty($categories)){
+        foreach ($categories as $categorie){
         $comt++;
         ?> <div class="checkbox-option-form"><input type="checkbox" id=<?php echo htmlspecialchars_decode($categorie['name']); ?> name="pagecat[]" value=<?php echo $categorie['id']; ?>>
             <label class="label-form-checkbox" for=<?php echo htmlspecialchars_decode($categorie['name']); ?>><?php echo htmlspecialchars_decode($categorie['name']); ?></label></div>
-    <?php } ?>
+    <?php }}
+    else{ ?> <a href="/admin/liste-categorie" class="button-valide">Catégorie Vide -> Création Catégorie</a> <?php } ?>
+    
+    
+
        </div> <small>Les articles des catégories seront affichiés en bas de la page . </small></br>
     <div class="separateur"></div>
     <div class="label-input-group">
